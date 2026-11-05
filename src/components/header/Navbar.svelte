@@ -173,7 +173,7 @@
   <!-- Mobile Menu Dropdown -->
   {#if isMobileMenuOpen}
     <div
-      class="md:hidden absolute top-[calc(100%+0.5rem)] left-0 right-0 max-w-5xl mx-auto px-4 sm:px-6 pointer-events-auto"
+      class="md:hidden font-mono absolute top-[calc(100%+0.5rem)] left-0 right-0 max-w-5xl mx-auto px-4 sm:px-6 pointer-events-auto"
     >
       <div
         transition:fly={{ y: -8, duration: 240, easing: cubicOut }}
