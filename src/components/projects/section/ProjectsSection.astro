@@ -6,8 +6,6 @@ interface Project {
   url: string;
   summary: string;
   tags: string[];
-  year: string;
-  status: "live" | "open source";
   /** Screenshot under /public, e.g. "/assets/side/viamu.jpg". Shown as the hover preview and on mobile. */
   cover?: string;
 }
@@ -19,8 +17,6 @@ const PROJECTS: Project[] = [
     summary:
       "A free catalog of scholarships, internships, and fellowships abroad, kept current by an AI pipeline that turns source pages into searchable listings, with a private workspace to prepare each application.",
     tags: ["nuxt", "go", "langgraph"],
-    year: "2026",
-    status: "live",
   },
   {
     name: "Registro CiberVE",
@@ -28,8 +24,6 @@ const PROJECTS: Project[] = [
     summary:
       "A bilingual public registry of cybersecurity incidents tied to Venezuela that turns scattered reports into searchable records, each one traced back to its sources, with profiles of affected organizations and threat actors.",
     tags: ["sveltekit", "postgres", "langgraph"],
-    year: "2026",
-    status: "live",
   },
   {
     name: "Arena Criolla",
@@ -37,8 +31,6 @@ const PROJECTS: Project[] = [
     summary:
       "An open source multiplayer fighting game starring iconic characters and founders from Venezuelan culture, playable right in the browser with friends on the same screen or online.",
     tags: ["typescript", "multiplayer", "open source"],
-    year: "2026",
-    status: "live",
   },
   {
     name: "Brio",
@@ -46,8 +38,6 @@ const PROJECTS: Project[] = [
     summary:
       "A phone app for talking to your Hermes AI agent from anywhere, through a small connector that securely tunnels to the computer where the agent runs.",
     tags: ["expo", "go", "websockets"],
-    year: "2026",
-    status: "open source",
   },
   {
     name: "Cinve",
@@ -55,8 +45,6 @@ const PROJECTS: Project[] = [
     summary:
       "An MCP server that lets AI assistants check Venezuelan cinema listings, showtimes, prices, and seat availability, and say so when data is incomplete instead of guessing.",
     tags: ["mcp", "typescript", "oauth"],
-    year: "2026",
-    status: "open source",
   },
 ];
 ---
@@ -86,7 +74,7 @@ const PROJECTS: Project[] = [
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
-              class="project-row group grid grid-cols-[auto_1fr] gap-x-5 gap-y-4 py-6 md:grid-cols-[3rem_1fr_auto] md:items-baseline md:gap-x-6 md:py-7"
+              class="project-row group grid grid-cols-[auto_1fr] gap-x-5 gap-y-4 py-6 md:grid-cols-[3rem_1fr] md:items-baseline md:gap-x-6 md:py-7"
               data-cover={project.cover}
             >
               <span class="font-mono text-[13px] text-surface-400 transition-colors group-hover:text-accent-500 dark:text-surface-600 dark:group-hover:text-accent-400">
@@ -123,14 +111,6 @@ const PROJECTS: Project[] = [
                   />
                 )}
               </div>
-              <span class="col-start-2 row-start-1 justify-self-end font-mono text-[13px] text-surface-500 md:col-start-3">
-                <span class="inline-flex items-center gap-1.5 rounded-full border border-surface-200 px-2.5 py-0.5 dark:border-surface-800">
-                  {project.status === "live" && (
-                    <span class="h-1.5 w-1.5 rounded-full bg-accent-500 dark:bg-accent-400" aria-hidden="true" />
-                  )}
-                  {project.year} · {project.status}
-                </span>
-              </span>
             </a>
           </li>
         ))
