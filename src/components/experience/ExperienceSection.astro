@@ -1,270 +1,75 @@
 ---
+import SectionHeading from "../SectionHeading.astro";
+
 const EXPERIENCE = [
   {
-    period: "Mar 2025 — Present",
-    duration: "1 yr 6 mos",
-    company: "Free2Z",
-    role: "Senior Product Engineer",
-    employmentType: "Full-time",
-    location: "United States · Remote",
+    role: "senior product engineer",
+    company: "free2z",
+    url: "https://free2z.cash",
+    period: "mar 2025 - oct 2026",
     summary:
-      "Free2Z is a creator platform for publishing content, livestreaming, and receiving direct community support. I work across the product stack, from user-facing flows to backend systems and production infrastructure.",
-    website: "https://free2z.cash",
-    websiteLabel: "free2z.cash",
-    highlights: [
-      "Led the end-to-end migration of the legacy React frontend to SvelteKit, reaching full feature parity while the platform remained in production.",
-      "Improved the mobile and desktop experience, including responsive layouts, navigation, and core publishing flows.",
-      "Improved the article creation flow and added platform internationalization, including multilingual article authoring.",
-      "Build and maintain full-stack features with SvelteKit and TypeScript on the frontend and Python, Django, and PostgreSQL on the backend, including REST APIs, authentication, livestreaming, and content systems.",
-      "Hardened Zcash challenge authentication against replay and proxy-spoofing attacks by persisting single-use validations in PostgreSQL and updating the OpenAPI contract, NGINX policy, deployment configuration, tests, and runbooks.",
-      "Currently developing a Model Context Protocol (MCP) server and strengthening backend and infrastructure components for better security, reliability, and maintainability.",
-    ],
-    skills: ["Product Engineering", "SvelteKit", "TypeScript", "Python", "Django", "PostgreSQL"],
+      "Led the live creator platform's migration from React to SvelteKit without losing features, built an MCP server that lets AI agents publish and manage content through scoped, expiring access, and protected payments and Zcash sign-in against double charges and replayed requests.",
   },
   {
-    period: "Oct 2024 — Aug 2025",
-    duration: "11 mos",
-    company: "U.S. Department of State",
-    role: "Software Developer",
-    employmentType: "Contract",
-    location: "Caracas, Federal District, Venezuela · Remote",
+    role: "product engineer",
+    company: "u.s. department of state, via avaa",
+    url: "https://ve.usembassy.gov/",
+    period: "oct 2024 - aug 2025",
     summary:
-      "Billingua Talent was a multi-tenant talent and program management platform commissioned by the U.S. Department of State’s Venezuela Affairs Unit and developed through AVAA. It was designed to connect bilingual Venezuelan professionals with companies hiring in Venezuela and give advisors tools to manage candidates, training services, and program data.",
-    highlights: [
-      "Owned end-to-end technical and product delivery as the sole engineer, leading requirements discovery, software architecture, data modeling, product design, full-stack implementation, testing, and launch readiness.",
-      "Worked directly with non-technical stakeholders at AVAA and the U.S. Embassy, translating program needs and feedback into requirements, product flows, and shipped features while explaining technical decisions and trade-offs in accessible language.",
-      "Designed the multi-tenant architecture and role-based access control for candidates, companies, advisors, and administrators.",
-      "Built candidate profiles, job opportunity flows, English-level tracking, course and service management, registrations, dashboards, analytics, and reporting.",
-      "Built the bilingual interface and the frontend and backend systems supporting the main user and administrative workflows.",
-      "Prepared the complete application for launch and coordinated the first testing sessions with AVAA and the embassy team, validating core flows and incorporating their feedback.",
-    ],
-    outcome:
-      "The application was completed and validated through initial stakeholder testing, but did not launch after the program lost funding during the 2025 changes to U.S. international cooperation policy.",
-    skills: ["Product Development", "Next.js", "Multi-tenancy", "RBAC", "Analytics & Reporting"],
+      "Built Billingua Talent for the Venezuela Affairs Unit, a bilingual platform connecting Venezuelan professionals with employers; hired and led two engineers, designed separate access for candidates, employers, advisors, and admins, and piloted it with 50 users and five companies.",
   },
   {
-    period: "Jul 2024 — Dec 2024",
-    duration: "6 mos",
-    company: "Freelance Software Development",
-    role: "Full Stack Engineer",
-    employmentType: "Freelance",
-    location: "Remote",
+    role: "full stack engineer",
+    company: "freelance software development",
+    period: "jul 2024 - dec 2024",
     summary:
-      "Independent software engineer for clients in education, finance, and professional services. I worked directly with each client to turn loosely defined needs into websites, mobile applications, automations, and full-stack features.",
-    highlights: [
-      "Owned each project end to end as the sole engineer, including requirements discovery, scope definition, technical and product decisions, implementation, deployment, iteration, and post-launch support.",
-      "Designed, built, and launched Astro websites, including jenndolinski.com and rodolfomedinadelrio.com, owning responsive UI, content structure, forms, performance, and deployment.",
-      "Built Proyecto Educa’s website as a freelance engagement; the organization later invited me to join as Chief Technology Officer.",
-      "Developed cross-platform mobile applications with Flutter and Dart.",
-      "Created automation scripts and full-stack features around existing client workflows, working across frontend, backend, integrations, and data cleanup as each project required.",
-      "Worked directly with non-technical clients, communicating progress, explaining technical decisions in accessible language, and incorporating feedback through short iteration cycles.",
-    ],
-    links: [
-      { label: "jenndolinski.com", url: "https://jenndolinski.com" },
-      { label: "rodolfomedinadelrio.com", url: "https://rodolfomedinadelrio.com" },
-    ],
-    skills: ["Web Development", "Product Engineering", "Astro", "Flutter", "Dart", "Automation"],
+      "Worked with a range of clients across education, finance, and professional services, building websites and mobile apps from first scoping conversations through launch and post-launch support.",
   },
   {
-    period: "Oct 2022 — Jul 2024",
-    duration: "1 yr 10 mos",
-    company: "Asociación Venezolano Americana de Amistad (AVAA)",
-    role: "Software Developer",
-    employmentType: "Contract",
-    location: "Metropolitan Region of Caracas · Hybrid",
+    role: "full stack engineer",
+    company: "avaa",
+    url: "https://avaa.org/",
+    period: "oct 2022 - jul 2024",
     summary:
-      "AVAA and EducationUSA managed core operations through disconnected spreadsheets. As the sole engineer, I turned those processes into two production platforms and owned their delivery end to end: product discovery, architecture, data modeling, full-stack development, Azure deployment, and support.",
-    highlights: [
-      "Built SEP, the Participant Evaluation System, with Next.js, PostgreSQL, Prisma, and Auth.js. It became ProExcelencia’s primary platform across all three states where the program operates, now serving around 400 monthly active users and centralizing scholar records, activities, attendance, volunteer hours, and reporting.",
-      "Built SEA, the Advisee Evaluation System, for EducationUSA operations, centralizing student histories, outreach activities, services, payments, receipts, institutional partnerships, and reporting.",
-      "Worked directly with non-technical staff and scholars to understand their processes, present progress, and turn requirements and feedback into product flows and features.",
-      "Designed the data models, permissions, and workflows for both platforms, deployed and operated them on Microsoft Azure, monitored production, resolved issues, and shipped updates.",
-      "Implemented a staff-only retrieval-augmented generation feature in SEP that retrieves record context before generating answers, helping staff query program data and surface insights without manually searching records and reports.",
-      "Helped establish SEP’s maintenance program, through which AVAA scholars maintain the platform, resolve issues, and develop features after its initial implementation.",
-    ],
-    skills: ["Full-Stack Development", "Data Modeling", "Next.js", "PostgreSQL", "Microsoft Azure", "RAG"],
+      "Replaced spreadsheets with two production platforms on Azure for AVAA's scholarship program and EducationUSA advisors; SEP serves about 400 monthly users across three chapters, with an AI assistant that answers staff questions from program records.",
   },
   {
-    period: "Sep 2021 — Aug 2022",
-    duration: "1 yr",
-    company: "Asociación Venezolano Americana de Amistad (AVAA)",
-    role: "Software Developer Intern",
-    employmentType: "Internship",
-    location: "Metropolitan Region of Caracas · On-site",
+    role: "junior software engineer",
+    company: "avaa, internship",
+    url: "https://avaa.org/",
+    period: "sep 2021 - aug 2022",
     summary:
-      "ProExcelencia depended on manual processes and scattered spreadsheets. As a software engineering intern, I consolidated four years of historical data, automated recurring workflows, and built the initial database for SEP, the internal platform I later developed as an AVAA engineer.",
-    highlights: [
-      "Created an interactive Power BI dashboard covering scholar demographics, academic records, employment, satisfaction, and outcomes, giving the team its first consolidated view of four years of program history.",
-      "Developed Python ETL scripts to clean, normalize, validate, and reconcile inconsistent records from multiple spreadsheets, creating a reliable dataset for analytics and reporting.",
-      "Automated recurring activity creation and management with Google Apps Script, reducing manual work for program staff.",
-      "Recovered and structured scholar activity data from 2020 to 2023. This became SEP’s initial dataset and helped the platform replace spreadsheet-based operations across all three states where ProExcelencia operates.",
-    ],
-    skills: ["Microsoft Power BI", "Business Intelligence", "Python ETL", "Google Apps Script", "Data Cleaning"],
-  },
-];
-
-const SIDEBAR_ITEMS = [
-  {
-    label: "Current focus",
-    value: "Backend architecture, infrastructure, agent orchestration, and full-stack systems.",
-  },
-  {
-    label: "Impact profile",
-    value: "Backend systems, infrastructure, agent orchestration, agentic products, and full-stack delivery.",
-  },
-  {
-    label: "Availability",
-    value: "Open to senior engineering, technical leadership, advisory, and selective freelance or consulting work.",
+      "Cleaned four years of scattered scholarship records with Python into the program's first Power BI dashboard and automated recurring activity setup with Google Apps Script; that dataset later seeded SEP.",
   },
 ];
 ---
 
-<section class="section-container py-24 md:py-32" id="experience">
-  <div class="mb-16 md:mb-24">
-    <p class="section-heading">Experience</p>
-    <h2 class="section-title">Timeline</h2>
-  </div>
+<section class="home-col py-14 md:py-20" id="experience" aria-labelledby="experience-title">
+  <SectionHeading num="01" label="Experience" />
+  <h2 id="experience-title" class="section-title">Where I've worked</h2>
 
-  <div class="grid lg:grid-cols-[1fr_2.5fr] gap-16 lg:gap-24 items-start relative z-10">
-    <aside class="flex-col gap-10 lg:sticky lg:top-32 hidden lg:flex">
-      <div class="relative group">
-        <div class="absolute -inset-x-4 -inset-y-3 bg-surface-50 dark:bg-surface-900/40 rounded-2xl scale-95 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-500"></div>
-        <div class="relative">
-          <p class="text-[10px] font-bold uppercase tracking-[0.25em] text-accent-600 dark:text-accent-400 mb-3 ml-1">Philosophy</p>
-          <p class="text-sm font-semibold text-surface-900 dark:text-white leading-relaxed pl-4 border-l-2 border-accent-500/30">
-            Systems that are easy to use, maintain, and ship.
-          </p>
-        </div>
-      </div>
-
-      <div class="space-y-10">
-        {
-          SIDEBAR_ITEMS.map(({ label, value }) => (
-            <div class="relative group">
-              <div class="flex items-center gap-3 mb-3">
-                <div class="h-px w-6 bg-surface-200 dark:bg-surface-800 transition-all duration-500 group-hover:w-10 group-hover:bg-accent-500"></div>
-                <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-surface-400 dark:text-surface-500 transition-colors group-hover:text-accent-500">{label}</p>
-              </div>
-              <p class="text-xs font-medium leading-relaxed text-surface-600 dark:text-surface-400 transition-colors group-hover:text-surface-900 dark:group-hover:text-surface-200 pl-9">
-                {value}
-              </p>
-            </div>
-          ))
-        }
-      </div>
-
-      <div class="pt-6 border-t border-surface-100 dark:border-surface-900">
-        <p class="text-[10px] font-medium text-surface-400 dark:text-surface-600 italic leading-relaxed">
-          Focusing on high-impact technical direction and product-minded engineering.
-        </p>
-      </div>
-    </aside>
-
-    <div class="relative border-l border-surface-200 dark:border-surface-800 ml-3 md:ml-4 flex flex-col gap-16 pb-8">
-      {
-        EXPERIENCE.map((item, index) => (
-          <article class="relative pl-8 md:pl-12 group">
-            <!-- Minimal Timeline dot over the border -->
-            <div class={`absolute -left-[5px] md:-left-[5.5px] top-2 h-2.5 w-2.5 md:h-3 md:w-3 rounded-full ring-4 ring-[#fafafa] dark:ring-[#0a0a0a] transition-colors duration-300 ${
-              index === 0 ? 'bg-accent-500' : 'bg-surface-300 dark:bg-surface-700 group-hover:bg-surface-400 dark:group-hover:bg-surface-600'
-            }`}></div>
-
-            <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-4">
-              <div>
-                <h3 class="text-xl md:text-2xl font-semibold tracking-tight text-surface-900 dark:text-surface-100 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors">
-                  {item.role}
-                </h3>
-                <p class="text-base font-medium text-surface-600 dark:text-surface-400 mt-1">
+  <ol class="mt-10 font-mono">
+    {
+      EXPERIENCE.map((item) => (
+        <li class="flex flex-col gap-2 py-5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+          <div class="min-w-0">
+            <p class="text-[15px] text-surface-900 dark:text-surface-100">{item.role}</p>
+            <p class="mt-1 text-[12.5px] text-surface-500">
+              {item.url ? (
+                <a href={item.url} target="_blank" rel="noopener noreferrer" class="text-link">
                   {item.company}
-                </p>
-                <p class="mt-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-surface-400 dark:text-surface-500">
-                  {item.employmentType} <span aria-hidden="true">·</span> {item.location}
-                </p>
-              </div>
-              <div class="flex flex-col items-start md:items-end gap-1 mt-2 md:mt-0 md:shrink-0">
-                <span class="text-sm font-medium text-surface-500 dark:text-surface-400 tracking-tight drop-shadow-sm">{item.period}</span>
-                <span class="text-xs text-surface-400 dark:text-surface-600">{item.duration}</span>
-              </div>
-            </div>
-
-            <p class="text-surface-600 dark:text-surface-400 leading-relaxed text-sm md:text-[15px] max-w-3xl">
+                </a>
+              ) : (
+                item.company
+              )}
+            </p>
+            <p class="mt-3 max-w-2xl font-sans text-sm leading-relaxed text-surface-600 dark:text-surface-400">
               {item.summary}
             </p>
-
-            {
-              item.website && (
-                <a
-                  href={item.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-accent-600 dark:text-accent-400 hover:text-accent-700 dark:hover:text-accent-300 transition-colors"
-                >
-                  Product in production: {item.websiteLabel}
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M15 3h6v6" />
-                    <path d="m10 14 11-11" />
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                  </svg>
-                </a>
-              )
-            }
-
-            {
-              item.links && (
-                <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
-                  <span class="text-[10px] font-bold uppercase tracking-[0.16em] text-surface-400 dark:text-surface-500">
-                    Selected sites
-                  </span>
-                  {item.links.map((link) => (
-                    <a
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="text-sm font-semibold text-accent-600 dark:text-accent-400 hover:text-accent-700 dark:hover:text-accent-300 transition-colors"
-                    >
-                      {link.label} <span aria-hidden="true">↗</span>
-                    </a>
-                  ))}
-                </div>
-              )
-            }
-
-            <ul class="mt-6 flex flex-col gap-3.5">
-              {
-                item.highlights.map((highlight) => (
-                  <li class="flex items-start gap-4 text-sm md:text-[15px] text-surface-500 dark:text-surface-400 max-w-3xl group-hover:text-surface-600 dark:group-hover:text-surface-300 transition-colors duration-300">
-                    <span class="text-surface-300 dark:text-surface-700 mt-0.5 transition-colors group-hover:text-accent-400">&mdash;</span>
-                    <span class="leading-relaxed">{highlight}</span>
-                  </li>
-                ))
-              }
-            </ul>
-
-            {
-              item.outcome && (
-                <div class="mt-6 max-w-3xl rounded-xl border border-surface-200 dark:border-surface-800 bg-surface-50/70 dark:bg-surface-900/50 px-4 py-3.5">
-                  <p class="text-[10px] font-bold uppercase tracking-[0.16em] text-surface-400 dark:text-surface-500 mb-1.5">
-                    Project outcome
-                  </p>
-                  <p class="text-xs md:text-sm leading-relaxed text-surface-600 dark:text-surface-400">
-                    {item.outcome}
-                  </p>
-                </div>
-              )
-            }
-
-            <ul class="mt-6 flex flex-wrap gap-2" aria-label={`Skills used at ${item.company}`}>
-              {
-                item.skills.map((skill) => (
-                  <li class="rounded-full border border-surface-200 dark:border-surface-800 px-3 py-1 text-[11px] font-medium text-surface-500 dark:text-surface-400">
-                    {skill}
-                  </li>
-                ))
-              }
-            </ul>
-          </article>
-        ))
-      }
-    </div>
-  </div>
+          </div>
+          <span class="order-first shrink-0 text-[12.5px] text-surface-500 sm:order-none">{item.period}</span>
+        </li>
+      ))
+    }
+  </ol>
 </section>
