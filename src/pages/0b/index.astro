@@ -1,4 +1,5 @@
 ---
+import PageHeader from "@components/PageHeader.astro";
 import Layout from "@layouts/Layout.astro";
 import { type CollectionEntry, getCollection } from "astro:content";
 import { formatDateToDisplay, getReadingTime } from "../../lib/utils";
@@ -67,108 +68,53 @@ const structuredData = [
   type="website"
   structuredData={structuredData}
 >
-  <div class="blog-container pt-4 pb-16 min-h-screen">
-    <header class="mb-16">
-      <a
-        href="/"
-        class="inline-flex text-xs font-medium text-surface-400 dark:text-surface-500 hover:text-surface-900 dark:hover:text-surface-200 transition-colors mb-8"
-      >
-        &larr; Home
-      </a>
-      <h1 class="text-4xl font-bold tracking-tighter text-surface-900 dark:text-surface-100 mb-3">
-        Blog
-      </h1>
-      <p class="text-surface-500 dark:text-surface-400 max-w-2xl">
-        Writing about backend systems, infrastructure, AI engineering, full-stack
-        software, blockchain, security, and the engineering decisions behind
-        production-ready systems.
-      </p>
-    </header>
+  <div class="home-col min-h-screen pb-20 pt-6">
+    <PageHeader label="0b · writing" title="Notes and write-ups">
+      Writing about backend systems, infrastructure, AI engineering, full-stack software, blockchain, security, and the
+      engineering decisions behind production-ready systems.
+    </PageHeader>
 
-    <section aria-labelledby="blog-controls-heading" class="sr-only">
-      <h2 id="blog-controls-heading">Blog controls</h2>
-    </section>
-
-    <div class="flex flex-col sm:flex-row sm:items-end gap-3 mb-12">
-      <div class="relative flex-1 group">
+    <div class="mb-10 flex items-stretch gap-3">
+      <div class="group relative flex-1">
         <label for="blog-search" class="sr-only">Search blog posts</label>
-        <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-surface-400 group-focus-within:text-accent-500 dark:group-focus-within:text-accent-400 transition-colors">
-          <svg
-            class="w-4 h-4"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-            />
+        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-surface-400 transition-colors group-focus-within:text-accent-500 dark:group-focus-within:text-accent-400">
+          <svg class="h-4 w-4" aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
           </svg>
         </div>
         <input
           type="search"
           id="blog-search"
-          class="block w-full py-2 pl-11 pr-4 text-sm rounded-lg bg-transparent border border-surface-200 dark:border-surface-800 text-surface-900 dark:text-surface-100 placeholder:text-surface-400 dark:placeholder:text-surface-600 focus:outline-none focus:border-accent-500/60 dark:focus:border-accent-400/60 hover:border-surface-300 dark:hover:border-surface-700 transition-colors"
-          placeholder="Search posts..."
+          class="block w-full rounded-lg border border-surface-200 bg-transparent py-2.5 pl-11 pr-4 font-mono text-[13px] text-surface-900 transition-colors placeholder:text-surface-400 hover:border-surface-300 focus:border-accent-500/60 focus:outline-none dark:border-surface-800 dark:text-surface-100 dark:placeholder:text-surface-600 dark:hover:border-surface-700 dark:focus:border-accent-400/60"
+          placeholder="search posts"
           autocomplete="off"
         />
       </div>
 
-      <div class="flex flex-col gap-1.5 shrink-0">
-        <span class="text-[10px] font-medium uppercase tracking-widest text-surface-400 dark:text-surface-500 pl-0.5">
-          Sort
-        </span>
-        <button
-          id="blog-sort-button"
-          type="button"
-          class="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-surface-600 dark:text-surface-400 border border-surface-200 dark:border-surface-800 rounded-lg hover:border-surface-300 dark:hover:border-surface-700 hover:text-surface-900 dark:hover:text-surface-200 transition-colors cursor-pointer group/btn"
-          data-sort="newest"
-          aria-label="Toggle post sort order"
-        >
-          <span id="sort-text">Newest</span>
-          <svg
-            id="sort-icon"
-            class="w-3.5 h-3.5 text-surface-400 group-hover/btn:text-surface-600 dark:group-hover/btn:text-surface-300 transition-transform"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-          >
-            <path
-              id="sort-path"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M3 7.5L7.5 3m0 0L12 7.5M7.5 3v13.5"
-            />
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M21 16.5L16.5 21m0 0L12 16.5m4.5 4.5V7.5"
-            />
-          </svg>
-        </button>
-      </div>
+      <button
+        id="blog-sort-button"
+        type="button"
+        class="group/btn inline-flex shrink-0 items-center justify-center gap-2 rounded-lg border border-surface-200 px-4 font-mono text-[13px] lowercase text-surface-600 transition-colors hover:border-surface-300 hover:text-surface-900 dark:border-surface-800 dark:text-surface-400 dark:hover:border-surface-700 dark:hover:text-surface-200"
+        data-sort="newest"
+        aria-label="Toggle post sort order"
+      >
+        <span id="sort-text">newest</span>
+        <svg id="sort-icon" class="h-3.5 w-3.5 text-surface-400 transition-transform" aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 7.5L7.5 3m0 0L12 7.5M7.5 3v13.5" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 16.5L16.5 21m0 0L12 16.5m4.5 4.5V7.5" />
+        </svg>
+      </button>
     </div>
 
-    <div class="flex items-center justify-between mb-8 pb-4 border-b border-surface-200 dark:border-surface-800">
-      <span class="text-xs font-medium uppercase tracking-widest text-surface-400 dark:text-surface-500">
-        All Posts
-      </span>
-      <span class="text-xs text-surface-400 dark:text-surface-500" id="post-count">
-        {blogs.length} posts
-      </span>
+    <div class="mb-2 flex items-center justify-between font-mono text-[12px] lowercase text-surface-500">
+      <span>all posts</span>
+      <span id="post-count">{blogs.length} posts</span>
     </div>
 
     <section aria-labelledby="all-posts-heading">
       <h2 id="all-posts-heading" class="sr-only">All blog posts</h2>
 
-      <ul class="space-y-0" id="blog-list">
+      <ul id="blog-list">
         {
           sortedPost.map((blog) => (
             <li
@@ -176,26 +122,20 @@ const structuredData = [
               data-title={blog.data.title.toLowerCase()}
               data-date={new Date(blog.data.pubDate).getTime()}
             >
-              <a
-                href={`/0b/${blog.id}`}
-                class="group flex flex-col md:flex-row md:items-center md:justify-between py-4 border-b border-surface-100 dark:border-surface-800/50 hover:pl-2 transition-all"
-              >
-                <div class="min-w-0">
-                  <h3 class="text-sm font-medium text-surface-800 dark:text-surface-200 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors">
+              <a href={`/0b/${blog.id}`} class="group block border-b border-surface-200 py-6 dark:border-surface-800/70">
+                <div class="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+                  <h3 class="font-mono text-[15px] lowercase text-surface-900 transition-colors group-hover:text-accent-500 dark:text-surface-100 dark:group-hover:text-accent-400">
                     {blog.data.title}
                   </h3>
-                  <p class="mt-1 max-w-2xl text-sm leading-relaxed text-surface-500 dark:text-surface-400">
-                    {blog.data.description}
+                  <p class="order-first flex shrink-0 items-center gap-2 font-mono text-[12px] text-surface-500 sm:order-none">
+                    <time datetime={new Date(blog.data.pubDate).toISOString()}>{formatDateToDisplay(blog.data.pubDate)}</time>
+                    <span aria-hidden="true">·</span>
+                    <span>{getReadingTime(blog.body)} min</span>
                   </p>
                 </div>
-
-                <div class="flex gap-3 items-center text-xs text-surface-400 dark:text-surface-500 shrink-0 mt-2 md:mt-0">
-                  <time datetime={new Date(blog.data.pubDate).toISOString()}>
-                    {formatDateToDisplay(blog.data.pubDate)}
-                  </time>
-                  <span class="w-px h-3 bg-surface-200 dark:bg-surface-800"></span>
-                  <span>{getReadingTime(blog.body)} min</span>
-                </div>
+                <p class="mt-2 max-w-2xl text-sm leading-relaxed text-surface-600 dark:text-surface-400">
+                  {blog.data.description}
+                </p>
               </a>
             </li>
           ))
@@ -203,13 +143,8 @@ const structuredData = [
       </ul>
     </section>
 
-    <div
-      id="no-results"
-      class="hidden py-8 text-center text-surface-500 dark:text-surface-400"
-      role="status"
-      aria-live="polite"
-    >
-      No posts found matching your search.
+    <div id="no-results" class="hidden py-10 text-center font-mono text-[13px] text-surface-500" role="status" aria-live="polite">
+      no posts match that search.
     </div>
   </div>
 </Layout>
@@ -264,7 +199,7 @@ const structuredData = [
       currentSort = currentSort === "newest" ? "oldest" : "newest";
 
       if (sortText) {
-        sortText.textContent = currentSort === "newest" ? "Newest" : "Oldest";
+        sortText.textContent = currentSort;
       }
 
       if (sortIcon) {
