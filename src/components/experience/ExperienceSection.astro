@@ -42,16 +42,18 @@ const EXPERIENCE = [
       "Cleaned four years of scattered scholarship records with Python into the program's first Power BI dashboard and automated recurring activity setup with Google Apps Script; that dataset later seeded SEP.",
   },
 ];
+const MOBILE_VISIBLE = 3;
+const hiddenCount = EXPERIENCE.length - MOBILE_VISIBLE;
 ---
 
 <section class="home-col py-14 md:py-20" id="experience" aria-labelledby="experience-title">
   <SectionHeading num="01" label="Experience" />
   <h2 id="experience-title" class="section-title">Where I've worked</h2>
 
-  <ol class="mt-10 font-mono">
+  <ol id="experience-list" class="experience-list mt-10 font-mono">
     {
-      EXPERIENCE.map((item) => (
-        <li class="flex flex-col gap-2 py-5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+      EXPERIENCE.map((item, index) => (
+        <li class:list={[{ "experience-extra": index >= MOBILE_VISIBLE }, "flex flex-col gap-2 py-5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"]}>
           <div class="min-w-0">
             <p class="text-[15px] text-surface-900 dark:text-surface-100">{item.role}</p>
             <p class="mt-1 text-[12.5px] text-surface-500">
@@ -72,4 +74,44 @@ const EXPERIENCE = [
       ))
     }
   </ol>
+
+  {
+    hiddenCount > 0 && (
+      <button
+        type="button"
+        class="experience-toggle mt-2 inline-flex items-center gap-1.5 font-mono text-[13px] lowercase text-accent-500 transition-colors hover:text-accent-600 dark:text-accent-400 dark:hover:text-accent-300 sm:hidden"
+        aria-controls="experience-list"
+        aria-expanded="false"
+        data-more={`show ${hiddenCount} more`}
+        data-less="show less"
+      >
+        <span>show {hiddenCount} more</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-3.5 w-3.5 transition-transform" aria-hidden="true">
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </button>
+    )
+  }
 </section>
+
+<script>
+  // On phones only the most recent roles show until the visitor expands the list.
+  document.addEventListener("click", (event) => {
+    const button = (event.target as HTMLElement).closest<HTMLButtonElement>(".experience-toggle");
+    const list = document.getElementById("experience-list");
+    if (!button || !list) return;
+    const expanded = button.getAttribute("aria-expanded") !== "true";
+    button.setAttribute("aria-expanded", String(expanded));
+    list.toggleAttribute("data-expanded", expanded);
+    button.querySelector("span")!.textContent = (expanded ? button.dataset.less : button.dataset.more) ?? "";
+    button.querySelector("svg")!.style.transform = expanded ? "rotate(180deg)" : "";
+  });
+</script>
+
+<style>
+  @media (max-width: 639px) {
+    .experience-list:not([data-expanded]) .experience-extra {
+      display: none;
+    }
+  }
+</style>
