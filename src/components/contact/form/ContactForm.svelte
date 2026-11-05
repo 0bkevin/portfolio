@@ -57,9 +57,11 @@
     event.preventDefault();
     hasSubmitted = true;
     errors = evaluateInputs(name, email, subject, message);
-    const hasErrors = Object.values(errors).some((msg) => msg);
+    const firstInvalid = (Object.keys(errors) as (keyof typeof errors)[]).find((key) => errors[key]);
 
-    if (hasErrors) {
+    if (firstInvalid) {
+      // Take the visitor straight to the first field that needs attention.
+      document.getElementById(firstInvalid)?.focus();
       return;
     }
 
@@ -114,6 +116,7 @@
   on:submit={handleSubmit}
   class="flex flex-col gap-6 w-full"
   name="contactForm"
+  novalidate
 >
   <ContactInput
     name="name"
@@ -121,6 +124,8 @@
     placeholder="Your name"
     error={errors.name}
     type="text"
+    autocomplete="name"
+    autocapitalize="words"
     bind:value={name}
   />
   <ContactInput
@@ -129,6 +134,10 @@
     error={errors.email}
     placeholder="Your email"
     type="email"
+    autocomplete="email"
+    inputmode="email"
+    autocapitalize="none"
+    spellcheck={false}
     bind:value={email}
   />
 
