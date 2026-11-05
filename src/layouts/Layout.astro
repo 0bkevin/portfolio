@@ -2,6 +2,7 @@
 import Navbar from "../components/header/Navbar.svelte";
 import Footer from "../components/footer/Footer.astro";
 import { ClientRouter } from "astro:transitions";
+import "@fontsource-variable/geist-mono";
 import "@styles/global.css";
 import { resolveSeo, seoConfig, stringifySchema, type SchemaValue } from "@lib/seo";
 
@@ -94,7 +95,8 @@ const schemaItems = Array.isArray(structuredData)
     <meta name="application-name" content={seoConfig.siteName} />
     <meta name="apple-mobile-web-app-title" content={seoConfig.siteName} />
     <meta name="format-detection" content="telephone=no" />
-    <meta name="theme-color" content="#fafafa" />
+    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)" />
     <meta name="generator" content={Astro.generator} />
 
     <link rel="canonical" href={seo.canonical} />

@@ -1,0 +1,16 @@
+---
+interface Props {
+  num: string;
+  label: string;
+}
+
+const { num, label } = Astro.props;
+---
+
+<p class="section-heading">
+  <span>
+    <span class="section-num" aria-hidden="true">// {num}</span>
+    <span aria-hidden="true">·</span>
+    {label}
+  </span>
+</p>

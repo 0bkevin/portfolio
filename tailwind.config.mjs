@@ -5,7 +5,7 @@ export default {
 		extend: {
 			fontFamily: {
 				sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-				mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+				mono: ['"Geist Mono Variable"', 'ui-monospace', '"SF Mono"', 'Menlo', 'Consolas', 'monospace'],
 			},
 			animation: {
 				'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
@@ -42,14 +42,15 @@ export default {
 					950: '#0a0a0a',
 				},
 				accent: {
-					DEFAULT: '#d97706',
-					50: '#fffbeb',
-					100: '#fef3c7',
-					200: '#fde68a',
-					300: '#fcd34d',
-					400: '#fbbf24',
-					500: '#d97706',
-					600: '#b45309',
+					DEFAULT: '#a16207',
+					50: '#fefce8',
+					100: '#fef9c3',
+					200: '#fef08a',
+					300: '#fde047',
+					400: '#facc15',
+					500: '#a16207',
+					600: '#854d0e',
+					700: '#713f12',
 				},
 			},
 			letterSpacing: {
