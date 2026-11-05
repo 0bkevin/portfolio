@@ -79,13 +79,24 @@
   let isHidden = false;
   let isAtTop = true;
 
+  // While someone types in a form field, the browser scrolls the field into view.
+  // Revealing the navbar then would cover the field, so it stays tucked away.
+  const isTyping = () => {
+    const el = typeof document !== "undefined" ? document.activeElement : null;
+    return !!el && (el.tagName === "INPUT" || el.tagName === "TEXTAREA");
+  };
+
+  const handleFocusIn = () => {
+    if (shouldFixed && isTyping() && y > 60) isHidden = true;
+  };
+
   $: {
     isAtTop = y < 20;
     if (shouldFixed) {
       if (y > lastY && y > 60) {
         isHidden = true;
         isMobileMenuOpen = false; // Close mobile menu on scroll down
-      } else if (y < lastY) {
+      } else if (y < lastY && !isTyping()) {
         isHidden = false;
       }
     }
@@ -93,7 +104,7 @@
   }
 </script>
 
-<svelte:window bind:scrollY={y} />
+<svelte:window bind:scrollY={y} on:focusin={handleFocusIn} />
 
 <!-- Mobile backdrop overlay -->
 {#if isMobileMenuOpen}

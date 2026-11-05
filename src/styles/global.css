@@ -127,6 +127,12 @@
     .fade-in-up { animation: none; }
   }
 
+  /* Keep the floating scroll-to-top button out of the way while someone types. */
+  body:has(:is(input, textarea):focus) .scrollup {
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
   /* Modern Markdown Styling Overrides */
   .prose :not(pre) > code {
     @apply text-accent-600 dark:text-accent-400 bg-surface-100 dark:bg-surface-800/80 px-1.5 py-0.5 rounded-md font-mono text-[0.875em] font-medium border border-surface-200/55 dark:border-surface-700/45;
