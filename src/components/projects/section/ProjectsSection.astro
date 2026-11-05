@@ -1,28 +1,289 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content";
-import Swiper from "./Swiper.svelte";
+import SectionHeading from "../../SectionHeading.astro";
 
-const projects = (await getCollection("projects")) as CollectionEntry<"projects">[];
+interface Project {
+  name: string;
+  url: string;
+  summary: string;
+  tags: string[];
+  year: string;
+  status: "live" | "open source";
+  /** Screenshot under /public, e.g. "/assets/side/viamu.jpg". Shown as the hover preview and on mobile. */
+  cover?: string;
+}
 
-const sortedProjects = projects.sort(
-  (a, b) => Number(b.data.pubYear) - Number(a.data.pubYear)
-);
+const PROJECTS: Project[] = [
+  {
+    name: "viamu",
+    url: "https://viamu.app",
+    summary:
+      "A free catalog of scholarships, internships, and fellowships abroad, kept current by an AI pipeline that turns source pages into searchable listings, with a private workspace to prepare each application.",
+    tags: ["nuxt", "go", "langgraph"],
+    year: "2026",
+    status: "live",
+  },
+  {
+    name: "Registro CiberVE",
+    url: "https://registrociberve.com",
+    summary:
+      "A bilingual public registry of cybersecurity incidents tied to Venezuela that turns scattered reports into searchable records, each one traced back to its sources, with profiles of affected organizations and threat actors.",
+    tags: ["sveltekit", "postgres", "langgraph"],
+    year: "2026",
+    status: "live",
+  },
+  {
+    name: "Arena Criolla",
+    url: "https://arenacriolla.com",
+    summary:
+      "An open source multiplayer fighting game starring iconic characters and founders from Venezuelan culture, playable right in the browser with friends on the same screen or online.",
+    tags: ["typescript", "multiplayer", "open source"],
+    year: "2026",
+    status: "live",
+  },
+  {
+    name: "Brio",
+    url: "https://github.com/0bkevin/brio",
+    summary:
+      "A phone app for talking to your Hermes AI agent from anywhere, through a small connector that securely tunnels to the computer where the agent runs.",
+    tags: ["expo", "go", "websockets"],
+    year: "2026",
+    status: "open source",
+  },
+  {
+    name: "Cinve",
+    url: "https://github.com/0bkevin/cinve",
+    summary:
+      "An MCP server that lets AI assistants check Venezuelan cinema listings, showtimes, prices, and seat availability, and say so when data is incomplete instead of guessing.",
+    tags: ["mcp", "typescript", "oauth"],
+    year: "2026",
+    status: "open source",
+  },
+];
 ---
 
-<section class="py-24 md:py-32" id="projects">
-  <div class="section-container mb-12">
-    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-4">
-      <div>
-        <p class="section-heading">Projects</p>
-        <h2 class="section-title">Selected Work</h2>
+<section class="py-14 md:py-20" id="projects" aria-labelledby="projects-title">
+  <div class="home-col">
+    <div class="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+      <div class="flex-1">
+        <SectionHeading num="03" label="Projects" />
+        <h2 id="projects-title" class="section-title">Things I've built</h2>
       </div>
       <a
-        href="/projects"
-        class="text-sm font-medium text-accent-500 dark:text-accent-400 hover:text-accent-600 dark:hover:text-accent-300 transition-colors"
+        href="https://github.com/0bkevin"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="font-mono text-[13px] lowercase text-accent-500 transition-colors hover:text-accent-600 dark:text-accent-400 dark:hover:text-accent-300"
       >
-        View all &rarr;
+        github →
       </a>
     </div>
+
+    <ol class="project-index -my-2" data-project-index>
+      {
+        PROJECTS.map((project, index) => (
+          <li>
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="project-row group grid grid-cols-[auto_1fr] gap-x-5 gap-y-4 py-6 md:grid-cols-[3rem_1fr_auto] md:items-baseline md:gap-x-6 md:py-7"
+              data-cover={project.cover}
+            >
+              <span class="font-mono text-[13px] text-surface-400 transition-colors group-hover:text-accent-500 dark:text-surface-600 dark:group-hover:text-accent-400">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <div class="min-w-0">
+                <h3 class="project-title text-2xl font-bold tracking-tight text-surface-900 dark:text-surface-100 md:text-4xl">
+                  {project.name}
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    class="project-arrow ml-1 inline-block h-5 w-5 align-middle text-accent-500 dark:text-accent-400 md:h-7 md:w-7"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 17 17 7M8 7h9v9" />
+                  </svg>
+                </h3>
+                <p class="mt-3 max-w-xl text-sm leading-relaxed text-surface-600 dark:text-surface-400 md:text-[15px]">
+                  {project.summary}
+                </p>
+                <ul class="mt-4 flex flex-wrap gap-x-4 gap-y-1 font-mono text-[12px] lowercase text-surface-500">
+                  {project.tags.map((tag) => (
+                    <li>{tag}</li>
+                  ))}
+                </ul>
+                {project.cover && (
+                  <img
+                    src={project.cover}
+                    alt=""
+                    loading="lazy"
+                    class="mt-5 aspect-[16/10] w-full rounded-lg border border-surface-200 object-cover object-top dark:border-surface-800 md:hidden"
+                  />
+                )}
+              </div>
+              <span class="col-start-2 row-start-1 justify-self-end font-mono text-[13px] text-surface-500 md:col-start-3">
+                <span class="inline-flex items-center gap-1.5 rounded-full border border-surface-200 px-2.5 py-0.5 dark:border-surface-800">
+                  {project.status === "live" && (
+                    <span class="h-1.5 w-1.5 rounded-full bg-accent-500 dark:bg-accent-400" aria-hidden="true" />
+                  )}
+                  {project.year} · {project.status}
+                </span>
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ol>
   </div>
-  <Swiper projects={sortedProjects} client:only="svelte" />
+
+  <div class="project-preview" aria-hidden="true" data-project-preview>
+    <img alt="" />
+  </div>
 </section>
+
+<script>
+  // A screenshot that trails the cursor while hovering a project row that has a cover.
+  const setup = () => {
+    const index = document.querySelector<HTMLElement>("[data-project-index]");
+    const preview = document.querySelector<HTMLElement>("[data-project-preview]");
+    const img = preview?.querySelector("img");
+    if (!index || !preview || !img) return;
+    if (!window.matchMedia("(hover: hover) and (min-width: 768px)").matches) return;
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let x = 0;
+    let y = 0;
+    let targetX = 0;
+    let targetY = 0;
+    let scale = 0.85;
+    let active = false;
+    let frame = 0;
+
+    const render = () => {
+      const ease = reduceMotion ? 1 : 0.18;
+      const dx = targetX - x;
+      x += dx * ease;
+      y += (targetY - y) * ease;
+      scale += ((active ? 1 : 0.85) - scale) * (reduceMotion ? 1 : 0.2);
+      const tilt = reduceMotion ? 0 : Math.max(-8, Math.min(8, dx * 0.08));
+      preview.style.transform = `translate3d(${x}px, ${y}px, 0) translateY(-50%) rotate(${tilt}deg) scale(${scale})`;
+      const settled = Math.abs(dx) < 0.1 && Math.abs(targetY - y) < 0.1 && Math.abs((active ? 1 : 0.85) - scale) < 0.001;
+      frame = settled ? 0 : requestAnimationFrame(render);
+    };
+
+    const kick = () => {
+      if (!frame) frame = requestAnimationFrame(render);
+    };
+
+    index.addEventListener("pointermove", (event) => {
+      targetX = event.clientX + 24;
+      targetY = event.clientY;
+      if (!active && x === 0 && y === 0) {
+        x = targetX;
+        y = targetY;
+      }
+      kick();
+    });
+
+    index.querySelectorAll<HTMLElement>(".project-row").forEach((row) => {
+      row.addEventListener("pointerenter", () => {
+        const cover = row.dataset.cover;
+        if (!cover) {
+          active = false;
+          preview.classList.remove("is-on");
+          return;
+        }
+        if (img.getAttribute("src") !== cover) img.setAttribute("src", cover);
+        active = true;
+        preview.classList.add("is-on");
+        kick();
+      });
+    });
+
+    index.addEventListener("pointerleave", () => {
+      active = false;
+      preview.classList.remove("is-on");
+      kick();
+    });
+  };
+
+  setup();
+  document.addEventListener("astro:after-swap", setup);
+</script>
+
+<style>
+  .project-title {
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .project-arrow {
+    opacity: 0;
+    transform: translate(-4px, 4px);
+    transition: opacity 0.25s, transform 0.3s;
+  }
+
+  .project-row {
+    transition: opacity 0.3s;
+  }
+
+  @media (hover: hover) and (min-width: 768px) {
+    .project-index:hover .project-row:not(:hover) {
+      opacity: 0.55;
+    }
+
+    .project-row:hover .project-title {
+      transform: translateX(0.75rem);
+    }
+
+    .project-row:hover .project-arrow {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .project-preview {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 40;
+    width: 22rem;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate3d(-50%, -50%, 0) scale(0.85);
+    transition: opacity 0.25s ease;
+    display: none;
+  }
+
+  .project-preview img {
+    display: block;
+    aspect-ratio: 16 / 10;
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 0.6rem;
+    box-shadow: 6px 6px 0 #ca8a04;
+  }
+
+  :global(.dark) .project-preview img {
+    box-shadow: 6px 6px 0 #facc15;
+  }
+
+  .project-preview.is-on {
+    opacity: 1;
+  }
+
+  @media (hover: hover) and (min-width: 768px) {
+    .project-preview {
+      display: block;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .project-title,
+    .project-arrow {
+      transition: none;
+    }
+  }
+</style>
