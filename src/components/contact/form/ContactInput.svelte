@@ -14,7 +14,7 @@
 
 <div class="flex flex-col gap-1.5">
   <label
-    class="text-xs font-medium text-surface-500 dark:text-surface-400"
+    class="font-mono text-[12px] lowercase text-surface-500 dark:text-surface-400"
     for={name}
   >
     {label}

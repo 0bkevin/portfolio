@@ -3,19 +3,19 @@ import { footerLinks, socialIcons } from "./data.ts";
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="border-t border-surface-200 dark:border-surface-800">
-  <div class="section-container py-12">
-    <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+<footer class="border-t border-surface-200 font-mono dark:border-surface-800">
+  <div class="home-col py-6">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-6">
         <a href="/" class="text-sm font-semibold tracking-tight text-surface-900 dark:text-surface-100">
-          Kevin Bravo
+          kevin bravo
         </a>
         <nav class="flex gap-5" aria-label="Footer navigation">
           {
             footerLinks.map(({ name, link }) => (
               <a
                 href={link}
-                class="text-xs text-surface-400 dark:text-surface-500 hover:text-surface-900 dark:hover:text-surface-200 transition-colors"
+                class="text-xs lowercase text-surface-400 dark:text-surface-500 hover:text-surface-900 dark:hover:text-surface-200 transition-colors"
               >
                 {name}
               </a>

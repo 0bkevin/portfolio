@@ -28,7 +28,7 @@
 <button
   type="submit"
   disabled={status !== "toSend"}
-  class="flex items-center justify-center gap-2 w-full py-3.5 px-6 rounded-xl bg-surface-900 dark:bg-surface-100 text-white dark:text-surface-900 text-sm font-semibold transition-all duration-300 hover:bg-surface-800 dark:hover:bg-surface-200 hover:shadow-md hover:-translate-y-0.5 disabled:opacity-50 disabled:hover:translate-y-0 disabled:cursor-not-allowed disabled:hover:shadow-none"
+  class="flex items-center justify-center gap-2 w-full py-3.5 px-6 rounded-xl bg-surface-900 dark:bg-surface-100 text-white dark:text-surface-900 font-mono text-[13px] lowercase transition-all duration-300 hover:bg-surface-800 dark:hover:bg-surface-200 hover:shadow-md hover:-translate-y-0.5 disabled:opacity-50 disabled:hover:translate-y-0 disabled:cursor-not-allowed disabled:hover:shadow-none"
 >
   {#if status === "sending"}
     <i class="bx bx-loader-alt animate-spin text-lg"></i>
