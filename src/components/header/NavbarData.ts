@@ -1,40 +1,10 @@
 const NAV_ITEMS = [
-  {
-    name: "Home",
-    link: "/#home",
-    icon: "estate",
-    id: 1,
-  },
-  {
-    name: "Experience",
-    link: "/#experience",
-    icon: "briefcase-alt",
-    id: 3,
-  },
-  {
-    name: "Blog",
-    link: "/0b",
-    icon: "file-alt",
-    id: 6,
-  },
-  {
-    name: "Projects",
-    link: "/projects",
-    icon: "scenery",
-    id: 7,
-  },
-  {
-    name: "Contact",
-    link: "/#contact",
-    icon: "message",
-    id: 8,
-  },
-  {
-    name: "AMA",
-    link: "/me/ama",
-    icon: "question",
-    id: 5,
-  },
+  { name: "Experience", link: "/#experience", id: 1 },
+  { name: "About", link: "/#about", id: 2 },
+  { name: "Projects", link: "/#projects", id: 3 },
+  { name: "Blog", link: "/0b", id: 4 },
+  { name: "Contact", link: "/#contact", id: 5 },
+  { name: "AMA", link: "/me/ama", id: 6 },
 ];
 
 export default NAV_ITEMS;
