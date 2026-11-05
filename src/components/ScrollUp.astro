@@ -2,21 +2,17 @@
   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white dark:text-surface-900"><path d="m18 15-6-6-6 6"/></svg>
 </button>
 <script is:inline>
-  const scrollUp = document.querySelector(".scrollup");
-
-  scrollUp?.addEventListener("click", function () {
-    window.scrollTo(0, 0);
-  });
-
-  window.addEventListener("scroll", function () {
-    if (!scrollUp) return;
-
-    if (window.scrollY >= 560) {
-      scrollUp.classList.add("show-scroll");
-    } else {
-      scrollUp.classList.remove("show-scroll");
-    }
-  });
+  // Inline scripts rerun after each client-side navigation, so keep state local
+  // and bind the scroll listener only once.
+  (() => {
+    const button = () => document.querySelector(".scrollup");
+    button()?.addEventListener("click", () => window.scrollTo(0, 0));
+    const update = () => button()?.classList.toggle("show-scroll", window.scrollY >= 560);
+    update();
+    if (window.__scrollUpBound) return;
+    window.__scrollUpBound = true;
+    window.addEventListener("scroll", update, { passive: true });
+  })();
 </script>
 
 <style>
