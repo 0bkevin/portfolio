@@ -1,5 +1,6 @@
 <script>
-  let darkMode = localStorage.getItem("darkMode") !== "false";
+  // The inline script in Layout already applied the saved or system theme.
+  let darkMode = document.documentElement.classList.contains("dark");
 
   function toggleDarkMode() {
     darkMode = !darkMode;
@@ -9,10 +10,6 @@
     } else {
       document.documentElement.classList.remove("dark");
     }
-  }
-
-  if (darkMode) {
-    document.documentElement.classList.add("dark");
   }
 </script>
 
