@@ -1,0 +1,104 @@
+---
+import SectionHeading from "../SectionHeading.astro";
+
+interface Talk {
+  /** YouTube video ID, the `v=` part of the URL. */
+  youtubeId: string;
+  title: string;
+  /** Event, show, or channel that hosted it. */
+  host: string;
+  /** Language the talk is given in. */
+  language: string;
+  summary: string;
+}
+
+// Add new talks at the top.
+const TALKS: Talk[] = [
+  {
+    youtubeId: "0JlqBCB3LRM",
+    title: "Crea y recauda fondos con Free2z",
+    host: "Zcash en Español · Zcash anniversary month",
+    language: "spanish",
+    summary:
+      "An introduction to the new Free2Z and a quick guide to navigating it, from publishing your work to raising funds directly from your community.",
+  },
+];
+---
+
+<section class="home-col py-14 md:py-20" id="talks" aria-labelledby="talks-title">
+  <div class="mb-10">
+    <SectionHeading num="05" label="Talks" />
+    <h2 id="talks-title" class="section-title">Talks and conversations</h2>
+  </div>
+
+  <div class="grid gap-10 md:grid-cols-2 md:gap-8">
+    {
+      TALKS.map((talk) => (
+        <article class="group">
+          <div class="relative aspect-video overflow-hidden rounded-lg border border-surface-200 bg-surface-900 dark:border-surface-800">
+            <button
+              type="button"
+              class="talk-play absolute inset-0 block h-full w-full"
+              data-youtube-id={talk.youtubeId}
+              data-title={talk.title}
+              aria-label={`Play video: ${talk.title}`}
+            >
+              <img
+                src={`https://i.ytimg.com/vi/${talk.youtubeId}/maxresdefault.jpg`}
+                alt=""
+                loading="lazy"
+                class="h-full w-full object-cover opacity-80 transition duration-300 group-hover:scale-[1.02] group-hover:opacity-100"
+              />
+              <span class="absolute inset-0 flex items-center justify-center bg-black/20 transition-colors group-hover:bg-black/10">
+                <span class="talk-badge flex h-12 w-12 items-center justify-center rounded-full bg-accent-400 text-surface-950 transition-transform duration-300 group-hover:scale-110">
+                  <svg viewBox="0 0 24 24" fill="currentColor" class="ml-0.5 h-5 w-5" aria-hidden="true">
+                    <path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86A1 1 0 0 0 8 5.14Z" />
+                  </svg>
+                </span>
+              </span>
+            </button>
+          </div>
+
+          <p class="mt-4 font-mono text-[12px] lowercase text-surface-500">
+            {talk.host} <span class="text-surface-300 dark:text-surface-700">·</span> {talk.language}
+          </p>
+          <h3 class="mt-2 text-lg font-semibold tracking-tight text-surface-900 dark:text-surface-100">
+            <a
+              href={`https://www.youtube.com/watch?v=${talk.youtubeId}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="transition-colors hover:text-accent-500 dark:hover:text-accent-400"
+            >
+              {talk.title}
+            </a>
+          </h3>
+          <p class="mt-2 text-sm leading-relaxed text-surface-600 dark:text-surface-400">{talk.summary}</p>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<script>
+  // Load the YouTube player only when someone presses play.
+  document.addEventListener("click", (event) => {
+    const button = (event.target as HTMLElement).closest<HTMLButtonElement>(".talk-play");
+    if (!button) return;
+    const id = button.dataset.youtubeId;
+    if (!id) return;
+    const iframe = document.createElement("iframe");
+    iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+    iframe.title = button.dataset.title ?? "YouTube video";
+    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    iframe.referrerPolicy = "strict-origin-when-cross-origin";
+    iframe.allowFullscreen = true;
+    iframe.className = "absolute inset-0 h-full w-full";
+    button.replaceWith(iframe);
+  });
+</script>
+
+<style>
+  .talk-badge {
+    box-shadow: 3px 3px 0 #ca8a04;
+  }
+</style>

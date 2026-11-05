@@ -8,6 +8,7 @@ import Contact from "../components/contact/Contact.astro";
 import ProjectsSection from "../components/projects/section/ProjectsSection.astro";
 import BlogSection from "../components/blog/section/BlogSection.astro";
 import AchievementsSection from "../components/achievements/AchievementsSection.astro";
+import TalksSection from "../components/talks/TalksSection.astro";
 import { createPersonSchema, createWebsiteSchema, seoConfig } from "@lib/seo";
 
 const title = "Kevin Bravo | Product Engineer, Full-Stack Software & AI Engineer";
@@ -75,10 +76,11 @@ const structuredData = [websiteSchema, personSchema, webPageSchema];
   structuredData={structuredData}
 >
   <Home />
-  <About />
   <ExperienceSection />
+  <About />
   <ProjectsSection />
   <AchievementsSection />
+  <TalksSection />
   <BlogSection />
   <Contact />
   <ScrollUp />
