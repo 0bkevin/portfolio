@@ -47,11 +47,11 @@ const MOBILE_VISIBLE = 3;
 const hiddenCount = EXPERIENCE.length - MOBILE_VISIBLE;
 ---
 
-<section class="home-col py-14 md:py-20" id="experience" aria-labelledby="experience-title">
+<section class="home-col py-10 sm:py-14 md:py-20" id="experience" aria-labelledby="experience-title">
   <SectionHeading num="01" label="Experience" />
   <h2 id="experience-title" class="section-title">Where I've worked</h2>
 
-  <ol class="mt-10 font-mono">
+  <ol class="mt-6 font-mono md:mt-10">
     {
       EXPERIENCE.slice(0, MOBILE_VISIBLE).map((item, index) => (
         <ExperienceItem {...item} index={index} />

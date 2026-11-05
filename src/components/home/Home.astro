@@ -20,20 +20,20 @@ const SOCIALS = [
 ];
 ---
 
-<section id="home" class="home-col flex min-h-[100svh] flex-col justify-center pb-24 pt-24 md:pb-32 md:pt-28">
+<section id="home" class="home-col flex flex-col justify-center pb-12 pt-10 sm:min-h-[100svh] sm:pb-24 sm:pt-24 md:pb-32 md:pt-28">
   <h1
-    class="fade-in-up text-5xl font-extrabold leading-[1.05] tracking-tight text-accent-500 dark:text-accent-400 sm:text-7xl md:text-8xl"
+    class="fade-in-up text-[2.75rem] font-extrabold leading-[1.05] tracking-tight text-accent-500 dark:text-accent-400 sm:text-7xl md:text-8xl"
     style="--d: 0ms"
   >
     Kevin Bravo
   </h1>
 
-  <p class="fade-in-up mt-5 font-mono text-[13px] text-surface-500 dark:text-surface-400 sm:text-sm" style="--d: 80ms">
-    product engineer · ai engineer · full-stack · backend
+  <p class="fade-in-up mt-3 font-mono sm:mt-5 text-[13px] text-surface-500 dark:text-surface-400 sm:text-sm" style="--d: 80ms">
+    <span class="whitespace-nowrap">product engineer · ai engineer</span> · <span class="whitespace-nowrap">full-stack · backend</span>
   </p>
 
   <p
-    class="fade-in-up mt-8 max-w-2xl text-lg font-normal leading-relaxed text-surface-700 dark:text-surface-300 md:text-xl md:font-light"
+    class="fade-in-up mt-6 max-w-2xl text-[17px] font-normal leading-relaxed sm:mt-8 sm:text-lg text-surface-700 dark:text-surface-300 md:text-xl md:font-light"
     style="--d: 160ms"
   >
     I build products end to end and keep owning them after launch. For 5+ years I've worked with people to figure out
@@ -42,7 +42,7 @@ const SOCIALS = [
     Into maths, cryptography, security, and embedded systems. MPA student at IESA, based in Caracas.
   </p>
 
-  <div class="fade-in-up mt-10 flex flex-wrap items-center gap-3 sm:gap-4" style="--d: 240ms">
+  <div class="fade-in-up mt-8 flex flex-wrap items-center gap-3 sm:mt-10 sm:gap-4" style="--d: 240ms">
     <a
       href="/#contact"
       class="inline-flex items-center gap-2 rounded-lg bg-surface-900 px-5 py-3 font-mono text-[13px] lowercase text-white transition-colors hover:bg-surface-800 dark:bg-surface-100 dark:text-surface-900 dark:hover:bg-surface-200 sm:px-6"
@@ -58,7 +58,7 @@ const SOCIALS = [
     </a>
   </div>
 
-  <div class="fade-in-up mt-12 flex flex-wrap items-center gap-x-8 gap-y-4" style="--d: 320ms">
+  <div class="fade-in-up mt-8 flex flex-wrap items-center gap-x-8 gap-y-4 sm:mt-12" style="--d: 320ms">
     <ul class="flex items-center gap-6" aria-label="Social profiles">
       {
         SOCIALS.map(({ label, link, path }) => (

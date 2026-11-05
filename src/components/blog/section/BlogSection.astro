@@ -9,11 +9,11 @@ const sortedBlogs = blogs.sort(
 );
 ---
 
-<section class="home-col py-14 md:py-20" id="blog" aria-labelledby="blog-title">
+<section class="home-col py-10 sm:py-14 md:py-20" id="blog" aria-labelledby="blog-title">
   <SectionHeading num="06" label="Writing" />
   <h2 id="blog-title" class="section-title">Notes and write-ups</h2>
 
-  <ul class="mt-10 font-mono text-[15px]">
+  <ul class="mt-6 font-mono text-[15px] md:mt-10">
     {
       sortedBlogs.map((blog) => (
         <li>
