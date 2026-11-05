@@ -91,12 +91,12 @@
   >
     <div class="toc-tab flex h-full min-h-32 w-12 flex-col items-center justify-start gap-3 text-surface-400 transition-opacity duration-200 dark:text-surface-600">
       <span class="mt-1 h-9 w-px rounded-full bg-surface-300 dark:bg-surface-700"></span>
-      <span class="writing-vertical text-[9px] font-semibold uppercase tracking-widest">Contents</span>
+      <span class="writing-vertical font-mono text-[10px] lowercase tracking-wider">contents</span>
     </div>
 
     <div class="toc-content absolute inset-y-0 left-0 w-[300px] opacity-0 transition-opacity duration-200">
       <div class="h-full overflow-y-auto p-4 pb-7 pl-5">
-        <p class="mb-3 text-[10px] font-semibold uppercase tracking-widest text-surface-400 opacity-70 dark:text-surface-500">Contents</p>
+        <p class="mb-3 font-mono text-[12px] lowercase text-surface-500"><span class="text-accent-500 dark:text-accent-400">//</span> contents</p>
         <ul class="w-full space-y-1">
         {#each $headings as heading}
           <TocItem item={heading} active={$activeId === heading.id} />
@@ -110,14 +110,14 @@
 
 <button
   type="button"
-  class="fixed bottom-5 left-5 z-40 inline-flex items-center gap-2 rounded-md border border-surface-200/80 bg-[#fafafa]/90 px-3 py-2 text-xs font-medium text-surface-500 shadow-sm backdrop-blur transition-colors hover:border-surface-300 hover:text-surface-900 focus:outline-none focus:ring-1 focus:ring-surface-300 dark:border-surface-800/80 dark:bg-[#0a0a0a]/85 dark:text-surface-400 dark:hover:border-surface-700 dark:hover:text-surface-100 dark:focus:ring-surface-700 xl:hidden"
+  class="fixed bottom-5 left-5 z-40 inline-flex items-center gap-2 rounded-md border border-surface-200/80 bg-[#fafafa]/90 px-3 py-2 font-mono text-[12px] lowercase text-surface-500 shadow-sm backdrop-blur transition-colors hover:border-surface-300 hover:text-surface-900 focus:outline-none focus:ring-1 focus:ring-surface-300 dark:border-surface-800/80 dark:bg-[#0a0a0a]/85 dark:text-surface-400 dark:hover:border-surface-700 dark:hover:text-surface-100 dark:focus:ring-surface-700 xl:hidden"
   aria-label="Open table of contents"
   aria-expanded={mobileOpen}
   aria-controls="mobile-toc"
   on:click={() => (mobileOpen = true)}
 >
-  <span aria-hidden="true" class="h-1.5 w-1.5 rounded-full bg-current opacity-60"></span>
-  Contents
+  <span aria-hidden="true" class="h-1.5 w-1.5 rounded-full bg-accent-500 dark:bg-accent-400"></span>
+  contents
 </button>
 
 {#if mobileOpen}
@@ -136,13 +136,13 @@
     >
       <div class="max-h-[70vh] overflow-y-auto p-4 pb-7">
         <div class="mb-3 flex items-center justify-between gap-4">
-          <p class="text-[10px] font-semibold uppercase tracking-widest text-surface-400 dark:text-surface-500">Contents</p>
+          <p class="font-mono text-[12px] lowercase text-surface-500"><span class="text-accent-500 dark:text-accent-400">//</span> contents</p>
           <button
             type="button"
-            class="text-xs font-medium text-surface-400 transition-colors hover:text-surface-900 dark:text-surface-500 dark:hover:text-surface-200"
+            class="font-mono text-[12px] lowercase text-surface-400 transition-colors hover:text-surface-900 dark:text-surface-500 dark:hover:text-surface-200"
             on:click={closeMobileToc}
           >
-            Close
+            close
           </button>
         </div>
 
