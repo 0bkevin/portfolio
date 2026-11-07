@@ -40,11 +40,13 @@
     opacity: 0.5;
     transition: opacity 200ms ease, background-color 200ms ease;
   }
-  .toggle-btn:hover {
-    opacity: 1;
-    background-color: rgba(0, 0, 0, 0.04);
-  }
-  :global(.dark) .toggle-btn:hover {
-    background-color: rgba(255, 255, 255, 0.06);
+  @media (hover: hover) {
+    .toggle-btn:hover {
+      opacity: 1;
+      background-color: rgba(0, 0, 0, 0.04);
+    }
+    :global(.dark) .toggle-btn:hover {
+      background-color: rgba(255, 255, 255, 0.06);
+    }
   }
 </style>

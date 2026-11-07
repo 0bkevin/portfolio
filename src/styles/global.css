@@ -10,6 +10,8 @@
     transition: background-color 0.3s ease, color 0.3s ease;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* No grey flash box around tapped links and buttons on phones. */
+    -webkit-tap-highlight-color: transparent;
   }
 
   .dark {
@@ -95,16 +97,24 @@
     @apply absolute bottom-2 left-0 h-px w-0 bg-accent-500/60 transition-all duration-300 ease-out dark:bg-accent-400/50;
   }
 
-  .row-link:hover::after,
   .row-link:focus-visible::after {
     @apply w-full;
+  }
+
+  @media (hover: hover) {
+    .row-link:hover::after {
+      @apply w-full;
+    }
+
+    .row-link:hover .row-arrow {
+      @apply translate-x-0 opacity-100;
+    }
   }
 
   .row-link .row-arrow {
     @apply h-3.5 w-3.5 shrink-0 -translate-x-0.5 text-surface-500 opacity-0 transition-all duration-200;
   }
 
-  .row-link:hover .row-arrow,
   .row-link:focus-visible .row-arrow {
     @apply translate-x-0 opacity-100;
   }

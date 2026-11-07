@@ -220,6 +220,8 @@
     transition: box-shadow 200ms ease;
   }
   :global(.dark) .aka-tag { box-shadow: 2px 2px 0 #facc15; }
-  a:hover .aka-tag { box-shadow: 3px 3px 0 #ca8a04; }
-  :global(.dark) a:hover .aka-tag { box-shadow: 3px 3px 0 #facc15; }
+  @media (hover: hover) {
+    a:hover .aka-tag { box-shadow: 3px 3px 0 #ca8a04; }
+    :global(.dark) a:hover .aka-tag { box-shadow: 3px 3px 0 #facc15; }
+  }
 </style>

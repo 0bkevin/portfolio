@@ -1,5 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+	// Hover styles only apply on devices with a real pointer, so taps don't leave them stuck on.
+	future: { hoverOnlyWhenSupported: true },
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
 		extend: {
