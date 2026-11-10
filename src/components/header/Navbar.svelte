@@ -101,9 +101,8 @@
           <li>
             <a
               href={item.link}
-              
               aria-current={activeNav === item.link ? 'page' : undefined}
-              class="text-[13px] lowercase text-inherit no-underline px-3 py-1.5 rounded-md transition-all duration-200 ease-in motion-reduce:transition-none  {activeNav === item.link ? 'opacity-100 font-semibold text-accent-500 dark:text-accent-400' : 'font-medium opacity-50 hover:opacity-100'}"
+              class="text-[13px] lowercase text-inherit no-underline px-3 py-1.5 rounded-md transition-all duration-200 ease-in motion-reduce:transition-none {activeNav === item.link ? 'opacity-100 font-semibold text-accent-500 dark:text-accent-400' : 'font-medium opacity-50 hover:opacity-100'}"
             >
               {item.name}
             </a>
