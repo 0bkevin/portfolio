@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onDestroy } from "svelte";
   import Icon from "@components/ui/Icon.svelte";
   import type { SendStatus } from "./validation";
 
@@ -22,10 +21,13 @@
     showMessage = false;
   };
 
-  onDestroy(() => clearTimeout(timeoutId));
+  // Cleanup lives in an action, not onDestroy: the form is server-rendered, and on Cloudflare
+  // the server build gets Svelte's browser runtime, where lifecycle hooks throw during SSR.
+  const clearTimerOnDestroy = (_node: HTMLElement) => ({ destroy: () => clearTimeout(timeoutId) });
 </script>
 
 <button
+  use:clearTimerOnDestroy
   type="submit"
   disabled={status !== "toSend"}
   class="flex w-full items-center justify-center gap-2 rounded-xl bg-surface-900 px-6 py-3.5 font-mono text-[13px] lowercase text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-surface-800 hover:shadow-md disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-none dark:bg-surface-100 dark:text-surface-900 dark:hover:bg-surface-200"

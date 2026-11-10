@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount } from "svelte";
   import { Turnstile } from "svelte-turnstile";
   import ContactInput from "./ContactInput.svelte";
   import ContactTextArea from "./ContactTextArea.svelte";
@@ -25,10 +24,11 @@
 
   // Turnstile pulls ~30 KB of third-party script, so it loads only once the form is close to
   // the viewport (or someone focuses a field), not during the homepage's first load.
-  let form: HTMLFormElement;
+  // An action rather than onMount: on Cloudflare the server build gets Svelte's browser runtime,
+  // where lifecycle hooks throw during SSR, while actions never run on the server.
   let loadTurnstile = false;
 
-  onMount(() => {
+  const loadTurnstileWhenNear = (node: HTMLElement) => {
     if (!("IntersectionObserver" in window)) {
       loadTurnstile = true;
       return;
@@ -42,9 +42,9 @@
       },
       { rootMargin: "300px 0px" },
     );
-    observer.observe(form);
-    return () => observer.disconnect();
-  });
+    observer.observe(node);
+    return { destroy: () => observer.disconnect() };
+  };
 
   const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || (import.meta.env.DEV ? "1x00000000000000000000AA" : "");
 
@@ -137,7 +137,7 @@
 </script>
 
 <form
-  bind:this={form}
+  use:loadTurnstileWhenNear
   on:submit={handleSubmit}
   on:focusin={() => (loadTurnstile = true)}
   class="flex flex-col gap-6 w-full"
