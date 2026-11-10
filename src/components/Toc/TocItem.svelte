@@ -25,7 +25,7 @@
       href={`#${item.id}`}
       title={item.text}
       aria-label={item.text}
-      class={`block min-w-0 truncate py-0.5 text-[11px] transition-colors transition-opacity hover:opacity-90 ${active ? "text-accent-500 dark:text-accent-400 opacity-100" : "text-surface-500 dark:text-surface-500 opacity-70 hover:text-surface-900 dark:hover:text-surface-200"}`}
+      class={`block min-w-0 truncate py-0.5 text-[11px] transition-colors transition-opacity hover:opacity-90 ${active ? "text-accent-500 dark:text-accent-400 opacity-100" : "text-surface-500 opacity-70 hover:text-surface-900 dark:hover:text-surface-200"}`}
     >
       {item.text}
     </a>
@@ -37,7 +37,7 @@
       href={`#${item.id}`}
       title={item.text}
       aria-label={item.text}
-      class={`block min-w-0 truncate py-0.5 text-[11px] transition-colors transition-opacity hover:opacity-90 ${active ? "text-accent-500 dark:text-accent-400 opacity-100" : "text-surface-400 dark:text-surface-600 opacity-65 hover:text-surface-900 dark:hover:text-surface-200"}`}
+      class={`block min-w-0 truncate py-0.5 text-[11px] transition-colors transition-opacity hover:opacity-90 ${active ? "text-accent-500 dark:text-accent-400 opacity-100" : "text-surface-500 opacity-65 hover:text-surface-900 dark:hover:text-surface-200"}`}
     >
       {item.text}
     </a>

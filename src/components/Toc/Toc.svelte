@@ -89,7 +89,7 @@
     class="toc-panel relative h-[calc(100vh-7rem)] max-h-[520px] w-12 overflow-hidden rounded-r-lg border-l border-surface-200/80 bg-[#fafafa]/70 py-3 shadow-sm backdrop-blur-md transition-all duration-300 ease-out hover:w-[300px] hover:border-surface-200 hover:bg-[#fafafa]/95 hover:px-4 hover:shadow-lg focus-within:w-[300px] focus-within:border-surface-200 focus-within:bg-[#fafafa]/95 focus-within:px-4 focus-within:shadow-lg dark:border-surface-800/80 dark:bg-[#0a0a0a]/55 dark:hover:border-surface-800 dark:hover:bg-[#0a0a0a]/88 dark:focus-within:border-surface-800 dark:focus-within:bg-[#0a0a0a]/88"
     aria-label="Table of contents"
   >
-    <div class="toc-tab flex h-full min-h-32 w-12 flex-col items-center justify-start gap-3 text-surface-400 transition-opacity duration-200 dark:text-surface-600">
+    <div class="toc-tab flex h-full min-h-32 w-12 flex-col items-center justify-start gap-3 text-surface-500 transition-opacity duration-200 dark:text-surface-500">
       <span class="mt-1 h-9 w-px rounded-full bg-surface-300 dark:bg-surface-700"></span>
       <span class="writing-vertical font-mono text-[10px] lowercase tracking-wider">contents</span>
     </div>
@@ -139,7 +139,7 @@
           <p class="font-mono text-[12px] lowercase text-surface-500"><span class="text-accent-500 dark:text-accent-400">//</span> contents</p>
           <button
             type="button"
-            class="font-mono text-[12px] lowercase text-surface-400 transition-colors hover:text-surface-900 dark:text-surface-500 dark:hover:text-surface-200"
+            class="font-mono text-[12px] lowercase text-surface-500 transition-colors hover:text-surface-900 dark:text-surface-500 dark:hover:text-surface-200"
             on:click={closeMobileToc}
           >
             close

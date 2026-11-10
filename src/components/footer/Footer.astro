@@ -15,7 +15,7 @@ const currentYear = new Date().getFullYear();
             footerLinks.map(({ name, link }) => (
               <a
                 href={link}
-                class="text-xs lowercase text-surface-400 dark:text-surface-500 hover:text-surface-900 dark:hover:text-surface-200 transition-colors"
+                class="text-xs lowercase text-surface-500 hover:text-surface-900 dark:hover:text-surface-200 transition-colors"
               >
                 {name}
               </a>
@@ -33,7 +33,7 @@ const currentYear = new Date().getFullYear();
                 href={link}
                 rel="noopener noreferrer"
                 aria-label={label}
-                class={`text-surface-400 dark:text-surface-600 hover:text-surface-900 dark:hover:text-surface-200 transition-colors text-lg ${icon === "x" ? "inline-flex items-center" : icon}`}
+                class={`text-surface-500 hover:text-surface-900 dark:hover:text-surface-200 transition-colors text-lg ${icon === "x" ? "inline-flex items-center" : icon}`}
               >
                 {icon === "x" && (
                   <svg
@@ -48,7 +48,7 @@ const currentYear = new Date().getFullYear();
             ))
           }
         </div>
-        <span class="text-xs text-surface-400 dark:text-surface-600">
+        <span class="text-xs text-surface-500">
           &copy; {currentYear}
         </span>
       </div>

@@ -35,7 +35,8 @@ export default {
 					200: '#e5e5e5',
 					300: '#d4d4d4',
 					400: '#a3a3a3',
-					500: '#737373',
+					// Muted text: #737373 on light, #858585 on dark, so it passes WCAG AA in both themes.
+					500: 'rgb(var(--surface-500) / <alpha-value>)',
 					600: '#525252',
 					700: '#404040',
 					800: '#262626',

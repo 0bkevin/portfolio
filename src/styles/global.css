@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --surface-500: 115 115 115;
+  }
+
+  .dark {
+    --surface-500: 133 133 133;
+  }
+
   html {
     scroll-behavior: smooth;
     background-color: #fafafa;
@@ -213,7 +221,7 @@
   }
 
   .prose figcaption {
-    @apply mt-3 text-center text-xs leading-relaxed text-surface-600/70 dark:text-surface-400/65;
+    @apply mt-3 text-center text-xs leading-relaxed text-surface-500;
   }
 
   .prose blockquote p {

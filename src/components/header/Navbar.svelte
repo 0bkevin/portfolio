@@ -90,7 +90,7 @@
     {((!isAtTop && shouldFixed) || isMobileMenuOpen) ? 'bg-[#fafafa]/80 dark:bg-[#0a0a0a]/80 backdrop-blur-lg rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)]' : 'bg-transparent'}
   ">
     <a href="/" class="group inline-flex items-baseline gap-1.5 whitespace-nowrap text-[13px] text-inherit no-underline px-1 py-1">
-      kevin bravo <span class="hidden opacity-50 min-[400px]:inline">aka</span>
+      kevin bravo <span class="hidden opacity-60 min-[400px]:inline">aka</span>
       <span class="aka-tag text-[12px]">0bkevin</span>
     </a>
 
@@ -102,7 +102,7 @@
             <a
               href={item.link}
               aria-current={activeNav === item.link ? 'page' : undefined}
-              class="text-[13px] lowercase text-inherit no-underline px-3 py-1.5 rounded-md transition-all duration-200 ease-in motion-reduce:transition-none {activeNav === item.link ? 'opacity-100 font-semibold text-accent-500 dark:text-accent-400' : 'font-medium opacity-50 hover:opacity-100'}"
+              class="text-[13px] lowercase text-inherit no-underline px-3 py-1.5 rounded-md transition-all duration-200 ease-in motion-reduce:transition-none {activeNav === item.link ? 'opacity-100 font-semibold text-accent-500 dark:text-accent-400' : 'font-medium opacity-60 hover:opacity-100'}"
             >
               {item.name}
             </a>
