@@ -25,15 +25,13 @@ const active = activeNavHref(Astro.url.pathname);
   data-navbar
   data-fixed={fixed ? "true" : "false"}
   class:list={[
-    "group/navbar pointer-events-none z-50 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]",
-    fixed
-      ? "fixed inset-x-0 top-0 px-4 data-[scrolled]:translate-y-4 data-[hidden]:-translate-y-[150%] sm:px-6"
-      : "relative",
+    "group/navbar pointer-events-none z-50",
+    fixed ? "navbar-fixed fixed inset-x-0 top-0 px-4 sm:px-6" : "relative",
   ]}
 >
   <nav
     aria-label="Main navigation"
-    class="pointer-events-auto relative mx-auto flex h-14 w-full max-w-5xl items-center justify-between px-6 font-mono transition-all duration-300 group-data-[menu-open]/navbar:rounded-2xl group-data-[scrolled]/navbar:rounded-2xl group-data-[menu-open]/navbar:bg-[#fafafa]/80 group-data-[scrolled]/navbar:bg-[#fafafa]/80 group-data-[menu-open]/navbar:shadow-[0_8px_30px_rgb(0,0,0,0.06)] group-data-[scrolled]/navbar:shadow-[0_8px_30px_rgb(0,0,0,0.06)] group-data-[menu-open]/navbar:backdrop-blur-lg group-data-[scrolled]/navbar:backdrop-blur-lg dark:group-data-[menu-open]/navbar:bg-[#0a0a0a]/80 dark:group-data-[scrolled]/navbar:bg-[#0a0a0a]/80 dark:group-data-[menu-open]/navbar:shadow-[0_8px_30px_rgb(0,0,0,0.2)] dark:group-data-[scrolled]/navbar:shadow-[0_8px_30px_rgb(0,0,0,0.2)]"
+    class="nav-glass pointer-events-auto relative mx-auto flex h-14 w-full max-w-5xl items-center justify-between px-6 font-mono"
   >
     <a href="/" class="group inline-flex items-baseline gap-1.5 whitespace-nowrap px-1 py-1 text-[13px]">
       kevin bravo <span class="hidden opacity-60 min-[400px]:inline">aka</span>
@@ -87,12 +85,13 @@ const active = activeNavHref(Astro.url.pathname);
     </div>
   </nav>
 
+  <!-- The fade lives on the glass panel itself: a fading parent would switch its blur off mid-animation. -->
   <div
     id="mobile-menu"
-    class="invisible pointer-events-auto absolute inset-x-0 top-[calc(100%+0.5rem)] mx-auto max-w-5xl -translate-y-2 px-4 font-mono opacity-0 transition-[opacity,transform,visibility] duration-200 ease-out group-data-[menu-open]/navbar:visible group-data-[menu-open]/navbar:translate-y-0 group-data-[menu-open]/navbar:opacity-100 sm:px-6 md:hidden"
+    class="invisible pointer-events-auto absolute inset-x-0 top-[calc(100%+0.5rem)] mx-auto max-w-5xl px-4 font-mono transition-[visibility] duration-200 group-data-[menu-open]/navbar:visible sm:px-6 md:hidden"
   >
     <ul
-      class="flex flex-col rounded-xl bg-[#fafafa]/90 p-1.5 shadow-[0_12px_36px_-12px_rgb(0,0,0,0.12)] backdrop-blur-xl dark:bg-[#0a0a0a]/90 dark:shadow-[0_12px_36px_-12px_rgb(0,0,0,0.45)]"
+      class="menu-glass flex -translate-y-2 flex-col rounded-xl p-1.5 opacity-0 transition-[opacity,transform] duration-200 ease-out group-data-[menu-open]/navbar:translate-y-0 group-data-[menu-open]/navbar:opacity-100"
     >
       {
         NAV_ITEMS.map(({ label, href }) => (
@@ -124,6 +123,116 @@ const active = activeNavHref(Astro.url.pathname);
 </script>
 
 <style>
+  /* Frosted glass: a translucent tint, blur with extra saturation so colors behind stay alive,
+     a hairline edge, and a soft top highlight. Shadows stand in for borders so nothing shifts layout. */
+  .nav-glass {
+    --glass-bg: rgb(255 255 255 / 0.55);
+    --glass-edge: rgb(0 0 0 / 0.06);
+    --glass-highlight: rgb(255 255 255 / 0.7);
+    --glass-shadow: 0 8px 32px -8px rgb(0 0 0 / 0.12);
+    border-radius: 1rem;
+    background-color: transparent;
+    box-shadow: none;
+    transition:
+      background-color 300ms ease,
+      box-shadow 300ms ease,
+      backdrop-filter 300ms ease,
+      -webkit-backdrop-filter 300ms ease;
+  }
+
+  :global(.dark) .nav-glass,
+  :global(.dark) .menu-glass {
+    --glass-bg: rgb(23 23 23 / 0.5);
+    --glass-edge: rgb(255 255 255 / 0.08);
+    --glass-highlight: rgb(255 255 255 / 0.06);
+    --glass-shadow: 0 8px 32px -8px rgb(0 0 0 / 0.6);
+  }
+
+  [data-scrolled] .nav-glass,
+  [data-menu-open] .nav-glass,
+  .menu-glass {
+    background-color: var(--glass-bg);
+    box-shadow:
+      inset 0 0 0 1px var(--glass-edge),
+      inset 0 1px 0 0 var(--glass-highlight),
+      var(--glass-shadow);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    backdrop-filter: blur(16px) saturate(180%);
+  }
+
+  .menu-glass {
+    --glass-bg: rgb(255 255 255 / 0.7);
+    --glass-edge: rgb(0 0 0 / 0.06);
+    --glass-highlight: rgb(255 255 255 / 0.7);
+    --glass-shadow: 0 12px 36px -12px rgb(0 0 0 / 0.16);
+  }
+
+  :global(.dark) .menu-glass {
+    --glass-bg: rgb(23 23 23 / 0.7);
+  }
+
+  /* Browsers without backdrop blur get a solid enough tint to keep links readable. */
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .nav-glass,
+    .menu-glass {
+      --glass-bg: rgb(250 250 250 / 0.95);
+    }
+
+    :global(.dark) .nav-glass,
+    :global(.dark) .menu-glass {
+      --glass-bg: rgb(10 10 10 / 0.95);
+    }
+  }
+
+  /* Slide motion lives here rather than in utilities so "scrolled" and "hidden" never fight over transform. */
+  .navbar-fixed {
+    transform: translate3d(0, 0, 0);
+    transition: transform 480ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+  }
+
+  .navbar-fixed[data-scrolled] {
+    transform: translate3d(0, 1rem, 0);
+  }
+
+  /* Clears its own height, the 1rem float offset, and the drop shadow, so nothing peeks in. */
+  .navbar-fixed[data-hidden] {
+    transform: translate3d(0, calc(-100% - 3rem), 0);
+    transition: transform 420ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* The fade sits on the glass bar, not the wrapper: a fading parent switches backdrop blur off. */
+  .navbar-fixed .nav-glass {
+    transition:
+      opacity 220ms ease-out,
+      background-color 300ms ease,
+      box-shadow 300ms ease,
+      backdrop-filter 300ms ease,
+      -webkit-backdrop-filter 300ms ease;
+  }
+
+  .navbar-fixed[data-hidden] .nav-glass {
+    opacity: 0;
+    transition:
+      opacity 260ms ease-in 120ms,
+      background-color 300ms ease,
+      box-shadow 300ms ease,
+      backdrop-filter 300ms ease,
+      -webkit-backdrop-filter 300ms ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .navbar-fixed,
+    .navbar-fixed[data-hidden] {
+      transition: none;
+    }
+
+    .navbar-fixed .nav-glass,
+    .navbar-fixed[data-hidden] .nav-glass {
+      transition: opacity 150ms linear;
+    }
+  }
+
   .aka-tag {
     padding: 0 0.35em;
     background: color-mix(in oklab, currentColor 8%, transparent);
