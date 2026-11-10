@@ -20,7 +20,9 @@ const externallyCanonicalPosts = readdirSync('./src/content/blogs')
 // https://astro.build/config
 export default defineConfig({
   integrations: [
-    tailwind(),
+    // src/styles/global.css is the Tailwind entry point; the integration's own base stylesheet
+    // would add a second full copy of the generated CSS to every page.
+    tailwind({ applyBaseStyles: false }),
     svelte(),
     sitemap({
       filter: (page) => !externallyCanonicalPosts.some((path) => page.endsWith(path)),
