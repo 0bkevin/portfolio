@@ -15,7 +15,7 @@ He works best when he has full agency to turn an unclear technical problem into 
 - In 2026, he organized the **Caracas hub for the Dev3pack Global Hackathon**, coordinating the local experience for students interested in Web3 and AI.
 - In 2026, he worked as a **Code Mentor for Technovation Girls Venezuela**, helping a team of students build a mobile app with MIT App Inventor.
 - In 2025, he started a **Master of Public Administration at IESA**, connecting his technical work with education, institutions, and public-minded systems.
-- Since March 2025, he has worked as **Senior Product Engineer at Free2Z**, leading a live platform migration from React to SvelteKit and working across product, backend systems, security, and production infrastructure.
+- From March 2025 to October 2026, he worked as **Senior Product Engineer at Free2Z**, leading a live platform migration from React to SvelteKit and working across product, backend systems, security, and production infrastructure.
 - In 2025, he led the development of **Billingua Talent**, a professional networking platform commissioned by the U.S. Department of State’s Venezuela Affairs Unit and led through AVAA.
 - In 2025, his team won **3rd place at the first EmprendeTECH Hackathon at IESA**.
 - In 2024, he became an **Education Committee Member at AVAA**, providing technical support for Programa Excelencia and maintaining the Participant Evaluation System.
@@ -31,7 +31,7 @@ He also built **SEA, the Advisee Evaluation System**, for EducationUSA. The syst
 
 For the U.S. Department of State’s Venezuela Affairs Unit, through AVAA, he built **Billingua Talent** from the ground up. The platform connects bilingual Venezuelan talent with international organizations and gives advisors tools to track candidates, services, English levels, and development gaps.
 
-At Free2Z, he led the end-to-end migration of the live product from React to SvelteKit while maintaining feature parity. His work spans responsive product flows, multilingual article creation, Python and Django APIs, PostgreSQL, livestreaming, Zcash authentication security, production infrastructure, and an MCP server currently in development.
+At Free2Z, he led the end-to-end migration of the live product from React to SvelteKit while maintaining feature parity. His work spans responsive product flows, multilingual article creation, Python and Django APIs, PostgreSQL, livestreaming, Zcash authentication security, production infrastructure, and an MCP server that lets AI agents publish and manage content through scoped, expiring access.
 
 Kevin likes projects where the first version of the solution still needs to be designed. He enjoys defining the architecture, modeling the data, connecting services, building the backend, and shipping something people can use.
 
