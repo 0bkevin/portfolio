@@ -49,37 +49,74 @@ const X_PATH =
 
     <ul class="flex flex-col gap-3">
       {
-        others.map((info) => (
-          <li>
-            <a
-              href={info.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="group inline-flex w-fit items-center gap-3.5"
-            >
-              {info.title === "Discord" ? (
-                <svg viewBox="0 0 24 24" fill="currentColor" class={`h-4 w-4 ${ICON_CLASS}`} aria-hidden="true">
-                  <path d={DISCORD_PATH} />
-                </svg>
-              ) : info.title === "X" ? (
-                <svg viewBox="0 0 24 24" fill="currentColor" class={`h-3.5 w-4 ${ICON_CLASS}`} aria-hidden="true">
-                  <path d={X_PATH} />
-                </svg>
+        others.map((info) => {
+          const icon =
+            info.title === "Discord" ? (
+              <svg viewBox="0 0 24 24" fill="currentColor" class={`h-4 w-4 ${ICON_CLASS}`} aria-hidden="true">
+                <path d={DISCORD_PATH} />
+              </svg>
+            ) : info.title === "X" ? (
+              <svg viewBox="0 0 24 24" fill="currentColor" class={`h-3.5 w-4 ${ICON_CLASS}`} aria-hidden="true">
+                <path d={X_PATH} />
+              </svg>
+            ) : (
+              <i class={`bx bx${info.icon} text-base ${ICON_CLASS}`} aria-hidden="true" />
+            );
+          const label = (
+            <span class="font-mono text-[13px] lowercase text-surface-500 transition-colors group-hover:text-surface-900 dark:group-hover:text-surface-100">
+              {info.title}
+            </span>
+          );
+          const value = (
+            <span class="font-mono text-[13px] text-surface-700 transition-colors group-hover:text-surface-900 dark:text-surface-300 dark:group-hover:text-surface-100">
+              {info.content}
+            </span>
+          );
+          return (
+            <li>
+              {"copy" in info ? (
+                <button
+                  type="button"
+                  class="contact-copy group inline-flex w-fit items-center gap-3.5 text-left"
+                  data-copy={info.content}
+                  aria-label={`Copy ${info.title} username ${info.content}`}
+                >
+                  {icon}
+                  {label}
+                  {value}
+                  <span class="contact-copy-status font-mono text-[12px] lowercase text-accent-500 dark:text-accent-400" aria-live="polite">copy</span>
+                </button>
               ) : (
-                <i class={`bx bx${info.icon} text-base ${ICON_CLASS}`} aria-hidden="true" />
+                <a href={info.link} target="_blank" rel="noopener noreferrer" class="group inline-flex w-fit items-center gap-3.5">
+                  {icon}
+                  {label}
+                  {value}
+                </a>
               )}
-              <span class="font-mono text-[13px] lowercase text-surface-500 transition-colors group-hover:text-surface-900 dark:text-surface-500 dark:group-hover:text-surface-100">
-                {info.title}
-              </span>
-              <span class="font-mono text-[13px] text-surface-700 transition-colors group-hover:text-surface-900 dark:text-surface-300 dark:group-hover:text-surface-100">
-                {info.content}
-              </span>
-            </a>
-          </li>
-        ))
+            </li>
+          );
+        })
       }
     </ul>
   </div>
 
   <ContactForm client:only="svelte" />
 </div>
+
+<script>
+  // Copy a handle (Discord has no profile URL for usernames) and confirm in place.
+  document.addEventListener("click", async (event) => {
+    const button = (event.target as HTMLElement).closest<HTMLButtonElement>(".contact-copy");
+    if (!button) return;
+    const status = button.querySelector(".contact-copy-status");
+    try {
+      await navigator.clipboard.writeText(button.dataset.copy ?? "");
+      if (status) status.textContent = "copied";
+    } catch {
+      if (status) status.textContent = "copy failed";
+    }
+    window.setTimeout(() => {
+      if (status) status.textContent = "copy";
+    }, 1800);
+  });
+</script>

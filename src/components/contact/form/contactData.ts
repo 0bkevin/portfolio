@@ -17,7 +17,8 @@ export const contactData = [
     title: "Discord",
     content: "0bkevin",
     icon: "l-discord",
-    link: "https://discordapp.com/channels/@me/0bkevin/",
+    // Discord has no profile URL for a username, so this one copies the handle instead.
+    copy: true,
     index: 3,
   },
   {
