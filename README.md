@@ -1,50 +1,65 @@
-# kevinbravo.com
+<div align="center">
 
-Kevin Bravo's portfolio: experience, case studies, writing, and contact. Built with Astro (server output on Cloudflare Pages), Tailwind CSS, and TypeScript, with one Svelte island for the contact form.
+# Hey, I'm Kevin Bravo 👋
 
-## Commands
+**Product & AI Engineer · Caracas, Venezuela 🇻🇪 · Online as `0bkevin`**
 
-| Command         | What it does                                                    |
-| --------------- | --------------------------------------------------------------- |
-| `npm run dev`   | Local dev server at http://localhost:4321                       |
-| `npm run check` | Type checks Astro, TypeScript, and Svelte (`astro check` + `svelte-check`) |
-| `npm run build` | Runs the checks, then builds for Cloudflare Pages into `dist/`  |
+[Website](https://kevinbravo.com) · [Who is Kevin Bravo?](https://kevinbravo.com/me/who-is-kevin-bravo) · [Ask Me Anything](https://kevinbravo.com/me/ama) · [X](https://x.com/0bkevin) · [LinkedIn](https://www.linkedin.com/in/0bkevin/) · [GitHub](https://github.com/0bkevin)
 
-Node 22 (see `.nvmrc`).
+</div>
 
-## Structure
+> **Kevin Bravo** (aka **0bkevin**) is a product & AI engineer based in Caracas, Venezuela, with 5+ years building full-stack products, AI agents, MCP servers, and the tooling around them for startups, nonprofits, and government-commissioned programs.
 
-```
-src/
-  pages/            Routes. Case studies (projects/), posts (0b/), profile pages (me/),
-                    plus /experience, /contact, the 404, the RSS feed, and the contact endpoint.
-  layouts/          Layout (every page) and Blog (articles, case studies, profile pages).
-  components/
-    layout/         Navbar, ThemeToggle, Footer, SeoHead, PageHeader, SectionHeading, ScrollUp.
-    home/           The homepage sections, in page order from Hero to ContactSection.
-    contact/        The contact form (Svelte), its fields, validation, and the shared panel.
-    article/        The article table of contents.
-    ui/             Icon (Astro and Svelte versions).
-  content/          Markdown for posts, case studies, and profile pages (schemas in content.config.ts).
-  data/             Typed site content: experience, projects, talks, prizes, navigation, profile, contact.
-  lib/              seo/ (meta tags and structured data), icons, email sending, date helpers.
-  scripts/          Small typed browser modules (navbar, contents, filters, zoom, scroll behavior).
-  styles/           global.css imports base, components, and prose layers.
-  middleware.ts     Redirects trailing-slash URLs to their canonical form.
-public/             Static files: icons, images, robots.txt, llms.txt, manifest.
-```
+---
 
-Content lives in `src/data` and `src/content`; components only render it. Pages are rendered on the server, and browser JavaScript is limited to the modules in `src/scripts` plus the contact form.
+## So, who is Kevin Bravo?
 
-## Environment
+I build products from zero to production. That means the messy first conversation with users, the data model, the backend, the infra, and the support after launch. Give me an unclear problem and full agency, and I'm having a good day.
 
-Set in Cloudflare Pages for both Production and Preview:
+These days I'm deep into **AI tooling and agentic systems**. I build MCP servers that let agents work inside real products, LangGraph pipelines that turn messy sources into clean data, and little tools to reach my own agents from anywhere. I also build **RAG** systems, from chunking and embeddings to retrieval and evals, so agents answer from real data instead of guessing. I care a lot about them being actually useful *and* safe to run.
 
-| Variable                    | Type      | Used for                                |
-| --------------------------- | --------- | --------------------------------------- |
-| `PUBLIC_TURNSTILE_SITE_KEY` | Plaintext | Turnstile widget on the contact form (read at build time) |
-| `TURNSTILE_SECRET_KEY`      | Secret    | Verifying Turnstile tokens               |
-| `RESEND_API_KEY`            | Secret    | Sending contact messages                 |
-| `MY_EMAIL_ADDRESS`          | Plaintext | Where contact messages are delivered     |
+Fun twist, before software I studied **Occupational Therapy** (graduated cum laude from UCV). It still shapes how I think about people and the systems they use.
 
-Local development uses Cloudflare's always-pass Turnstile test keys automatically.
+## What I've been up to
+
+- 🛠️ **Free2Z** · Senior Product Engineer (2025–2026). Moved a live creator platform from React to SvelteKit without dropping a feature, and built an MCP server so AI agents can publish for creators with scoped, expiring access.
+- 🏛️ **Billingua Talent** · Built it for the U.S. Department of State's Venezuela Affairs Unit (via AVAA), a bilingual platform connecting Venezuelan professionals with employers. [Case study →](https://kevinbravo.com/projects/billingua-talent)
+- 🎓 **AVAA** · Built [SEP](https://kevinbravo.com/projects/sep) (~400 monthly users across three states) and [SEA](https://kevinbravo.com/projects/sea) for EducationUSA advisors.
+- 📚 Doing a **Master of Public Administration at IESA**, because tech and institutions should talk more.
+
+Full story at [kevinbravo.com/experience](https://kevinbravo.com/experience).
+
+## Things I've built for fun (and for real)
+
+| Project | What it is |
+| --- | --- |
+| [viamu](https://viamu.app) | Free catalog of scholarships, internships, and fellowships abroad, kept fresh by an AI pipeline |
+| [Registro CiberVE](https://registrociberve.com) | Bilingual public registry of cybersecurity incidents tied to Venezuela |
+| [Arena Criolla](https://arenacriolla.com) | Open source browser fighting game starring icons of Venezuelan culture |
+| [Brio](https://github.com/0bkevin/brio) | Phone app to talk to your Hermes AI agent from anywhere |
+| [Cinve](https://github.com/0bkevin/cinve) | MCP server for Venezuelan cinema listings, showtimes, and seats |
+
+## A few wins
+
+- 🥈 2nd place, AI Security track at **Platanus Hack Caracas** (2026) with Gotchu
+- 🥉 3rd place at IESA's first **EmprendeTECH Hackathon** (2025) with Planify
+
+## Outside the editor
+
+Vice President of **JA Venezuela Alumni**, organizer of the Caracas hub for the **Dev3pack Global Hackathon**, and code mentor for **Technovation Girls Venezuela**. I also write a bit at [kevinbravo.com/0b](https://kevinbravo.com/0b) and give the occasional talk.
+
+I mostly work with SvelteKit, TypeScript, Python, Go, PostgreSQL, MCP, LangGraph, RAG, vector search, and Kubernetes, with Claude, Codex, Cursor, and friends helping me move faster without outsourcing the thinking.
+
+## Find me
+
+| Profiles | On my site |
+| --- | --- |
+| 🌐 [kevinbravo.com](https://kevinbravo.com) | [Who is Kevin Bravo?](https://kevinbravo.com/me/who-is-kevin-bravo) |
+| 🐙 [GitHub](https://github.com/0bkevin) | [Ask Me Anything](https://kevinbravo.com/me/ama) |
+| 💼 [LinkedIn](https://www.linkedin.com/in/0bkevin/) | [Experience](https://kevinbravo.com/experience) |
+| 🐦 [X](https://x.com/0bkevin) | [Case studies](https://kevinbravo.com/projects) |
+| ✈️ [Telegram](https://t.me/Obkevin) | [Writing](https://kevinbravo.com/0b) |
+| 🎮 Discord `0bkevin` | [Talk on YouTube](https://www.youtube.com/watch?v=0JlqBCB3LRM) |
+| 📄 [CV](https://drive.google.com/file/d/17i14DI4StC3FRe67TaIAGxRkV_3h7RoP/view?usp=sharing) | [Contact](https://kevinbravo.com/contact) |
+
+<sub>🤖 For AI agents, see [llms.txt](https://kevinbravo.com/llms.txt).</sub>
