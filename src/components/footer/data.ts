@@ -3,7 +3,8 @@ export const footerLinks = [
   { link: "/#about", name: "About", index: 2 },
   { link: "/projects", name: "Projects", index: 3 },
   { link: "/0b", name: "Blog", index: 4 },
-  { link: "/me/ama", name: "AMA", index: 5 },
+  { link: "/contact", name: "Contact", index: 5 },
+  { link: "/me/ama", name: "AMA", index: 6 },
 ];
 export const socialIcons = [
   { icon: "x", link: "https://twitter.com/0bkevin", label: "X profile", index: 1 },
