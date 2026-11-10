@@ -86,9 +86,9 @@ Pragma solidity 0.4.0;
 
 You can read more [here.](https://medium.com/r/?url=https%3A%2F%2Fdocs.soliditylang.org%2Fen%2Fv0.8.11%2F050-breaking-changes.html%23constructors)
 
-So, *if a constructor*, in olders versions of solidity, *must have the same name as the contract*, **what would happens if we commit a typo in the declaration of the constructor, that mismatch the current name of the contract?** :hushed:
+So, *if a constructor*, in olders versions of solidity, *must have the same name as the contract*, **what would happens if we commit a typo in the declaration of the constructor, that mismatch the current name of the contract?** 😯
 
-What would happen if that constructor will be now a ordinary, dumb, and boring function, that we can call whenever we want? And if that ordinary, dumb, and boring function have the ability to declare ourselves as the new owner of the contract?. :frowning:
+What would happen if that constructor will be now a ordinary, dumb, and boring function, that we can call whenever we want? And if that ordinary, dumb, and boring function have the ability to declare ourselves as the new owner of the contract?. 😦
 
 **That is just what happened with this contract.**
 
@@ -110,7 +110,7 @@ Heh :v
 
 Exactly, **there is a typo in the constructor declaration** = `Fallout` → `Fal1out`
 
-And results, **that function declares as owner whoever who calls it.** :smiling\_imp:
+And results, **that function declares as owner whoever who calls it.** 😈
 
 Well, since we just have to take the ownership of the contract, **we just have to call the misspelling construction function of the contract, to steal the ownership.**
 
@@ -122,7 +122,7 @@ We are going to use brownie, so let's create our brownie project.
 brownie init
 ```
 
-If you don't know how to use brownie, [you can check this article written by me](https://kevdevto.hashnode.dev/brownie-everything-you-need-to-know-to-write-test-and-deploy-your-smart-contracts) :bowtie:
+If you don't know how to use brownie, [you can check this article written by me](https://kevdevto.hashnode.dev/brownie-everything-you-need-to-know-to-write-test-and-deploy-your-smart-contracts) 😊
 
 First, we need the basics to interact with that contract:
 
@@ -249,11 +249,11 @@ brownie run scripts/submit_contract.py --network rinkeby
 
 ![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643941331614/aUgRsLdj5.png  )
 
-**And, that's it. We just completed the second challenge.** :stuck\_out\_tongue\_closed\_eyes:
+**And, that's it. We just completed the second challenge.** 😝
 
 You can grab the complete solution in this [github repo](https://medium.com/r/?url=https%3A%2F%2Fgithub.com%2Fmustafinho%2Fethernaut_solutions%2Ftree%2Fmain%2Fethernaut_2_fallout)
 
-If you have any comment or suggestions please leave it in the comments section, also if you see any problem with the code feel free to make a PR.
+If you have any comments or suggestions, send me a message on [X](https://x.com/0bkevin) or open a PR if you see any problem with the code.
 
 You can follow me on my twitter [@0bkevin](https://x.com/0bkevin) and DM me, I'm always happy to talk and know more people in this amazing community
 

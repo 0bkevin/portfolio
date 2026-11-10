@@ -4,7 +4,6 @@ pubDate: '2022-05-08T12:00:00Z'
 description: Learn how the Damn Vulnerable DeFi Unstoppable challenge works, including flash loans, lending pools, and the smart contract invariant that stops the pool.
 tags: [auditor, blockchain, smart contracts, python]
 language: en
-image: {url: '/placeholder.jpg', alt: 'Damn Vulnerable DeFi Unstoppable challenge cover image'}
 canonicalURL: https://kevdevto.hashnode.dev/dvd-1
 ---
 In this series of articles we are going to make a walkthrough of the famous CTF **Damn Vulnerable Defi**, created by one of the top auditors of OpenZeppelin,
@@ -53,7 +52,7 @@ But, why do I want to borrow money to return it immediately? Well, the most comm
 
 Let's say `Token A` is in `DEX A` at 10 ETH but that same `Token A` is in `DEX B` at 11 ETH, you can buy `Token A` in `DEX A` at 10 ETH and then sell it in `DEX B` for 11ETH, and bum!!! PROFIT.
 
-![stonks-2286073.jpg](https://cdn.hashnode.com/res/hashnode/image/upload/v1652045914789/s8UzkFvE_.jpg align="left")
+![Stonks meme](https://cdn.hashnode.com/res/hashnode/image/upload/v1652045914789/s8UzkFvE_.jpg)
 
 Of course, **you have to take into account the fees, gas and interest of both dexes** to be able to successfully execute the flash loan.
 
@@ -215,7 +214,7 @@ uint256 balanceBefore = damnValuableToken.balanceOf(address(this));
 
 > Remember that the specification of every ERC20 contract must have a mapping that tracks how many tokens a specific account has.
 
-You got it?, exactly,\*\* we have to find a way to increment our balance directly in the DVT ERC20 smart contract\*\* Since we are not calling the `depositToken` function, `poolBalance` wouldn't be updated, but since we are updating our balance in the DVT contract our balance in that contract will update and the assertion will no longer be true.
+You got it? Exactly, **we have to find a way to increment our balance directly in the DVT ERC20 smart contract.** Since we are not calling the `depositToken` function, `poolBalance` wouldn't be updated, but since we are updating our balance in the DVT contract our balance in that contract will update and the assertion will no longer be true.
 
 ## Lets hack the contract
 
@@ -252,7 +251,7 @@ That's all folks…
 
 You can see the complete solution in this [GitHub repo](https://github.com/mustafinho/damn-vulnerable-defi-solutions/blob/a82f8c50fc9765ad9de09bfb810b541c372acc59/test/unstoppable/unstoppable.challenge.js#L42-L43)
 
-If you have any comments or suggestions please leave it in the comments section, also if you see any problem with the code feel free to make a PR.
+If you have any comments or suggestions, send me a message on [X](https://x.com/0bkevin) or open a PR if you see any problem with the code.
 
 You can follow me on my Twitter @0bkevin and DM me, I’m always happy to talk and get to know more people in this amazing community.
 
