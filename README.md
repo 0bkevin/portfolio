@@ -64,7 +64,7 @@ I mostly work with SvelteKit, TypeScript, Python, Go, PostgreSQL, MCP, LangGraph
 - 🐙 GitHub · [github.com/0bkevin](https://github.com/0bkevin)
 - 💼 LinkedIn · [linkedin.com/in/0bkevin](https://www.linkedin.com/in/0bkevin/)
 - 🐦 X / Twitter · [x.com/0bkevin](https://x.com/0bkevin)
-- ✈️ Telegram · [t.me/Obkevin](https://t.me/Obkevin) (with a letter O, since Telegram doesn't allow a leading 0)
+- ✈️ Telegram · [t.me/Obkevin](https://t.me/Obkevin)
 - 🎮 Discord · `0bkevin`
 - 📄 CV · [One-page resume](https://drive.google.com/file/d/17i14DI4StC3FRe67TaIAGxRkV_3h7RoP/view?usp=sharing)
 
