@@ -60,11 +60,6 @@ The dashboard gives VAU and AVAA advisors a live view of candidates, services, r
 
 The platform gives Venezuelan-American Centers a national funnel for candidate development. Advisors can monitor active users, publish targeted services, and guide candidates toward workshops, courses, webinars, and career preparation.
 
-<figure>
-  <img src="/assets/projects/billingua/service-management.avif" alt="Service management screen with registrations, dates, modality, type, facilitator, and status" />
-  <figcaption>Service management screen with registrations, dates, modality, type, facilitator, and status</figcaption>
-</figure>
-
 ## Service operations
 
 Each service page centralizes logistics, capacity, cost, modality, location, facilitator, and performance metrics. Advisors can manage services and review demand without rebuilding spreadsheets.
@@ -77,6 +72,11 @@ Each service page centralizes logistics, capacity, cost, modality, location, fac
 ## Analytics
 
 The analytics views help the team understand candidate composition, offer activity, traffic sources, devices, and usage patterns. Training plans can then respond to observed behavior, not only anecdotal demand.
+
+<figure>
+  <img src="/assets/projects/billingua/analytics.avif" alt="Analytics view with traffic sources, interaction devices, and an hourly engagement heatmap" />
+  <figcaption>Analytics view with traffic sources, interaction devices, and an hourly engagement heatmap</figcaption>
+</figure>
 
 ## Outcome
 
