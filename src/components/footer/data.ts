@@ -1,6 +1,6 @@
 export const footerLinks = [
   { link: "/experience", name: "Experience", index: 1 },
-  { link: "/#about", name: "About", index: 2 },
+  { link: "/me/who-is-kevin-bravo", name: "About", index: 2 },
   { link: "/projects", name: "Projects", index: 3 },
   { link: "/0b", name: "Blog", index: 4 },
   { link: "/contact", name: "Contact", index: 5 },
