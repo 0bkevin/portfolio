@@ -1,55 +1,25 @@
 ---
 import SectionHeading from "../SectionHeading.astro";
 import ExperienceItem from "./ExperienceItem.astro";
+import { EXPERIENCE } from "../../data/experience";
 
-const EXPERIENCE = [
-  {
-    role: "senior product engineer",
-    company: "free2z",
-    url: "https://free2z.cash",
-    period: "mar 2025 - oct 2026",
-    summary:
-      "Led the live creator platform's migration from React to SvelteKit without losing features, built an MCP server that lets AI agents publish and manage content through scoped, expiring access, and protected payments and Zcash sign-in against double charges and replayed requests.",
-  },
-  {
-    role: "product engineer",
-    company: "u.s. department of state, via avaa",
-    url: "https://ve.usembassy.gov/",
-    period: "oct 2024 - aug 2025",
-    summary:
-      "Built Billingua Talent for the Venezuela Affairs Unit, a bilingual platform connecting Venezuelan professionals with employers; hired and led two engineers, designed separate access for candidates, employers, advisors, and admins, and piloted it with 50 users and five companies.",
-  },
-  {
-    role: "full stack engineer",
-    company: "freelance software development",
-    period: "jul 2024 - dec 2024",
-    summary:
-      "Worked with a range of clients across education, finance, and professional services, building websites and mobile apps from first scoping conversations through launch and post-launch support.",
-  },
-  {
-    role: "full stack engineer",
-    company: "avaa",
-    url: "https://avaa.org/",
-    period: "oct 2022 - jul 2024",
-    summary:
-      "Replaced spreadsheets with two production platforms on Azure for AVAA's scholarship program and EducationUSA advisors; SEP serves about 400 monthly users across three chapters, with an AI assistant that answers staff questions from program records.",
-  },
-  {
-    role: "junior software engineer",
-    company: "avaa, internship",
-    url: "https://avaa.org/",
-    period: "sep 2021 - aug 2022",
-    summary:
-      "Cleaned four years of scattered scholarship records with Python into the program's first Power BI dashboard and automated recurring activity setup with Google Apps Script; that dataset later seeded SEP.",
-  },
-];
 const MOBILE_VISIBLE = 3;
 const hiddenCount = EXPERIENCE.length - MOBILE_VISIBLE;
 ---
 
 <section class="home-col py-10 sm:py-14 md:py-20" id="experience" aria-labelledby="experience-title">
-  <SectionHeading num="01" label="Experience" />
-  <h2 id="experience-title" class="section-title">Where I've worked</h2>
+  <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+    <div class="flex-1">
+      <SectionHeading num="01" label="Experience" />
+      <h2 id="experience-title" class="section-title">Where I've worked</h2>
+    </div>
+    <a
+      href="/experience"
+      class="font-mono text-[13px] lowercase text-accent-500 transition-colors hover:text-accent-600 dark:text-accent-400 dark:hover:text-accent-300"
+    >
+      full experience →
+    </a>
+  </div>
 
   <ol class="mt-6 font-mono md:mt-10">
     {

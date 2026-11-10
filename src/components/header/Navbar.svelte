@@ -23,6 +23,8 @@
         activeNav = "/0b";
       } else if (path.startsWith("/me/ama")) {
         activeNav = "/me/ama";
+      } else if (path.startsWith("/experience")) {
+        activeNav = "/#experience";
       } else if (path.startsWith("/projects")) {
         activeNav = "/#projects";
       } else if (path === "/" || path === "") {

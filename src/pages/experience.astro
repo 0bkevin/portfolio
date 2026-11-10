@@ -1,0 +1,154 @@
+---
+import Layout from "@layouts/Layout.astro";
+import PageHeader from "@components/PageHeader.astro";
+import SectionHeading from "@components/SectionHeading.astro";
+import { EXPERIENCE, VOLUNTEERING } from "../data/experience";
+import { createBreadcrumbSchema, createWebsiteSchema } from "@lib/seo";
+
+const CV_URL = "https://drive.google.com/file/d/17i14DI4StC3FRe67TaIAGxRkV_3h7RoP/view?usp=sharing";
+
+const pageTitle = "Experience | Kevin Bravo, Product and AI Engineer";
+const pageDescription =
+  "Kevin Bravo's work history as a product, AI, and full-stack engineer: Free2Z, the U.S. Department of State through AVAA, freelance clients, and AVAA, plus leadership and volunteer work.";
+const pagePath = "/experience";
+
+const structuredData = [
+  createWebsiteSchema(),
+  createBreadcrumbSchema([
+    { name: "Home", item: "/" },
+    { name: "Experience", item: pagePath },
+  ]),
+];
+
+const capitalize = (text: string) => text.charAt(0).toUpperCase() + text.slice(1);
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical={pagePath}
+  structuredData={structuredData}
+  tags={["experience", "work history", "product engineer", "AI engineer", "full-stack"]}
+>
+  <div class="home-col min-h-screen pb-20 pt-6">
+    <PageHeader label="experience · work history" title="Where I've worked">
+      5+ years building software for startups, nonprofits, a U.S. government program, and freelance clients, usually
+      from the first conversation with users through launch and the support that comes after.
+    </PageHeader>
+
+    <section aria-labelledby="work-heading">
+      <SectionHeading num="01" label="Work" />
+      <h2 id="work-heading" class="sr-only">Work history</h2>
+
+      <ol class="mt-2">
+        {
+          EXPERIENCE.map((job, index) => (
+            <li class="grid gap-4 border-b border-surface-200 py-10 last:border-b-0 dark:border-surface-800/70 md:grid-cols-[11rem_1fr] md:gap-10 md:py-12">
+              <div class="font-mono text-[12.5px] lowercase text-surface-500 md:sticky md:top-24 md:self-start">
+                <p class="text-accent-500 dark:text-accent-400">{String(index + 1).padStart(2, "0")}</p>
+                <p class="mt-2 text-surface-700 dark:text-surface-300">{job.period}</p>
+                <p class="mt-1">{job.setting}</p>
+              </div>
+
+              <div class="min-w-0">
+                <h3 class="text-2xl font-bold tracking-tight text-surface-900 dark:text-surface-100 md:text-[1.75rem]">
+                  {capitalize(job.role)}
+                </h3>
+                <p class="mt-1.5 font-mono text-[13px] lowercase text-surface-500">
+                  {job.url ? (
+                    <a href={job.url} target="_blank" rel="noopener noreferrer" class="text-link">
+                      {job.company}
+                    </a>
+                  ) : (
+                    job.company
+                  )}
+                </p>
+
+                <ul class="job-bullets mt-6 flex flex-col gap-3.5 text-[15px] leading-relaxed text-surface-600 dark:text-surface-400">
+                  {job.bullets.map((bullet) => (
+                    <li>{bullet}</li>
+                  ))}
+                </ul>
+
+                <ul class="mt-6 flex flex-wrap gap-x-4 gap-y-1 font-mono text-[12px] lowercase text-surface-500" aria-label="Tools used">
+                  {job.stack.map((tool) => (
+                    <li>{tool}</li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section class="mt-16 md:mt-24" aria-labelledby="volunteering-heading">
+      <SectionHeading num="02" label="Leadership & volunteering" />
+      <h2 id="volunteering-heading" class="section-title">Outside of work</h2>
+
+      <ol class="mt-6 font-mono md:mt-10">
+        {
+          VOLUNTEERING.map((item) => (
+            <li class="flex flex-col gap-2 border-b border-surface-200 py-5 last:border-b-0 dark:border-surface-800/70 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+              <div class="min-w-0">
+                <p class="text-[15px] text-surface-900 dark:text-surface-100">{item.role}</p>
+                <p class="mt-1 text-[12.5px] text-surface-500">{item.org}</p>
+                <p class="mt-3 max-w-2xl font-sans text-sm leading-relaxed text-surface-600 dark:text-surface-400">
+                  {item.summary}
+                </p>
+              </div>
+              <span class="order-first shrink-0 text-[12.5px] text-surface-500 sm:order-none">{item.period}</span>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section class="mt-16 rounded-xl border border-surface-200 p-6 dark:border-surface-800 md:mt-24 md:p-10" aria-labelledby="next-heading">
+      <h2 id="next-heading" class="text-2xl font-bold tracking-tight text-surface-900 dark:text-surface-100">
+        Want to work together?
+      </h2>
+      <p class="mt-3 max-w-xl text-[15px] leading-relaxed text-surface-600 dark:text-surface-400">
+        Grab the one-page CV, or send me a message about what you're building.
+      </p>
+      <div class="mt-6 flex flex-wrap items-center gap-2 sm:gap-4">
+        <a
+          href="/#contact"
+          class="inline-flex items-center gap-2 rounded-lg bg-surface-900 px-4 py-3 font-mono text-[13px] lowercase text-white transition-colors hover:bg-surface-800 dark:bg-surface-100 dark:text-surface-900 dark:hover:bg-surface-200 sm:px-6"
+        >
+          Get in touch <span aria-hidden="true">→</span>
+        </a>
+        <a
+          href={CV_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 rounded-lg border border-surface-200 px-4 py-3 font-mono text-[13px] lowercase text-surface-600 transition-colors hover:border-surface-300 hover:text-surface-900 dark:border-surface-800 dark:text-surface-400 dark:hover:border-surface-700 dark:hover:text-surface-200 sm:px-6"
+        >
+          Download CV
+        </a>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .job-bullets > li {
+    position: relative;
+    padding-left: 1.25rem;
+  }
+
+  .job-bullets > li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.7em;
+    width: 0.5rem;
+    height: 2px;
+    border-radius: 1px;
+    background-color: #a16207;
+  }
+
+  :global(.dark) .job-bullets > li::before {
+    background-color: #facc15;
+  }
+</style>
