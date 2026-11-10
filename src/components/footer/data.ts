@@ -7,8 +7,8 @@ export const footerLinks = [
   { link: "/me/ama", name: "AMA", index: 6 },
 ];
 export const socialIcons = [
-  { icon: "x", link: "https://twitter.com/0bkevin", label: "X profile", index: 1 },
-  { icon: "bx bxl-github", link: "https://github.com/0bkevin/", label: "GitHub profile", index: 2 },
+  { icon: "x", link: "https://x.com/0bkevin", label: "X profile", index: 1 },
+  { icon: "bx bxl-github", link: "https://github.com/0bkevin", label: "GitHub profile", index: 2 },
   {
     icon: "bx bxl-linkedin",
     link: "https://www.linkedin.com/in/0bkevin/",

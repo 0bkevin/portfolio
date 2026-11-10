@@ -255,6 +255,6 @@ You can grab the complete solution in this [github repo](https://medium.com/r/?u
 
 If you have any comment or suggestions please leave it in the comments section, also if you see any problem with the code feel free to make a PR.
 
-You can follow me on my twitter [@0bkevin](https://twitter.com/0bkevin) and DM me, I'm always happy to talk and know more people in this amazing community
+You can follow me on my twitter [@0bkevin](https://x.com/0bkevin) and DM me, I'm always happy to talk and know more people in this amazing community
 
 **Stay tuned for the next Ethernaut solution:** Coin Flip

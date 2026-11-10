@@ -1,13 +1,14 @@
 ---
 title: "Who is Kevin Bravo?"
 pubDate: '2026-05-18T12:00:00Z'
-description: A short biographical profile of Kevin Bravo, a software engineer focused on backend systems, infrastructure, AI tools, education, and projects built from zero to production.
+updateDate: '2026-11-10T12:00:00Z'
+description: A short biographical profile of Kevin Bravo, a product and AI engineer in Caracas, Venezuela, who builds full-stack products, AI agents, and the tooling around them.
 profilePageType: "bio"
-seoTitle: "Who is Kevin Bravo? | Software Engineer"
-seoDescription: "A biographical profile of Kevin Bravo, software engineer focused on backend systems, infrastructure, AI tools, education, and high-ownership technical projects."
+seoTitle: "Who is Kevin Bravo? | Product & AI Engineer"
+seoDescription: "Who Kevin Bravo is: a product and AI engineer in Caracas, Venezuela, building full-stack products, AI agents, and MCP tooling, plus his work, volunteering, and background."
 ---
 
-Kevin Bravo is a software engineer who likes difficult technical projects, backend systems, infrastructure, AI tools, and products built from zero to production.
+Kevin Bravo is a product and AI engineer based in Caracas, Venezuela, who likes difficult technical projects, backend systems, infrastructure, AI tools, and products built from zero to production.
 
 He works best when he has full agency to turn an unclear technical problem into a well-structured, maintainable system.
 
@@ -47,4 +48,4 @@ Kevin also has a long volunteer history. He has supported JA Venezuela Alumni, A
 
 Before software became his main professional path, he studied Occupational Therapy. That background still shapes how he thinks about people, systems, and practical impact.
 
-You should follow him on [LinkedIn](https://www.linkedin.com/in/0bkevin/) and [Twitter/X](https://twitter.com/0bkevin). Or just email him first at [0bravokevin@gmail.com](mailto:0bravokevin@gmail.com).
+You should follow him on [LinkedIn](https://www.linkedin.com/in/0bkevin/) and [Twitter/X](https://x.com/0bkevin). Or just email him first at [0bravokevin@gmail.com](mailto:0bravokevin@gmail.com).

@@ -1,6 +1,7 @@
 ---
 title: "Ask Me Anything: Kevin Bravo 🤺"
 pubDate: '2026-05-18T12:00:00Z'
+updateDate: '2026-11-10T12:00:00Z'
 seoTitle: "Kevin Bravo | Product, Backend & Full-Stack Engineer"
 description: Discover Kevin Bravo's professional and personal background in this AMA-style self-interview. Learn about his software engineering experience, leadership work, volunteer projects, career goals, and technical skills in less than 5 minutes.
 seoDescription: Product engineer building backend systems, AI agent tooling, infrastructure, and full-stack products from messy ideas to production-ready software.
@@ -142,6 +143,6 @@ It's a bit of mix & match:
 
 - **Email:** [0bravokevin@gmail.com](mailto:0bravokevin@gmail.com)
 - **LinkedIn:** [0bkevin](https://www.linkedin.com/in/0bkevin/)
-- **Twitter:** [@0bkevin](https://twitter.com/0bkevin)
+- **Twitter:** [@0bkevin](https://x.com/0bkevin)
 - **Telegram:** [@Obkevin](https://t.me/Obkevin)
 - **Phone:** Let's email first 😉
