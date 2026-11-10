@@ -27,6 +27,7 @@ export const EXPERIENCE: Role[] = [
       "Led the move of Free2Z, a live platform where creators publish, stream, and get paid by their community, from React to SvelteKit and TypeScript, rebuilding publishing, navigation, and mobile layouts without taking away any feature creators relied on.",
       "Built an MCP server in Python and Django so AI agents can write and edit pages, search content, upload media, and manage comments for a creator, without ever borrowing the creator's browser session.",
       "Kept that agent access safe with scoped, expiring tokens, input checks, and a log of every change an agent made, and designed the server to run across several copies so it could grow with demand.",
+      "Built AI agents for the platform together with the retrieval (RAG), evals, and tooling that keep their answers and actions reliable for creators.",
       "Made Stripe and Zcash payments safe to retry, so a lost response or a double tap never charged a supporter twice, and priced Zcash purchases from live exchange rates instead of fixed ones.",
       "Protected Zcash sign-in against replayed and spoofed requests by making each login challenge single-use in PostgreSQL, and updated the API contract, NGINX rules, and runbooks to match.",
       "Added Dyte live video and a Markdown publishing system with multilingual articles, so creators could host live sessions and write for readers in more than one language.",
@@ -77,7 +78,7 @@ export const EXPERIENCE: Role[] = [
     bullets: [
       "Built and ran SEP, the platform AVAA's ProExcelencia scholarship program uses to track scholars, activities, attendance, and volunteer hours, replacing scattered spreadsheets for about 400 monthly users across three chapters.",
       "Built SEA on the same Next.js, PostgreSQL, and Azure stack, so EducationUSA advisors could manage student histories, outreach, payments, and partnerships in one application.",
-      "Built an AI assistant with LangChain and retrieval-augmented generation (RAG), so staff could ask plain-language questions about scholar participation and get answers drawn from SEP's own records.",
+      "Built an AI assistant with LangChain and retrieval-augmented generation (RAG), so staff could ask plain-language questions about scholar participation and get answers drawn from SEP's own records, checked with evals so they stayed accurate.",
       "Met with program staff, advisors, and scholars to learn how they worked, turned their needs into requirements, and demoed progress in plain language to set priorities.",
       "Kept both platforms running on Azure by fixing reported issues and shipping updates, and set up a maintenance program so scholarship recipients could keep improving SEP after the build.",
     ],
