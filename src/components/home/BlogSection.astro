@@ -1,6 +1,6 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content";
-import SectionHeading from "../../SectionHeading.astro";
+import SectionHeading from "@components/layout/SectionHeading.astro";
 
 const blogs = (await getCollection("blogs")) as CollectionEntry<"blogs">[];
 

@@ -2,8 +2,8 @@
 import Layout from "./Layout.astro";
 import { formatDateToDisplay, getReadingTime } from "@lib/utils";
 import type { CollectionEntry } from "astro:content";
-import Toc from "@components/Toc/Toc.svelte";
-import ScrollUp from "../components/ScrollUp.astro";
+import TableOfContents from "@components/article/TableOfContents.svelte";
+import ScrollUp from "@components/layout/ScrollUp.astro";
 
 type ContentEntry = CollectionEntry<"blogs"> | CollectionEntry<"me">;
 type TableOfContentsHeading = { text: string; depth: number; slug: string };
@@ -224,7 +224,7 @@ const tocItems: TocItem[] = tableOfContents
 
     </article>
 
-    {tocItems.length > 0 ? <Toc items={tocItems} client:only="svelte" /> : null}
+    {tocItems.length > 0 ? <TableOfContents items={tocItems} client:only="svelte" /> : null}
   </div>
 
   <ScrollUp />

@@ -1,14 +1,14 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Home from "../components/home/Home.astro";
-import About from "../components/about/About.astro";
-import ExperienceSection from "../components/experience/ExperienceSection.astro";
-import ScrollUp from "../components/ScrollUp.astro";
-import Contact from "../components/contact/Contact.astro";
-import ProjectsSection from "../components/projects/section/ProjectsSection.astro";
-import BlogSection from "../components/blog/section/BlogSection.astro";
-import AchievementsSection from "../components/achievements/AchievementsSection.astro";
-import TalksSection from "../components/talks/TalksSection.astro";
+import Layout from "@layouts/Layout.astro";
+import Hero from "@components/home/Hero.astro";
+import About from "@components/home/About.astro";
+import ExperienceSection from "@components/home/ExperienceSection.astro";
+import ScrollUp from "@components/layout/ScrollUp.astro";
+import ContactSection from "@components/home/ContactSection.astro";
+import ProjectsSection from "@components/home/ProjectsSection.astro";
+import BlogSection from "@components/home/BlogSection.astro";
+import AchievementsSection from "@components/home/AchievementsSection.astro";
+import TalksSection from "@components/home/TalksSection.astro";
 import { createPersonSchema, createProfilePageSchema, createWebsiteSchema, seoConfig } from "@lib/seo";
 
 const title = "Kevin Bravo | Product & AI Engineer";
@@ -41,13 +41,13 @@ const structuredData = [websiteSchema, personSchema, profilePageSchema];
   type="website"
   structuredData={structuredData}
 >
-  <Home />
+  <Hero />
   <ExperienceSection />
   <About />
   <ProjectsSection />
   <AchievementsSection />
   <TalksSection />
   <BlogSection />
-  <Contact />
+  <ContactSection />
   <ScrollUp />
 </Layout>

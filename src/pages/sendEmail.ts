@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { sendEmailMessage } from "../lib/sendEmailMessage";
+import { sendEmailMessage } from "@lib/sendEmailMessage";
 
 const jsonResponse = (body: unknown, status: number) =>
   new Response(JSON.stringify(body), {

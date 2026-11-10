@@ -2,8 +2,8 @@
   import { onMount } from "svelte";
   import { fade, fly } from "svelte/transition";
   import { cubicOut } from "svelte/easing";
-  import NAV_ITEMS from "./NavbarData.ts";
-  import ToggleDark from "../ToggleDark.svelte";
+  import NAV_ITEMS from "@data/navigation";
+  import ThemeToggle from "@components/layout/ThemeToggle.svelte";
 
   export let shouldFixed = true;
 
@@ -109,14 +109,14 @@
           </li>
         {/each}
         <li class="ml-1">
-          <ToggleDark/>
+          <ThemeToggle />
         </li>
       </ul>
     </div>
 
-    <!-- Mobile menu toggle & ToggleDark -->
+    <!-- Mobile menu toggle & theme toggle -->
     <div class="flex items-center gap-1 md:hidden">
-      <ToggleDark/>
+      <ThemeToggle />
       <button
         on:click={toggleMobileMenu}
         aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}

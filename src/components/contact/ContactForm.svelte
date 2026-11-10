@@ -3,7 +3,7 @@
   import ContactInput from "./ContactInput.svelte";
   import ContactTextArea from "./ContactTextArea.svelte";
   import ContactButton from "./ContactButton.svelte";
-  import { evaluateInputs, sanitizeInput } from "./utils";
+  import { evaluateInputs, sanitizeInput } from "./validation";
   let status = "toSend";
 
   let name = "";
