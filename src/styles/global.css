@@ -142,6 +142,24 @@
     .fade-in-up { animation: none; }
   }
 
+  /* Floating controls slide away while reading down and return on scroll up. */
+  .float-chrome {
+    transition:
+      transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      opacity 220ms ease;
+  }
+
+  html[data-scroll-dir="down"] .float-chrome:not(:focus-visible) {
+    transform: translateY(calc(100% + 1.5rem));
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .float-chrome { transition: opacity 150ms ease; }
+    html[data-scroll-dir="down"] .float-chrome:not(:focus-visible) { transform: none; }
+  }
+
   /* Keep the floating scroll-to-top button out of the way while someone types. */
   body:has(:is(input, textarea):focus) .scrollup {
     opacity: 0 !important;

@@ -110,7 +110,7 @@
 
 <button
   type="button"
-  class="fixed bottom-5 left-5 z-40 inline-flex items-center gap-2 rounded-md border border-surface-200/80 bg-[#fafafa]/90 px-3 py-2 font-mono text-[12px] lowercase text-surface-500 shadow-sm backdrop-blur transition-colors hover:border-surface-300 hover:text-surface-900 focus:outline-none focus:ring-1 focus:ring-surface-300 dark:border-surface-800/80 dark:bg-[#0a0a0a]/85 dark:text-surface-400 dark:hover:border-surface-700 dark:hover:text-surface-100 dark:focus:ring-surface-700 xl:hidden"
+  class="float-chrome fixed bottom-5 left-5 z-40 inline-flex items-center gap-2 rounded-md border border-surface-200/80 bg-[#fafafa]/90 px-3 py-2 font-mono text-[12px] lowercase text-surface-500 shadow-sm backdrop-blur hover:border-surface-300 hover:text-surface-900 focus:outline-none focus:ring-1 focus:ring-surface-300 dark:border-surface-800/80 dark:bg-[#0a0a0a]/85 dark:text-surface-400 dark:hover:border-surface-700 dark:hover:text-surface-100 dark:focus:ring-surface-700 xl:hidden"
   aria-label="Open table of contents"
   aria-expanded={mobileOpen}
   aria-controls="mobile-toc"

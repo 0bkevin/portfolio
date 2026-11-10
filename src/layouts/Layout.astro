@@ -214,6 +214,37 @@ const schemaItems = Array.isArray(structuredData)
       })();
     </script>
 
+    <script is:inline>
+      // Floating controls (scroll-to-top, the article contents pill) tuck away while the
+      // reader scrolls down and come back on scroll up, near the top, or at the end of the page.
+      (() => {
+        if (window.__scrollDirBound) return;
+        window.__scrollDirBound = true;
+        const root = document.documentElement;
+        const THRESHOLD = 8;
+        let lastY = window.scrollY;
+        let ticking = false;
+        const update = () => {
+          ticking = false;
+          const y = window.scrollY;
+          const delta = y - lastY;
+          const nearTop = y < 120;
+          const atEnd = window.innerHeight + y >= root.scrollHeight - 80;
+          if (nearTop || atEnd || delta < -THRESHOLD) root.dataset.scrollDir = "up";
+          else if (delta > THRESHOLD) root.dataset.scrollDir = "down";
+          // Only move the reference point after a real move, so slow scrolls still count.
+          if (Math.abs(delta) > THRESHOLD || nearTop) lastY = y;
+        };
+        window.addEventListener("scroll", () => {
+          if (!ticking) { ticking = true; requestAnimationFrame(update); }
+        }, { passive: true });
+        document.addEventListener("astro:after-swap", () => {
+          root.dataset.scrollDir = "up";
+          lastY = window.scrollY;
+        });
+      })();
+    </script>
+
     {schemaItems.length > 0 && (
       <script
         is:inline
