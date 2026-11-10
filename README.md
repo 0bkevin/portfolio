@@ -50,33 +50,16 @@ Vice President of **JA Venezuela Alumni**, organizer of the Caracas hub for the 
 
 I mostly work with SvelteKit, TypeScript, Python, Go, PostgreSQL, MCP, LangGraph, RAG, vector search, and Kubernetes, with Claude, Codex, Cursor, and friends helping me move faster without outsourcing the thinking.
 
-## Say hi
+## Find me
 
-[Telegram](https://t.me/Obkevin) · Discord `0bkevin` · [X](https://x.com/0bkevin) · [Email](mailto:0bravokevin@gmail.com) · or the [contact form](https://kevinbravo.com/contact)
+| Profiles | On my site |
+| --- | --- |
+| 🌐 [kevinbravo.com](https://kevinbravo.com) | [Who is Kevin Bravo?](https://kevinbravo.com/me/who-is-kevin-bravo) |
+| 🐙 [GitHub](https://github.com/0bkevin) | [Ask Me Anything](https://kevinbravo.com/me/ama) |
+| 💼 [LinkedIn](https://www.linkedin.com/in/0bkevin/) | [Experience](https://kevinbravo.com/experience) |
+| 🐦 [X](https://x.com/0bkevin) | [Case studies](https://kevinbravo.com/projects) |
+| ✈️ [Telegram](https://t.me/Obkevin) | [Writing](https://kevinbravo.com/0b) |
+| 🎮 Discord `0bkevin` | [Talk on YouTube](https://www.youtube.com/watch?v=0JlqBCB3LRM) |
+| 📄 [CV](https://drive.google.com/file/d/17i14DI4StC3FRe67TaIAGxRkV_3h7RoP/view?usp=sharing) | [Contact](https://kevinbravo.com/contact) |
 
----
-
-## Find me around the web
-
-**The official spots.** If it's not on this list, it's probably not me.
-
-- 🌐 Website · [kevinbravo.com](https://kevinbravo.com)
-- 🐙 GitHub · [github.com/0bkevin](https://github.com/0bkevin)
-- 💼 LinkedIn · [linkedin.com/in/0bkevin](https://www.linkedin.com/in/0bkevin/)
-- 🐦 X / Twitter · [x.com/0bkevin](https://x.com/0bkevin)
-- ✈️ Telegram · [t.me/Obkevin](https://t.me/Obkevin)
-- 🎮 Discord · `0bkevin`
-- 📄 CV · [One-page resume](https://drive.google.com/file/d/17i14DI4StC3FRe67TaIAGxRkV_3h7RoP/view?usp=sharing)
-
-**Pages on my site worth a click**
-
-- [Who is Kevin Bravo?](https://kevinbravo.com/me/who-is-kevin-bravo) · The short bio
-- [Ask Me Anything](https://kevinbravo.com/me/ama) · Experience, strengths, role fit, AI tools, and what I'm looking for next
-- [Experience](https://kevinbravo.com/experience) · Full work history
-- [Case studies](https://kevinbravo.com/projects) · [Billingua Talent](https://kevinbravo.com/projects/billingua-talent), [SEP](https://kevinbravo.com/projects/sep), [SEA](https://kevinbravo.com/projects/sea), [AVAA Alumni Dashboard](https://kevinbravo.com/projects/avaa-power-bi-dashboard)
-- [Writing](https://kevinbravo.com/0b) · [RSS](https://kevinbravo.com/rss.xml)
-- [Contact](https://kevinbravo.com/contact)
-
-I gave a talk called [Crea y recauda fondos con Free2z](https://www.youtube.com/watch?v=0JlqBCB3LRM) (Spanish), for Zcash en Español.
-
-**For AI agents 🤖**, start at [kevinbravo.com/llms.txt](https://kevinbravo.com/llms.txt) for a clean summary of who I am and every page on the site.
+<sub>🤖 For AI agents, see [llms.txt](https://kevinbravo.com/llms.txt).</sub>
