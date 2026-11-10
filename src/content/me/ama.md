@@ -15,7 +15,7 @@ Getting to know a candidate is hard, and more when there is little time, too muc
 
 Product engineer with 5 years of experience building full-stack products, internal platforms, and AI agent systems across startups, government projects, and non-profits. Strong focus on high-ownership work: taking an ambiguous product or operations problem and turning it into architecture, data models, and software teams rely on every day.
 
-Sole engineer on a platform for the U.S. Department of State’s Venezuela Affairs Unit, and builder of production systems for Free2Z and AVAA (including SEP, a multi-tenant platform serving around 400 monthly active users across all three states where ProExcelencia operates). Outside of work, I’ve spent years volunteering in education, tech and community initiatives, organizing hackathons and tech events, mentoring students, and helping build programs focused on entrepreneurship, leadership, and technology access.
+Led engineering on a platform for the U.S. Department of State’s Venezuela Affairs Unit, and builder of production systems for Free2Z and AVAA (including SEP, a multi-tenant platform serving around 400 monthly active users across all three states where ProExcelencia operates). Outside of work, I’ve spent years volunteering in education, tech and community initiatives, organizing hackathons and tech events, mentoring students, and helping build programs focused on entrepreneurship, leadership, and technology access.
 
 ## 🤷‍♀️ Overall
 
@@ -81,7 +81,7 @@ I also like being close to the product and understanding why something is being 
 
 ### [Billingua Talent](/projects/billingua-talent)
 
-Billingua Talent is a multi-tenant professional networking and operations platform commissioned by the U.S. Department of State’s Venezuela Affairs Unit. It connects highly skilled bilingual Venezuelans to companies hiring locally, with role-based access for candidates, companies, advisors, and administrators. As the sole engineer, I owned requirements, architecture, data modeling, product design, full-stack implementation, testing, and launch readiness. The application was completed and validated through initial stakeholder testing, but did not launch after the program lost funding during the 2025 changes to U.S. international cooperation policy.
+Billingua Talent is a multi-tenant professional networking and operations platform commissioned by the U.S. Department of State’s Venezuela Affairs Unit. It connects highly skilled bilingual Venezuelans to companies hiring locally, with role-based access for candidates, companies, advisors, and administrators. I led the engineering, owning requirements, architecture, data modeling, product design, full-stack implementation, testing, and launch readiness, and brought in two engineers to help build the core features. The application was completed and validated through initial stakeholder testing, but did not launch after the program lost funding during the 2025 changes to U.S. international cooperation policy.
 
 ### [SEP - Participant Evaluation System](/projects/sep)
 
