@@ -13,13 +13,6 @@ language: en
 
 SEP, the **Participant Evaluation System**, is the platform I built to help AVAA manage ProExcelencia with live data instead of scattered spreadsheets. It is a multi-tenant system serving around 400 monthly active users across all three states where ProExcelencia operates in Venezuela, centralizing scholar records, activities, chat clubs, volunteer hours, attendance, and reports.
 
-<figure>
-  <img src="/assets/projects/sep/cover.avif" alt="Generated SEP cover showing an education operations platform" />
-  <figcaption>Generated SEP cover showing an education operations platform</figcaption>
-</figure>
-
-The cover summarizes the product direction: an education platform built around tracking, reporting, and program visibility.
-
 ## Context
 
 Before SEP, program tracking depended on Excel files, manual updates, and fragmented historical records. Simple questions took extra time to answer: which scholars were active, how many activities had been completed, which hours were logged, and what still needed attendance review.
