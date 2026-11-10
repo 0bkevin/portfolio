@@ -1,5 +1,5 @@
 ---
-import Navbar from "@components/layout/Navbar.svelte";
+import Navbar from "@components/layout/Navbar.astro";
 import Footer from "@components/layout/Footer.astro";
 import { ClientRouter } from "astro:transitions";
 import "@fontsource-variable/geist-mono";
@@ -280,7 +280,7 @@ const schemaItems = Array.isArray(structuredData)
   <body class="font-sans">
     {fixedNavbar ? <div aria-hidden="true" class="h-14"></div> : null}
     <header>
-      <Navbar client:only="svelte" shouldFixed={fixedNavbar} />
+      <Navbar fixed={fixedNavbar} />
     </header>
     <main>
       <slot />
