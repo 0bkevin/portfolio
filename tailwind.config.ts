@@ -1,4 +1,6 @@
-/** @type {import('tailwindcss').Config} */
+import typography from '@tailwindcss/typography';
+import type { Config } from 'tailwindcss';
+
 export default {
 	// Hover styles only apply on devices with a real pointer, so taps don't leave them stuck on.
 	future: { hoverOnlyWhenSupported: true },
@@ -6,7 +8,7 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+				sans: ['"Inter Variable"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
 				mono: ['"Geist Mono Variable"', 'ui-monospace', '"SF Mono"', 'Menlo', 'Consolas', 'monospace'],
 			},
 			animation: {
@@ -63,7 +65,7 @@ export default {
 		},
 	},
 	plugins: [
-		require('@tailwindcss/typography'),
+		typography,
 	],
 	darkMode: 'class',
-}
+} satisfies Config;

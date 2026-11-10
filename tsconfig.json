@@ -10,7 +10,6 @@
       "@data/*": ["./src/data/*"],
       "@scripts/*": ["./src/scripts/*"],
     },
-    "strictNullChecks": true, 
-    "allowJs": true 
+    "moduleDetection": "force"
   }
 }

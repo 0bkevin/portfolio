@@ -1,18 +1,8 @@
 <button type="button" class="scrollup fixed right-5 bottom-8 md:bottom-10 w-8 h-8 flex items-center justify-center bg-surface-900 dark:bg-surface-100 rounded-md z-40 opacity-0 pointer-events-none float-chrome hover:bg-surface-800 dark:hover:bg-surface-200" aria-label="Scroll to top">
   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white dark:text-surface-900"><path d="m18 15-6-6-6 6"/></svg>
 </button>
-<script is:inline>
-  // Inline scripts rerun after each client-side navigation, so keep state local
-  // and bind the scroll listener only once.
-  (() => {
-    const button = () => document.querySelector(".scrollup");
-    button()?.addEventListener("click", () => window.scrollTo(0, 0));
-    const update = () => button()?.classList.toggle("show-scroll", window.scrollY >= 560);
-    update();
-    if (window.__scrollUpBound) return;
-    window.__scrollUpBound = true;
-    window.addEventListener("scroll", update, { passive: true });
-  })();
+<script>
+  import "@scripts/scroll-up";
 </script>
 
 <style>

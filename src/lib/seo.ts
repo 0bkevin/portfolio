@@ -192,6 +192,9 @@ export const personRef = (): SchemaValue => ({
 });
 
 /** The one full Person definition. Pages must not override its fields. */
+/** Resolved meta values for one page, as rendered by SeoHead. */
+export type ResolvedSeo = ReturnType<typeof resolveSeo>;
+
 export const createPersonSchema = (): SchemaValue => ({
   "@context": "https://schema.org",
   "@type": "Person",
