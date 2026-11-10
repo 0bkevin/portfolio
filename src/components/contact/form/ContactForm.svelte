@@ -158,10 +158,12 @@
     bind:value={message}
   />
 
-  <div class={showTurnstileChallenge ? "min-h-[65px]" : "h-0 overflow-hidden"}>
-    <Turnstile 
-      siteKey={TURNSTILE_SITE_KEY} 
-      size={showTurnstileChallenge ? "normal" : "invisible"}
+  <!-- "invisible" is a widget mode set in the Cloudflare dashboard, not a valid size.
+       interaction-only keeps the widget hidden unless Cloudflare needs the visitor to act. -->
+  <div class={showTurnstileChallenge ? "min-h-[65px]" : ""}>
+    <Turnstile
+      siteKey={TURNSTILE_SITE_KEY}
+      size="flexible"
       appearance={showTurnstileChallenge ? "always" : "interaction-only"}
       on:callback={handleTurnstile}
       on:error={handleTurnstileError}
