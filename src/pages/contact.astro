@@ -2,7 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import PageHeader from "@components/PageHeader.astro";
 import ContactPanel from "@components/contact/ContactPanel.astro";
-import { createBreadcrumbSchema, createWebsiteSchema, seoConfig } from "@lib/seo";
+import { createBreadcrumbSchema, createWebsiteSchema, personRef, seoConfig } from "@lib/seo";
 
 const pageTitle = "Contact | Kevin Bravo, Product and AI Engineer";
 const pageDescription =
@@ -18,7 +18,7 @@ const structuredData = [
     name: pageTitle,
     description: pageDescription,
     url: new URL(pagePath, Astro.site).toString(),
-    about: { "@type": "Person", "@id": `${seoConfig.siteUrl}/#person`, name: seoConfig.author.name },
+    about: personRef(),
   },
   createBreadcrumbSchema([
     { name: "Home", item: "/" },

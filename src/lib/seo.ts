@@ -1,15 +1,14 @@
 const SITE_URL = "https://kevinbravo.com";
 const SITE_NAME = "Kevin Bravo";
-const SITE_TITLE = "Kevin Bravo — Backend, Infrastructure, AI & Full-Stack Engineer";
+const SITE_TITLE = "Kevin Bravo | Product & AI Engineer";
 const SITE_DESCRIPTION =
-  "Kevin Bravo is a software engineer building production-ready backend, infrastructure, AI engineering, and full-stack systems.";
+  "Kevin Bravo is a product and AI engineer in Caracas, Venezuela, building full-stack products, AI agents, and the tooling around them for startups, nonprofits, and public programs.";
 const DEFAULT_OG_IMAGE = "/assets/kevin-bravo-og.png";
-const DEFAULT_OG_IMAGE_ALT =
-  "Kevin Bravo — Product Engineer focused on full-stack, backend, infrastructure, and tooling";
+const DEFAULT_OG_IMAGE_ALT = "Kevin Bravo, Product & AI Engineer";
 const DEFAULT_OG_IMAGE_WIDTH = 1200;
 const DEFAULT_OG_IMAGE_HEIGHT = 630;
 const DEFAULT_OG_IMAGE_TYPE = "image/png";
-const AUTHOR_IMAGE = "/assets/main_photo.avif";
+const AUTHOR_IMAGE = "/assets/photo-1.jpeg";
 const DEFAULT_LOCALE = "en_US";
 const TWITTER_HANDLE = "@0bkevin";
 const DEFAULT_ROBOTS =
@@ -29,13 +28,26 @@ export const seoConfig = {
   twitterHandle: TWITTER_HANDLE,
   author: {
     name: "Kevin Bravo",
-    url: `${SITE_URL}/me/ama`,
+    alternateName: "0bkevin",
+    // The homepage is the entity home: every page points back to it.
+    url: `${SITE_URL}/`,
     image: `${SITE_URL}${AUTHOR_IMAGE}`,
-    jobTitle: "Software Engineer",
+    jobTitle: "Product & AI Engineer",
+    description:
+      "Product and AI engineer with 5+ years building full-stack products, AI agents, and the tooling around them for startups, nonprofits, and government-commissioned programs.",
+    email: "mailto:0bravokevin@gmail.com",
     sameAs: [
-      "https://github.com/0bkevin",
+      "https://x.com/0bkevin",
       "https://www.linkedin.com/in/0bkevin/",
-      "https://twitter.com/0bkevin",
+      "https://github.com/0bkevin",
+    ],
+    knowsAbout: [
+      "Product engineering",
+      "AI agents",
+      "Model Context Protocol (MCP)",
+      "Retrieval-augmented generation (RAG)",
+      "Full-stack development",
+      "Backend engineering",
     ],
   },
 } as const;
@@ -169,27 +181,35 @@ export const resolveSeo = ({
   };
 };
 
-export const createPersonSchema = (
-  overrides: Partial<SchemaValue> = {},
-): SchemaValue => ({
+export const PERSON_ID = `${SITE_URL}/#person`;
+
+/** How every other schema points at Kevin: same @id, name, and url on every page. */
+export const personRef = (): SchemaValue => ({
+  "@type": "Person",
+  "@id": PERSON_ID,
+  name: seoConfig.author.name,
+  url: seoConfig.author.url,
+});
+
+/** The one full Person definition. Pages must not override its fields. */
+export const createPersonSchema = (): SchemaValue => ({
   "@context": "https://schema.org",
   "@type": "Person",
-  "@id": `${SITE_URL}/#person`,
+  "@id": PERSON_ID,
   name: seoConfig.author.name,
+  alternateName: seoConfig.author.alternateName,
   url: seoConfig.author.url,
   image: seoConfig.author.image,
   jobTitle: seoConfig.author.jobTitle,
+  description: seoConfig.author.description,
+  email: seoConfig.author.email,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Caracas",
+    addressCountry: "VE",
+  },
+  knowsAbout: [...seoConfig.author.knowsAbout],
   sameAs: [...seoConfig.author.sameAs],
-  knowsAbout: [
-    "Backend engineering",
-    "Infrastructure",
-    "AI engineering",
-    "Full-stack engineering",
-    "Product engineering",
-    "Data systems",
-    "Blockchain security",
-  ],
-  ...overrides,
 });
 
 export const createWebsiteSchema = (
@@ -201,12 +221,7 @@ export const createWebsiteSchema = (
   name: SITE_NAME,
   url: SITE_URL,
   description: SITE_DESCRIPTION,
-  publisher: {
-    "@type": "Person",
-    "@id": `${SITE_URL}/#person`,
-    name: seoConfig.author.name,
-    url: seoConfig.author.url,
-  },
+  publisher: personRef(),
   ...overrides,
 });
 
@@ -244,12 +259,16 @@ export interface ProfilePageSchemaInput {
   name: string;
   description: string;
   url: string;
+  dateCreated?: Date | string | undefined;
+  dateModified?: Date | string | undefined;
 }
 
 export const createProfilePageSchema = ({
   name,
   description,
   url,
+  dateCreated,
+  dateModified,
 }: ProfilePageSchemaInput): SchemaValue => ({
   "@context": "https://schema.org",
   "@type": "ProfilePage",
@@ -257,10 +276,9 @@ export const createProfilePageSchema = ({
   name,
   description,
   url: toAbsoluteUrl(url),
-  mainEntity: {
-    "@type": "Person",
-    "@id": `${SITE_URL}/#person`,
-  },
+  dateCreated: normalizeDate(dateCreated),
+  dateModified: normalizeDate(dateModified || dateCreated),
+  mainEntity: personRef(),
   isPartOf: {
     "@type": "WebSite",
     "@id": `${SITE_URL}/#website`,
@@ -274,8 +292,6 @@ export interface ArticleSchemaInput {
   image?: string | null | undefined;
   datePublished: Date | string;
   dateModified?: Date | string | undefined;
-  authorName?: string | undefined;
-  authorUrl?: string | undefined;
   keywords?: string[] | undefined;
   inLanguage?: string | undefined;
 }
@@ -287,8 +303,6 @@ export const createArticleSchema = ({
   image,
   datePublished,
   dateModified,
-  authorName = seoConfig.author.name,
-  authorUrl = seoConfig.author.url,
   keywords = [],
   inLanguage = "en",
 }: ArticleSchemaInput): SchemaValue => ({
@@ -303,22 +317,8 @@ export const createArticleSchema = ({
   dateModified: normalizeDate(dateModified || datePublished),
   inLanguage,
   keywords,
-  author: {
-    "@type": "Person",
-    "@id": `${SITE_URL}/#person`,
-    name: authorName,
-    url: authorUrl,
-  },
-  publisher: {
-    "@type": "Person",
-    "@id": `${SITE_URL}/#person`,
-    name: seoConfig.author.name,
-    url: seoConfig.author.url,
-    image: {
-      "@type": "ImageObject",
-      url: seoConfig.author.image,
-    },
-  },
+  author: personRef(),
+  publisher: personRef(),
 });
 
 export interface ProjectSchemaInput {
@@ -353,18 +353,8 @@ export const createProjectSchema = ({
   description,
   url: toAbsoluteUrl(url),
   image: toAbsoluteUrl(image || DEFAULT_OG_IMAGE),
-  creator: {
-    "@type": "Person",
-    "@id": `${SITE_URL}/#person`,
-    name: seoConfig.author.name,
-    url: seoConfig.author.url,
-  },
-  author: {
-    "@type": "Person",
-    "@id": `${SITE_URL}/#person`,
-    name: seoConfig.author.name,
-    url: seoConfig.author.url,
-  },
+  creator: personRef(),
+  author: personRef(),
   datePublished: normalizeDate(datePublished),
   dateCreated: normalizeDate(datePublished),
   keywords,

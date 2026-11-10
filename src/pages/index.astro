@@ -9,61 +9,27 @@ import ProjectsSection from "../components/projects/section/ProjectsSection.astr
 import BlogSection from "../components/blog/section/BlogSection.astro";
 import AchievementsSection from "../components/achievements/AchievementsSection.astro";
 import TalksSection from "../components/talks/TalksSection.astro";
-import { createPersonSchema, createWebsiteSchema, seoConfig } from "@lib/seo";
+import { createPersonSchema, createProfilePageSchema, createWebsiteSchema, seoConfig } from "@lib/seo";
 
-const title = "Kevin Bravo | Product Engineer, Full-Stack Software & AI Engineer";
+const title = "Kevin Bravo | Product & AI Engineer";
 const description =
-  "Explore Kevin Bravo's software engineering portfolio, case studies, and technical writing on full-stack product engineering, internal platforms, AI agents, and backend systems.";
+  "Kevin Bravo is a product and AI engineer in Caracas, Venezuela. Case studies, projects, talks, and writing on full-stack products, AI agents, MCP, and backend systems.";
 const image = seoConfig.defaultOgImage;
 
-const webPageSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "@id": `${seoConfig.siteUrl}/#webpage`,
+// The homepage is Kevin's entity home: a ProfilePage whose main entity is the one Person definition.
+const profilePageSchema = createProfilePageSchema({
   name: title,
   description,
-  url: Astro.url.toString(),
-  isPartOf: {
-    "@type": "WebSite",
-    "@id": `${seoConfig.siteUrl}/#website`,
-    name: seoConfig.siteName,
-    url: seoConfig.siteUrl,
-  },
-  about: {
-    "@type": "Person",
-    "@id": `${seoConfig.siteUrl}/#person`,
-    name: seoConfig.author.name,
-    url: seoConfig.author.url,
-    jobTitle: seoConfig.author.jobTitle,
-  },
-  primaryImageOfPage: {
-    "@type": "ImageObject",
-    url: new URL(image, Astro.site).toString(),
-  },
-};
-
-const websiteSchema = createWebsiteSchema({
-  name: seoConfig.siteName,
-  url: seoConfig.siteUrl,
-  description,
+  url: `${seoConfig.siteUrl}/`,
+  // Update dateModified when the profile content on this page changes.
+  dateCreated: "2024-09-11",
+  dateModified: "2026-11-10",
 });
 
-const personSchema = createPersonSchema({
-  description:
-    "Product engineer focused on full-stack products, internal platforms, AI agents, and backend systems, with full ownership from architecture to production.",
-  knowsAbout: [
-    "Product engineering",
-    "Full-stack engineering",
-    "AI engineering",
-    "AI agents",
-    "Internal platforms",
-    "Backend engineering",
-    "Data systems",
-    "Blockchain security",
-  ],
-});
+const websiteSchema = createWebsiteSchema();
+const personSchema = createPersonSchema();
 
-const structuredData = [websiteSchema, personSchema, webPageSchema];
+const structuredData = [websiteSchema, personSchema, profilePageSchema];
 ---
 
 <Layout

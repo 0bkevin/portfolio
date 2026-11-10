@@ -6,7 +6,6 @@ import { formatDateToDisplay, getReadingTime } from "../../lib/utils";
 import {
   createBreadcrumbSchema,
   createCollectionPageSchema,
-  createPersonSchema,
   createWebsiteSchema,
   seoConfig,
 } from "@lib/seo";
@@ -53,9 +52,6 @@ const structuredData = [
     { name: "Home", item: "/" },
     { name: "Blog", item: "/0b" },
   ]),
-  createPersonSchema({
-    mainEntityOfPage: `${seoConfig.siteUrl}/0b`,
-  }),
 ];
 ---
 

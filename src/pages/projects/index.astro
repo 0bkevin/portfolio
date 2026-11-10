@@ -7,6 +7,7 @@ import {
   createBreadcrumbSchema,
   createCollectionPageSchema,
   createWebsiteSchema,
+  personRef,
   seoConfig,
 } from "@lib/seo";
 
@@ -29,13 +30,7 @@ const webpageSchema = createCollectionPageSchema({
   name: pageTitle,
   description: pageDescription,
   url: new URL(pagePath, Astro.site).toString(),
-  about: {
-    "@type": "Person",
-    "@id": `${seoConfig.siteUrl}/#person`,
-    name: seoConfig.author.name,
-    url: seoConfig.author.url,
-    jobTitle: seoConfig.author.jobTitle,
-  },
+  about: personRef(),
 });
 
 const itemListSchema = {
