@@ -37,13 +37,12 @@ const capitalize = (text: string) => text.charAt(0).toUpperCase() + text.slice(1
     </PageHeader>
 
     <section aria-labelledby="work-heading">
-      <SectionHeading num="01" label="Work" />
       <h2 id="work-heading" class="sr-only">Work history</h2>
 
-      <ol class="mt-2">
+      <ol class="flex flex-col gap-16 md:gap-20">
         {
           EXPERIENCE.map((job, index) => (
-            <li class="grid gap-4 border-b border-surface-200 py-10 last:border-b-0 dark:border-surface-800/70 md:grid-cols-[11rem_1fr] md:gap-10 md:py-12">
+            <li class="grid gap-4 md:grid-cols-[11rem_1fr] md:gap-10">
               <div class="font-mono text-[12.5px] lowercase text-surface-500 md:sticky md:top-24 md:self-start">
                 <p class="text-accent-500 dark:text-accent-400">{String(index + 1).padStart(2, "0")}</p>
                 <p class="mt-2 text-surface-700 dark:text-surface-300">{job.period}</p>
@@ -83,13 +82,13 @@ const capitalize = (text: string) => text.charAt(0).toUpperCase() + text.slice(1
     </section>
 
     <section class="mt-16 md:mt-24" aria-labelledby="volunteering-heading">
-      <SectionHeading num="02" label="Leadership & volunteering" />
+      <SectionHeading label="Leadership & volunteering" />
       <h2 id="volunteering-heading" class="section-title">Outside of work</h2>
 
       <ol class="mt-6 font-mono md:mt-10">
         {
           VOLUNTEERING.map((item) => (
-            <li class="flex flex-col gap-2 border-b border-surface-200 py-5 last:border-b-0 dark:border-surface-800/70 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+            <li class="flex flex-col gap-2 py-5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
               <div class="min-w-0">
                 <p class="text-[15px] text-surface-900 dark:text-surface-100">{item.role}</p>
                 <p class="mt-1 text-[12.5px] text-surface-500">{item.org}</p>
@@ -104,7 +103,7 @@ const capitalize = (text: string) => text.charAt(0).toUpperCase() + text.slice(1
       </ol>
     </section>
 
-    <section class="mt-16 rounded-xl border border-surface-200 p-6 dark:border-surface-800 md:mt-24 md:p-10" aria-labelledby="next-heading">
+    <section class="mt-20 md:mt-28" aria-labelledby="next-heading">
       <h2 id="next-heading" class="text-2xl font-bold tracking-tight text-surface-900 dark:text-surface-100">
         Want to work together?
       </h2>

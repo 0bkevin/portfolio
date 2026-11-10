@@ -1,6 +1,7 @@
 ---
 interface Props {
-  num: string;
+  /** Optional section number, e.g. "03". Without it the label reads "// label". */
+  num?: string;
   label: string;
 }
 
@@ -10,7 +11,7 @@ const { num, label } = Astro.props;
 <p class="section-heading">
   <span>
     <span class="section-num" aria-hidden="true">// {num}</span>
-    <span aria-hidden="true">·</span>
+    {num && <span aria-hidden="true">·</span>}
     {label}
   </span>
 </p>

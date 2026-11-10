@@ -18,8 +18,8 @@ const { label, title, backHref = "/", backLabel = "home" } = Astro.props;
     <span class="transition-transform group-hover:-translate-x-0.5" aria-hidden="true">←</span>
     {backLabel}
   </a>
-  <p class="section-heading fade-in-up" style="--d: 0ms">
-    <span><span class="section-num" aria-hidden="true">//</span> {label}</span>
+  <p class="page-label fade-in-up" style="--d: 0ms">
+    <span class="section-num" aria-hidden="true">//</span> {label}
   </p>
   <h1 class="fade-in-up text-4xl font-bold tracking-tight text-surface-900 dark:text-surface-100 md:text-5xl" style="--d: 60ms">
     {title}

@@ -70,7 +70,7 @@ const structuredData = [projectSchema, breadcrumbSchema];
           <span class="transition-transform group-hover:-translate-x-0.5" aria-hidden="true">←</span>
           all projects
         </a>
-        <p class="section-heading fade-in-up" style="--d: 0ms">
+        <p class="page-label fade-in-up" style="--d: 0ms">
           <span><span class="section-num" aria-hidden="true">//</span> case study · <time datetime={project.data.pubYear.toISOString()}>{projectYear}</time></span>
         </p>
         <h1 class="fade-in-up text-4xl font-bold leading-[1.05] tracking-tight text-surface-900 dark:text-surface-100 md:text-6xl" style="--d: 60ms">
@@ -146,7 +146,7 @@ const structuredData = [projectSchema, breadcrumbSchema];
 
 
 
-          <div class="mt-16 flex flex-col sm:flex-row gap-3 md:hidden pt-8 border-t border-surface-200 dark:border-surface-800">
+          <div class="mt-16 flex flex-col sm:flex-row gap-3 md:hidden ">
             {project.data.demoUrl && (
               <a
                 href={project.data.demoUrl}
