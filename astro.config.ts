@@ -29,7 +29,12 @@ export default defineConfig({
   trailingSlash: 'never',
   // Prerendered pages are emitted as `page.html`, so Cloudflare Pages serves them at the
   // canonical no-slash URL instead of redirecting `/page` to `/page/`.
-  build: { format: 'file' },
+  build: {
+    format: 'file',
+    // Inline the CSS into each page: on slow mobile connections the extra round trips for
+    // stylesheets cost more than the ~24 KB (gzipped) they add to the HTML.
+    inlineStylesheets: 'always',
+  },
   adapter: cloudflare(),
   site: 'https://kevinbravo.com',
 });
