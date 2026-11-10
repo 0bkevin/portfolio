@@ -1,0 +1,47 @@
+---
+import Layout from "@layouts/Layout.astro";
+
+// Rendered on request (not prerendered) so the trailing-slash middleware still runs first:
+// a prerendered 404 would answer /experience/ before it could redirect to /experience.
+
+const LINKS = [
+  { href: "/", label: "home" },
+  { href: "/experience", label: "experience" },
+  { href: "/projects", label: "projects" },
+  { href: "/0b", label: "writing" },
+  { href: "/contact", label: "contact" },
+];
+---
+
+<Layout title="Page not found | Kevin Bravo" description="This page does not exist." noindex>
+  <div class="home-col flex min-h-[70vh] flex-col justify-center pb-20 pt-10">
+    <p class="page-label fade-in-up" style="--d: 0ms">
+      <span class="section-num" aria-hidden="true">//</span> 404 · not found
+    </p>
+    <h1 class="fade-in-up text-[2rem] font-bold tracking-tight text-surface-900 dark:text-surface-100 sm:text-4xl md:text-5xl" style="--d: 60ms">
+      This page doesn't exist
+    </h1>
+    <p class="fade-in-up mt-5 max-w-xl text-base leading-relaxed text-surface-600 dark:text-surface-400 md:text-lg" style="--d: 120ms">
+      The link may be old or mistyped. Here are the places worth visiting instead.
+    </p>
+
+    <nav class="fade-in-up mt-10 flex flex-wrap items-center gap-3" style="--d: 180ms" aria-label="Pages">
+      <a
+        href="/"
+        class="inline-flex items-center gap-2 rounded-lg bg-surface-900 px-5 py-3 font-mono text-[13px] lowercase text-white transition-colors hover:bg-surface-800 dark:bg-surface-100 dark:text-surface-900 dark:hover:bg-surface-200"
+      >
+        <span aria-hidden="true">←</span> back home
+      </a>
+      {
+        LINKS.slice(1).map(({ href, label }) => (
+          <a
+            href={href}
+            class="inline-flex items-center rounded-lg border border-surface-200 px-4 py-3 font-mono text-[13px] lowercase text-surface-600 transition-colors hover:border-surface-300 hover:text-surface-900 dark:border-surface-800 dark:text-surface-400 dark:hover:border-surface-700 dark:hover:text-surface-100"
+          >
+            {label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</Layout>
