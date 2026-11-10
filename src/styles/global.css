@@ -173,6 +173,69 @@
     html[data-scroll-dir="down"] .float-chrome:not(:focus-visible) { transform: none; }
   }
 
+  /* Article images open full size in a lightbox (see Layout.astro). */
+  .prose img:not(a img) {
+    cursor: zoom-in;
+  }
+
+  .image-zoom {
+    max-width: none;
+    max-height: none;
+    width: 100vw;
+    height: 100dvh;
+    margin: 0;
+    padding: 1rem;
+    border: 0;
+    background: transparent;
+    display: none;
+    cursor: zoom-out;
+  }
+
+  .image-zoom[open] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .image-zoom::backdrop {
+    background: rgb(10 10 10 / 0.88);
+  }
+
+  .image-zoom img {
+    max-width: 100%;
+    max-height: calc(100dvh - 4rem);
+    object-fit: contain;
+    border-radius: 0.5rem;
+  }
+
+  .image-zoom-hint {
+    @apply font-mono text-[12px] lowercase text-surface-400;
+  }
+
+  /* On portrait phones a landscape screenshot barely grows, so show it at twice the
+     screen width and let the reader pan around it. */
+  @media (max-aspect-ratio: 1/1) {
+    .image-zoom[open] {
+      overflow: auto;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .image-zoom img {
+      width: 200vw;
+      max-width: none;
+      max-height: none;
+    }
+
+    .image-zoom-hint {
+      position: sticky;
+      left: 0;
+      align-self: flex-start;
+    }
+  }
+
   /* Keep the floating scroll-to-top button out of the way while someone types. */
   body:has(:is(input, textarea):focus) .scrollup {
     opacity: 0 !important;

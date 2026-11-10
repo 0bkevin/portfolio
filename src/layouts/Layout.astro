@@ -215,6 +215,32 @@ const schemaItems = Array.isArray(structuredData)
     </script>
 
     <script is:inline>
+      // Tap or click any article/case study image to see it full size; tap again or press Escape to close.
+      (() => {
+        if (window.__zoomBound) return;
+        window.__zoomBound = true;
+        document.addEventListener("click", (event) => {
+          const img = event.target.closest?.(".prose img");
+          if (!img || img.closest("a")) return;
+          let dialog = document.getElementById("image-zoom");
+          if (!dialog) {
+            dialog = document.createElement("dialog");
+            dialog.id = "image-zoom";
+            dialog.className = "image-zoom";
+            dialog.setAttribute("aria-label", "Enlarged image");
+            dialog.innerHTML = '<img alt="" /><p class="image-zoom-hint">tap or press esc to close</p>';
+            dialog.addEventListener("click", () => dialog.close());
+            document.body.appendChild(dialog);
+          }
+          const big = dialog.querySelector("img");
+          big.src = img.currentSrc || img.src;
+          big.alt = img.alt;
+          dialog.showModal();
+        });
+      })();
+    </script>
+
+    <script is:inline>
       // Floating controls (scroll-to-top, the article contents pill) tuck away while the
       // reader scrolls down and come back on scroll up, near the top, or at the end of the page.
       (() => {
