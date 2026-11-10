@@ -10,69 +10,26 @@
   let activeNav = "";
   let isMobileMenuOpen = false;
 
-  const setActive = (link) => { activeNav = link; };
   const toggleMobileMenu = () => { isMobileMenuOpen = !isMobileMenuOpen; };
   const closeMobileMenu = () => { isMobileMenuOpen = false; };
 
+  // A nav item lights up only on its own page (and the pages under it), never for
+  // homepage sections, so the highlight always means "you are here".
+  const pageFor = (path) => {
+    const match = NAV_ITEMS.find((item) => !item.link.includes("#") && (path === item.link || path.startsWith(`${item.link}/`)));
+    return match ? match.link : "";
+  };
+
   onMount(() => {
-    const updateActiveNav = () => {
-      const path = window.location.pathname;
-      const hash = window.location.hash;
-
-      if (path.startsWith("/0b")) {
-        activeNav = "/0b";
-      } else if (path.startsWith("/me/ama")) {
-        activeNav = "/me/ama";
-      } else if (path.startsWith("/experience")) {
-        activeNav = "/#experience";
-      } else if (path.startsWith("/projects")) {
-        activeNav = "/#projects";
-      } else if (path === "/" || path === "") {
-        if (hash === "#contact") activeNav = "/#contact";
-        else if (hash === "#about") activeNav = "/#about";
-        else if (hash === "#projects") activeNav = "/#projects";
-        else if (hash === "#experience") activeNav = "/#experience";
-        else if (hash === "#blog") activeNav = "/0b";
-        else if (hash === "#home" || hash === "") activeNav = "/#home";
-      }
-    };
-
-    updateActiveNav();
-    window.addEventListener("hashchange", updateActiveNav);
+    activeNav = pageFor(window.location.pathname.replace(/\/$/, "") || "/");
 
     const handleKey = (e) => {
       if (e.key === "Escape") isMobileMenuOpen = false;
     };
     window.addEventListener("keydown", handleKey);
 
-    // Setup intersection observer for homepage sections
-    let observer;
-    if (window.location.pathname === "/" || window.location.pathname === "") {
-      const sections = document.querySelectorAll("section[id]");
-      observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const id = entry.target.getAttribute("id");
-              if (id === "contact") activeNav = "/#contact";
-              else if (id === "about") activeNav = "/#about";
-              else if (id === "projects") activeNav = "/#projects";
-              else if (id === "experience") activeNav = "/#experience";
-              else if (id === "blog") activeNav = "/0b";
-              else if (id === "home") activeNav = "/#home";
-            }
-          });
-        },
-        { rootMargin: "-40% 0px -40% 0px", threshold: 0 }
-      );
-
-      sections.forEach((section) => observer.observe(section));
-    }
-
     return () => {
-      window.removeEventListener("hashchange", updateActiveNav);
       window.removeEventListener("keydown", handleKey);
-      if (observer) observer.disconnect();
     };
   });
 
@@ -144,7 +101,7 @@
           <li>
             <a
               href={item.link}
-              on:click={() => setActive(item.link)}
+              
               aria-current={activeNav === item.link ? 'page' : undefined}
               class="text-[13px] lowercase text-inherit no-underline px-3 py-1.5 rounded-md transition-all duration-200 ease-in motion-reduce:transition-none  {activeNav === item.link ? 'opacity-100 font-semibold text-accent-500 dark:text-accent-400' : 'font-medium opacity-50 hover:opacity-100'}"
             >
@@ -197,7 +154,7 @@
             <li>
               <a
                 href={item.link}
-                on:click={() => { setActive(item.link); closeMobileMenu(); }}
+                on:click={closeMobileMenu}
                 aria-current={activeNav === item.link ? 'page' : undefined}
                 class="block px-4 py-2.5 rounded-md text-[14px] lowercase no-underline transition-colors duration-200 ease-out
                   {activeNav === item.link
