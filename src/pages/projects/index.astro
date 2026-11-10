@@ -1,5 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import SectionHeading from "@components/SectionHeading.astro";
 import PageHeader from "@components/PageHeader.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import {
@@ -16,6 +17,7 @@ const sortedProjects = projects.sort(
 );
 
 const featuredProject = sortedProjects[0];
+const secondaryProjects = sortedProjects.slice(1);
 
 const pageTitle = "Backend, Infrastructure, AI & Full-Stack Projects | Kevin Bravo";
 const pageDescription =
@@ -79,87 +81,130 @@ const structuredData = [
       the product decisions.
     </PageHeader>
 
-    <section aria-labelledby="case-studies-heading">
-      <div class="mb-2 flex items-center justify-between font-mono text-[12px] lowercase text-surface-500">
-        <h2 id="case-studies-heading">all case studies</h2>
-        <span>{sortedProjects.length} projects</span>
-      </div>
+    {
+      featuredProject && (
+        <section class="mb-16 md:mb-24" aria-labelledby="featured-heading">
+          <SectionHeading num="01" label="Featured" />
+          <h2 id="featured-heading" class="sr-only">Featured case study</h2>
 
-      <ol class="case-index">
-        {
-          sortedProjects.map((project, index) => (
-            <li>
-              <a
-                href={project.data.studyCaseUrl ?? `/projects/${project.id}`}
-                class="case-row group grid gap-5 border-b border-surface-200 py-8 dark:border-surface-800/70 md:grid-cols-[3rem_15rem_1fr] md:items-start md:gap-6"
-              >
-                <span class="font-mono text-[13px] text-surface-400 transition-colors group-hover:text-accent-500 dark:text-surface-600 dark:group-hover:text-accent-400">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <div class="aspect-[16/10] overflow-hidden rounded-lg border border-surface-200 bg-surface-100 dark:border-surface-800 dark:bg-surface-900">
-                  <img
-                    src={project.data.image.url}
-                    alt={project.data.image.alt}
-                    class="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-[1.04]"
-                    loading={index === 0 ? "eager" : "lazy"}
-                    decoding="async"
-                  />
-                </div>
-                <div class="min-w-0">
-                  <p class="font-mono text-[12px] lowercase text-surface-500">
-                    {project.data.pubYear.getFullYear()}
-                    {project.id === featuredProject?.id && (
-                      <span class="ml-2 inline-flex items-center gap-1.5 text-accent-500 dark:text-accent-400">
-                        <span class="h-1.5 w-1.5 rounded-full bg-current" aria-hidden="true" />
-                        featured
+          <a
+            href={featuredProject.data.studyCaseUrl ?? `/projects/${featuredProject.id}`}
+            class="group mt-6 grid gap-6 md:mt-8 md:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] md:items-center md:gap-10"
+          >
+            <div class="case-shot relative aspect-[16/10] overflow-hidden rounded-xl border border-surface-200 bg-surface-100 dark:border-surface-800 dark:bg-surface-900">
+              <img
+                src={featuredProject.data.image.url}
+                alt={featuredProject.data.image.alt}
+                class="h-full w-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-[1.03]"
+                loading="eager"
+                decoding="async"
+                fetchpriority="high"
+              />
+            </div>
+
+            <div class="min-w-0">
+              <p class="font-mono text-[12px] lowercase text-surface-500">
+                <span class="text-accent-500 dark:text-accent-400">01</span>
+                <span class="mx-1.5 text-surface-300 dark:text-surface-700">·</span>
+                {featuredProject.data.pubYear.getFullYear()}
+              </p>
+              <h3 class="case-title mt-3 text-3xl font-bold tracking-tight text-surface-900 dark:text-surface-100 lg:text-4xl">
+                {featuredProject.data.title}
+              </h3>
+              <p class="mt-4 text-[15px] leading-relaxed text-surface-600 dark:text-surface-400 md:text-base">
+                {featuredProject.data.description}
+              </p>
+              <ul class="mt-5 flex flex-wrap gap-x-4 gap-y-1 font-mono text-[12px] lowercase text-surface-500">
+                {featuredProject.data.tags.slice(0, 4).map((tag) => (
+                  <li>{tag}</li>
+                ))}
+              </ul>
+              <span class="mt-6 inline-flex items-center gap-1.5 font-mono text-[13px] lowercase text-accent-500 dark:text-accent-400">
+                read case study
+                <span class="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
+              </span>
+            </div>
+          </a>
+        </section>
+      )
+    }
+
+    {
+      secondaryProjects.length > 0 && (
+        <section aria-labelledby="more-heading">
+          <SectionHeading num="02" label="More case studies" />
+          <h2 id="more-heading" class="sr-only">More case studies</h2>
+
+          <ul class="mt-6 grid gap-x-6 gap-y-12 sm:grid-cols-2 md:mt-8 lg:grid-cols-3">
+            {secondaryProjects.map((project, index) => (
+              <li>
+                <a href={project.data.studyCaseUrl ?? `/projects/${project.id}`} class="group flex flex-col gap-4">
+                  <div class="case-shot relative aspect-video overflow-hidden rounded-lg border border-surface-200 bg-surface-100 dark:border-surface-800 dark:bg-surface-900">
+                    <img
+                      src={project.data.image.url}
+                      alt={project.data.image.alt}
+                      class="h-full w-full object-cover transition-transform duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-[1.03]"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="min-w-0">
+                    <p class="font-mono text-[12px] lowercase text-surface-500">
+                      <span class="text-surface-400 transition-colors group-hover:text-accent-500 dark:text-surface-600 dark:group-hover:text-accent-400">
+                        {String(index + 2).padStart(2, "0")}
                       </span>
-                    )}
-                  </p>
-                  <h3 class="case-title mt-2 text-2xl font-bold tracking-tight text-surface-900 dark:text-surface-100 md:text-3xl">
-                    {project.data.title}
-                  </h3>
-                  <p class="mt-3 max-w-xl text-sm leading-relaxed text-surface-600 dark:text-surface-400 md:text-[15px]">
-                    {project.data.description}
-                  </p>
-                  <ul class="mt-4 flex flex-wrap gap-x-4 gap-y-1 font-mono text-[12px] lowercase text-surface-500">
-                    {project.data.tags.slice(0, 4).map((tag) => (
-                      <li>{tag}</li>
-                    ))}
-                  </ul>
-                  <span class="mt-5 inline-flex items-center gap-1.5 font-mono text-[13px] lowercase text-accent-500 dark:text-accent-400">
-                    read case study
-                    <span class="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
-                  </span>
-                </div>
-              </a>
-            </li>
-          ))
-        }
-      </ol>
-    </section>
+                      <span class="mx-1.5 text-surface-300 dark:text-surface-700">·</span>
+                      {project.data.pubYear.getFullYear()}
+                    </p>
+                    <h3 class="mt-2 text-lg font-semibold tracking-tight text-surface-900 transition-colors group-hover:text-accent-500 dark:text-surface-100 dark:group-hover:text-accent-400">
+                      {project.data.title}
+                      <span class="inline-block -translate-x-1 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100" aria-hidden="true">→</span>
+                    </h3>
+                    <p class="mt-1.5 line-clamp-3 text-sm leading-relaxed text-surface-600 dark:text-surface-400">
+                      {project.data.description}
+                    </p>
+                    <ul class="mt-3 flex flex-wrap gap-x-3 gap-y-1 font-mono text-[11px] lowercase text-surface-500">
+                      {project.data.tags.slice(0, 3).map((tag) => (
+                        <li>{tag}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
   </div>
 </Layout>
 
 <style>
+  .case-shot {
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
   .case-title {
     transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
 
-  .case-row {
-    transition: opacity 0.3s;
-  }
-
-  @media (hover: hover) and (min-width: 768px) {
-    .case-index:hover .case-row:not(:hover) {
-      opacity: 0.55;
+  @media (hover: hover) {
+    .group:hover .case-shot {
+      transform: translate(-3px, -3px);
+      box-shadow: 6px 6px 0 #ca8a04;
     }
 
-    .case-row:hover .case-title {
+    :global(.dark) .group:hover .case-shot {
+      box-shadow: 6px 6px 0 #facc15;
+    }
+
+    .group:hover .case-title {
       transform: translateX(0.5rem);
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .case-shot,
     .case-title {
       transition: none;
     }
