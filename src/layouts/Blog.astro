@@ -2,13 +2,12 @@
 import Layout from "./Layout.astro";
 import { formatDateToDisplay, getReadingTime } from "@lib/utils";
 import type { CollectionEntry } from "astro:content";
-import TableOfContents from "@components/article/TableOfContents.svelte";
+import TableOfContents from "@components/article/TableOfContents.astro";
+import { tocEntries } from "@components/article/toc";
 import ScrollUp from "@components/layout/ScrollUp.astro";
 
 type ContentEntry = CollectionEntry<"blogs"> | CollectionEntry<"me">;
 type TableOfContentsHeading = { text: string; depth: number; slug: string };
-type TocItem = { text: string; level: number; id: string };
-
 interface Props {
   entry: ContentEntry;
   tableOfContents: TableOfContentsHeading[];
@@ -100,13 +99,7 @@ const resolvedCanonical =
 const showCanonicalSource =
   typeof resolvedCanonical === "string" && /^https?:\/\//i.test(resolvedCanonical);
 
-const tocItems: TocItem[] = tableOfContents
-  .filter((heading) => heading.depth >= 2 && heading.depth <= 4)
-  .map((heading) => ({
-    text: heading.text,
-    level: heading.depth,
-    id: heading.slug,
-  }));
+const tocItems = tocEntries(tableOfContents);
 ---
 
 <Layout
@@ -224,7 +217,7 @@ const tocItems: TocItem[] = tableOfContents
 
     </article>
 
-    {tocItems.length > 0 ? <TableOfContents items={tocItems} client:only="svelte" /> : null}
+    {tocItems.length > 0 ? <TableOfContents entries={tocItems} /> : null}
   </div>
 
   <ScrollUp />
