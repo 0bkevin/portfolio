@@ -1,7 +1,8 @@
 ---
 title: "Ethernaut solution 2: Fallout"
 pubDate: '2022-07-02T12:00:00Z'
-image: {url: 'https://cdn.hashnode.com/res/hashnode/image/upload/v1643939982270/QJAGPa0iu.jpeg', alt: 'Ethernaut Fallout challenge cover image'}
+image: {url: '/assets/blog/ethernaut-2/QJAGPa0iu.avif', alt: 'Ethernaut Fallout challenge cover image'}
+ogImage: {url: 'https://cdn.hashnode.com/res/hashnode/image/upload/v1643939982270/QJAGPa0iu.jpeg', alt: 'Ethernaut Fallout challenge cover image'}
 description: Learn how to solve the Ethernaut challenge "Fallout" by exploiting a typo in the constructor function. This step-by-step guide uses Brownie to take ownership of the contract and submit the solution. Perfect for blockchain developers and security enthusiasts.
 tags: [brownie, blockchain, smart contracts, python]
 language: en
@@ -92,19 +93,19 @@ What would happen if that constructor will be now a ordinary, dumb, and boring f
 
 **That is just what happened with this contract.**
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643940589173/oSw_ptPfL.png  )
+![image.png](/assets/blog/ethernaut-2/oSw_ptPfL.avif  )
 
 Did you see it?
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643940607647/ZVEFOfFfN.png  )
+![image.png](/assets/blog/ethernaut-2/ZVEFOfFfN.avif  )
 
 Now?
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643940637518/V9I0e2C0h.png  )
+![image.png](/assets/blog/ethernaut-2/V9I0e2C0h.avif  )
 
 What about now?
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643940658554/ZaG8gJLHu.png  )
+![image.png](/assets/blog/ethernaut-2/ZaG8gJLHu.avif  )
 
 Heh :v
 
@@ -145,7 +146,7 @@ Since we are only using one function `Fal1back` , that's the only one that we h
 
 Okay, now, let's grab the instance address, in the browser console you can see it writing: `instance`.
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643940852304/kZkY5IzDx.png  )
+![image.png](/assets/blog/ethernaut-2/kZkY5IzDx.avif  )
 
 Okay, now lets create a script to hack the contract, in our scripts folder lets create a new file
 
@@ -195,7 +196,7 @@ $ brownie run scripts/hack.py --network rinkeby
 
 **That's it.**
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643941108371/737V5GdKq.png  )
+![image.png](/assets/blog/ethernaut-2/737V5GdKq.avif  )
 
 Now, **let's submit the instance to the ethernaut contract.**
 
@@ -203,7 +204,7 @@ Now, **let's submit the instance to the ethernaut contract.**
 
 To grab the address just put `ethernaut.address` in the browser console.
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643941131858/mi0hIiXMw.png  )
+![image.png](/assets/blog/ethernaut-2/mi0hIiXMw.avif  )
 
 Store the address in a variable
 
@@ -211,7 +212,7 @@ And to grab the abi just grab it from the ethernaut contract object that is in t
 
 Write `ethernaut` in the browser console.
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643941240365/naNt2QfKL.png  )
+![image.png](/assets/blog/ethernaut-2/naNt2QfKL.avif  )
 
 And paste it in your file
 
@@ -247,7 +248,7 @@ After that, we just need to call the `submitLevelInstance` Method to submit your
 brownie run scripts/submit_contract.py --network rinkeby
 ```
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643941331614/aUgRsLdj5.png  )
+![image.png](/assets/blog/ethernaut-2/aUgRsLdj5.avif  )
 
 **And, that's it. We just completed the second challenge.** 😝
 

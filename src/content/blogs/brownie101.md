@@ -1,7 +1,8 @@
 ---
 title: "Brownie: everything you need to know to write, test and deploy your smart contracts."
 pubDate: '2023-10-01T12:00:00Z'
-image: {url: 'https://cdn.hashnode.com/res/hashnode/image/upload/v1643917478735/Um-sGfhzH.png', alt: 'Brownie smart contract development tutorial cover image'}
+image: {url: '/assets/blog/brownie101/Um-sGfhzH.avif', alt: 'Brownie smart contract development tutorial cover image'}
+ogImage: {url: 'https://cdn.hashnode.com/res/hashnode/image/upload/v1643917478735/Um-sGfhzH.png', alt: 'Brownie smart contract development tutorial cover image'}
 description: We’ll walk through and explore all the main areas of functionality and I'll give you some tricks you can use to make your development process more easy.
 tags: [brownie, blockchain, smart contracts, python]
 language: en
@@ -70,7 +71,7 @@ To make sure that everything works fine, in both scenarios, write
 
 `$ brownie`
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643839805789/TCsH9-fK8.png)
+![image.png](/assets/blog/brownie101/TCsH9-fK8.avif)
 
 If you need more information about the installation process of Brownie, you can follow [this tutorial](https://iamdefinitelyahuman.medium.com/getting-started-with-brownie-part-1-9b2181f4cb99) made **by Ben Hauser on Medium**
 
@@ -195,9 +196,9 @@ And then, having the path that rute us to the open zeppelin package in NPM, that
 
 We can obtain that searching by googling *open zeppelin ownable contract*
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643847873973/vdLDGCg89.png)
+![image.png](/assets/blog/brownie101/vdLDGCg89.avif)
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643849387151/p_Qjfqc0-.png)
+![image.png](/assets/blog/brownie101/p_Qjfqc0-.avif)
 
 And we can use this information to make the path, should be wrote in this format: `<organization/repo>@<version>`
 
@@ -217,11 +218,11 @@ And finally, we need to add the package version we want to work with.
 
 In the root of the repo we can see all the releases (the versions).
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643849331423/AWpD6ZL9h.png)
+![image.png](/assets/blog/brownie101/AWpD6ZL9h.avif)
 
 By pressing in **releases** you can see all the different versions you can use, *this is going to depend mostly of the specifications of the project you are working on,* but you can really chose whatever you want.
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643851974060/zeWT9xD5Yc.png)
+![image.png](/assets/blog/brownie101/zeWT9xD5Yc.avif)
 
 You need to add the version by adding an “@” at the beginning.
 
@@ -274,7 +275,7 @@ compiler:
 
 This will create a `dependency` folder under the `build/contracts` folder. There, the artifacts of every dependencies that a contract need will be stored.
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643850040466/qP1oX9mjW.png)
+![image.png](/assets/blog/brownie101/qP1oX9mjW.avif)
 
 **The** `build/contracts` folder is where all the artifacts of the projects are stored.
 
@@ -331,7 +332,7 @@ my_private_key = config["my_accounts"]["my_private_key"]
 print(my_private_key)
 ```
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643852559702/0S4-g0t5u.png)
+![image.png](/assets/blog/brownie101/0S4-g0t5u.avif)
 
 **Obviously, you don't want to store your private key in that way, it is too dangerous…** Later in the article I will teach you how you can store in a more secure way.
 
@@ -390,13 +391,13 @@ print(contract_address)
 
 `$ brownie run scripts/testing.py --network rinkeby`
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643909213697/jjcwl-wPL.png)
+![image.png](/assets/blog/brownie101/jjcwl-wPL.avif)
 
 Now using kovan.
 
 `$ brownie run scripts/testing.py --network kovan`
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643909283220/zk07wc4yy.png)
+![image.png](/assets/blog/brownie101/zk07wc4yy.avif)
 
 The flag `--network` is used when we want to change to which network the contract would be deployed, *this is going to be the development network by default* (which is a ganache cli), you can read more about that [here](https://eth-brownie.readthedocs.io/en/stable/network-management.html#launching-and-connecting)
 
@@ -460,7 +461,7 @@ This will allow you yo use all the environment variables in your command line
 
 *This is my .env file*
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643908156730/ZMvmkueOS.png)
+![image.png](/assets/blog/brownie101/ZMvmkueOS.avif)
 
 You can test this by typing:
 
@@ -468,7 +469,7 @@ You can test this by typing:
 echo $name_of_your_env_variable
 ```
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643908193698/ZF46Q-Vms.png)
+![image.png](/assets/blog/brownie101/ZF46Q-Vms.avif)
 
 ## Working with networks
 
@@ -486,13 +487,13 @@ We can see all the networks that we have in brownie by typing:
 
 This will show us all the different networks that we can use to deploy and test our contracts…
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643909041398/84_73R1DhR.png)
+![image.png](/assets/blog/brownie101/84_73R1DhR.avif)
 
 We can see a more detailed list by adding "true"
 
 `$ brownie networks list true`
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643909070307/eD4pvbRrH.png)
+![image.png](/assets/blog/brownie101/eD4pvbRrH.avif)
 
 With this, **you can see all the different options that the** `network` **object have.**
 
@@ -554,7 +555,7 @@ If you want to delete a default network or a network you created, you just have 
 
 `$ brownie networks delete <ftm-main-fork>`
 
-![Deleting network example](https://cdn.hashnode.com/res/hashnode/image/upload/v1646365126644/gtT7vdFKt.PNG)
+![Deleting network example](/assets/blog/brownie101/gtT7vdFKt.avif)
 
 ### Updating an existing network.
 
@@ -568,7 +569,7 @@ You just look for the network id and the element of the network you want to chan
 
 `$ brownie networks modify xdai-main-fork gas_limit=210000000`
 
-![dos.PNG](https://cdn.hashnode.com/res/hashnode/image/upload/v1646365524146/_QRjaA1Di.PNG)
+![dos.PNG](/assets/blog/brownie101/_QRjaA1Di.avif)
 
 Remember not write when defining the key pair
 
@@ -590,7 +591,7 @@ For development purposes, brownie by default give us 10 accounts with false ethe
 
 `$ brownie accounts list`
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643909510496/rXqzH_3Yv.png)
+![image.png](/assets/blog/brownie101/rXqzH_3Yv.avif)
 
 You probably wouldn't have any account because first you need to add it.
 
@@ -646,7 +647,7 @@ And then, in your brownie config file you can add a new section to store your pr
 
 *(remember you need to set the section”dotenv” to points to the .env file” so you can use environment variables in your brownie config file in that format)*
 
-![Brownie config file with new sections to store my private key.](https://cdn.hashnode.com/res/hashnode/image/upload/v1643909984012/jsrNNx9sl.png)
+![Brownie config file with new sections to store my private key.](/assets/blog/brownie101/jsrNNx9sl.avif)
 
 And then, you grab your account using the `conifg` and `accounts` object
 
@@ -664,7 +665,7 @@ You can read more about how to work with accounts [here.](https://eth-brownie.re
 
 **Brownie looks for a function called** `main()` **as an entry point to run your scripts**, so if that function does not exist, you will get an error like this
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643910288185/bhmVOVun1.png)
+![image.png](/assets/blog/brownie101/bhmVOVun1.avif)
 
 You can read more about that [here.](https://eth-brownie.readthedocs.io/en/stable/interaction.html?highlight=scripts#writing-scripts)
 
@@ -682,11 +683,11 @@ Then, you need to create an API key to be able to interact with the Etherscan AP
 
 In the nav bar, go to your profile and click in API keys.
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643910798046/Q6BuWq4PK.png)
+![image.png](/assets/blog/brownie101/Q6BuWq4PK.avif)
 
 Finally, you just need to add a new API key
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643910897877/xIXrp_ouN.png)
+![image.png](/assets/blog/brownie101/xIXrp_ouN.avif)
 
 Add that private key in your `.env` file under.
 
