@@ -10,6 +10,9 @@ import {
   seoConfig,
 } from "@lib/seo";
 
+// Static HTML served from the edge cache; nothing here depends on the request.
+export const prerender = true;
+
 const blogs = (await getCollection("blogs")) as CollectionEntry<"blogs">[];
 
 const sortedPost = blogs.sort(

@@ -11,6 +11,9 @@ import AchievementsSection from "@components/home/AchievementsSection.astro";
 import TalksSection from "@components/home/TalksSection.astro";
 import { createPersonSchema, createProfilePageSchema, createWebsiteSchema, seoConfig } from "@lib/seo";
 
+// Static HTML served from the edge cache; nothing here depends on the request.
+export const prerender = true;
+
 const title = "Kevin Bravo | Product & AI Engineer";
 const description =
   "Kevin Bravo is a product and AI engineer in Caracas, Venezuela. Case studies, projects, talks, and writing on full-stack products, AI agents, MCP, and backend systems.";

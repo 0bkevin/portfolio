@@ -6,6 +6,8 @@ import { EXPERIENCE, VOLUNTEERING } from "@data/experience";
 import { CV_URL } from "@data/profile";
 import { createBreadcrumbSchema, createWebsiteSchema } from "@lib/seo";
 
+// Static HTML served from the edge cache; nothing here depends on the request.
+export const prerender = true;
 
 const pageTitle = "Experience | Kevin Bravo, Product and AI Engineer";
 const pageDescription =
