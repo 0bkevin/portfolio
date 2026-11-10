@@ -1,0 +1,27 @@
+---
+import Icon from "@components/ui/Icon.astro";
+---
+
+<!-- The icon follows the theme through CSS: a moon in light mode, a sun in dark mode. -->
+<button
+  type="button"
+  data-theme-toggle
+  aria-label="Toggle dark mode"
+  class="flex h-8 w-8 items-center justify-center rounded-full opacity-60 transition hover:bg-black/[0.04] hover:opacity-100 dark:hover:bg-white/[0.06]"
+>
+  <Icon name="moon" class="h-3.5 w-3.5 dark:hidden" />
+  <Icon name="sun" class="hidden h-3.5 w-3.5 dark:block" />
+</button>
+
+<script>
+  // One delegated listener serves every toggle on the page and survives client-side navigation.
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Element) || !event.target.closest("[data-theme-toggle]")) return;
+    const dark = document.documentElement.classList.toggle("dark");
+    try {
+      localStorage.setItem("darkMode", String(dark));
+    } catch {
+      // Storage can be unavailable (private mode); the theme still applies for this page.
+    }
+  });
+</script>

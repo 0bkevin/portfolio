@@ -1,0 +1,96 @@
+---
+// Contact details and the form, shared by the homepage section and /contact.
+import ContactForm from "@components/contact/ContactForm.svelte";
+import Icon from "@components/ui/Icon.astro";
+import { CONTACT_CHANNELS, CONTACT_EMAIL } from "@data/contact";
+
+interface Props {
+  /** Show the short "inbox is open" line; pages with their own intro turn it off. */
+  showIntro?: boolean;
+}
+
+const { showIntro = true } = Astro.props;
+
+const ICON_CLASS = "h-4 w-4 text-surface-500 transition-colors group-hover:text-accent-500 dark:group-hover:text-accent-400";
+---
+
+<div class="grid items-start gap-10 lg:grid-cols-[1fr_1.3fr] lg:gap-16">
+  <div class="flex flex-col gap-8 md:gap-12">
+    {
+      showIntro && (
+        <p class="max-w-sm text-sm leading-relaxed text-surface-600 dark:text-surface-400 md:text-[15px]">
+          Have a project or a question? My inbox is open, and I usually reply within a day.
+        </p>
+      )
+    }
+
+    <a href={`mailto:${CONTACT_EMAIL}`} class="group inline-flex w-fit items-baseline gap-2.5">
+      <span class="font-mono text-base text-surface-900 transition-colors group-hover:text-accent-600 dark:text-surface-100 dark:group-hover:text-accent-400 md:text-lg">
+        {CONTACT_EMAIL}
+      </span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 text-surface-500 transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent-500" aria-hidden="true">
+        <path d="m5 12h14" />
+        <path d="m12 5 7 7-7 7" />
+      </svg>
+    </a>
+
+    <ul class="flex flex-col gap-3">
+      {
+        CONTACT_CHANNELS.map((channel) => {
+          const content = (
+            <Fragment>
+              <Icon name={channel.icon} class={ICON_CLASS} />
+              <span class="font-mono text-[13px] lowercase text-surface-500 transition-colors group-hover:text-surface-900 dark:group-hover:text-surface-100">
+                {channel.label}
+              </span>
+              <span class="font-mono text-[13px] text-surface-700 transition-colors group-hover:text-surface-900 dark:text-surface-300 dark:group-hover:text-surface-100">
+                {channel.value}
+              </span>
+            </Fragment>
+          );
+          return (
+            <li>
+              {"copy" in channel ? (
+                <button
+                  type="button"
+                  class="contact-copy group inline-flex w-fit items-center gap-3.5 text-left"
+                  data-copy={channel.value}
+                  aria-label={`Copy ${channel.label} username ${channel.value}`}
+                >
+                  {content}
+                  <span class="contact-copy-status font-mono text-[12px] lowercase text-accent-500 dark:text-accent-400" aria-live="polite">
+                    copy
+                  </span>
+                </button>
+              ) : (
+                <a href={channel.href} target="_blank" rel="noopener noreferrer" class="group inline-flex w-fit items-center gap-3.5">
+                  {content}
+                </a>
+              )}
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+
+  <ContactForm client:only="svelte" />
+</div>
+
+<script>
+  // Copy a handle (Discord has no profile URL for usernames) and confirm in place.
+  document.addEventListener("click", async (event) => {
+    const button = (event.target as HTMLElement).closest<HTMLButtonElement>(".contact-copy");
+    if (!button) return;
+    const status = button.querySelector(".contact-copy-status");
+    try {
+      await navigator.clipboard.writeText(button.dataset.copy ?? "");
+      if (status) status.textContent = "copied";
+    } catch {
+      if (status) status.textContent = "copy failed";
+    }
+    window.setTimeout(() => {
+      if (status) status.textContent = "copy";
+    }, 1800);
+  });
+</script>

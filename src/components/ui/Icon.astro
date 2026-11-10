@@ -1,0 +1,25 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { ICONS, type IconName } from "@lib/icons";
+
+interface Props {
+  name: IconName;
+  class?: string;
+  /** Accessible name; omit for decorative icons, which are then hidden from screen readers. */
+  label?: string;
+}
+
+const { name, class: className = "h-4 w-4", label } = Astro.props;
+const icon = ICONS[name];
+
+const attrs: HTMLAttributes<"svg"> = { viewBox: "0 0 24 24", class: className };
+if (icon.kind === "fill") {
+  attrs.fill = "currentColor";
+} else {
+  Object.assign(attrs, { fill: "none", stroke: "currentColor", "stroke-width": 2, "stroke-linecap": "round", "stroke-linejoin": "round" });
+}
+if (label) Object.assign(attrs, { role: "img", "aria-label": label });
+else attrs["aria-hidden"] = "true";
+---
+
+<svg {...attrs} set:html={icon.body} />

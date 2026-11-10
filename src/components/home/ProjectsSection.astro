@@ -1,0 +1,157 @@
+---
+import SectionHeading from "@components/layout/SectionHeading.astro";
+import { PROJECTS } from "@data/side-projects";
+---
+
+<section class="py-10 sm:py-14 md:py-20" id="projects" aria-labelledby="projects-title">
+  <div class="home-col">
+    <div class="mb-6 flex flex-col gap-4 md:mb-10 md:flex-row md:items-end md:justify-between">
+      <div class="flex-1">
+        <SectionHeading num="03" label="Projects" />
+        <h2 id="projects-title" class="section-title">Things I've built</h2>
+      </div>
+      <a
+        href="https://github.com/0bkevin"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="font-mono text-[13px] lowercase text-accent-500 transition-colors hover:text-accent-600 dark:text-accent-400 dark:hover:text-accent-300"
+      >
+        github →
+      </a>
+    </div>
+
+    <ol class="project-index -my-2" data-project-index>
+      {
+        PROJECTS.map((project, index) => (
+          <li>
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="project-row group grid grid-cols-[auto_1fr] gap-x-5 gap-y-4 py-5 md:grid-cols-[3rem_1fr] md:items-baseline md:gap-x-6 md:py-6"
+              data-cover={project.cover}
+            >
+              <span class="font-mono text-[13px] text-surface-500 transition-colors group-hover:text-accent-500 dark:text-surface-500 dark:group-hover:text-accent-400">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <div class="min-w-0">
+                <h3 class="project-title text-xl font-bold tracking-tight text-surface-900 dark:text-surface-100 md:text-2xl">
+                  {project.name}
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    class="project-arrow ml-1 inline-block h-4 w-4 align-middle text-accent-500 dark:text-accent-400 md:h-5 md:w-5"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 17 17 7M8 7h9v9" />
+                  </svg>
+                </h3>
+                <p class="mt-2 max-w-xl text-sm leading-relaxed text-surface-600 dark:text-surface-400 md:text-[15px]">
+                  {project.summary}
+                </p>
+                <ul class="mt-3 flex flex-wrap gap-x-4 gap-y-1 font-mono text-[12px] lowercase text-surface-500">
+                  {project.tags.map((tag) => (
+                    <li>{tag}</li>
+                  ))}
+                </ul>
+                {project.cover && (
+                  <img
+                    src={project.cover}
+                    alt=""
+                    loading="lazy"
+                    class="mt-5 aspect-[16/10] w-full rounded-lg border border-surface-200 object-cover object-top dark:border-surface-800 md:hidden"
+                  />
+                )}
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+
+  <div class="project-preview" aria-hidden="true" data-project-preview>
+    <img alt="" />
+  </div>
+</section>
+
+<script>
+  import "@scripts/project-preview";
+</script>
+
+<style>
+  .project-title {
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .project-arrow {
+    opacity: 0;
+    transform: translate(-4px, 4px);
+    transition: opacity 0.25s, transform 0.3s;
+  }
+
+  .project-row {
+    transition: opacity 0.3s;
+  }
+
+  @media (hover: hover) and (min-width: 768px) {
+    .project-index:hover .project-row:not(:hover) {
+      opacity: 0.55;
+    }
+
+    .project-row:hover .project-title {
+      transform: translateX(0.75rem);
+    }
+
+    .project-row:hover .project-arrow {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .project-preview {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 40;
+    width: 22rem;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate3d(-50%, -50%, 0) scale(0.85);
+    transition: opacity 0.25s ease;
+    display: none;
+  }
+
+  .project-preview img {
+    display: block;
+    aspect-ratio: 16 / 10;
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 0.6rem;
+    box-shadow: 6px 6px 0 #ca8a04;
+  }
+
+  :global(.dark) .project-preview img {
+    box-shadow: 6px 6px 0 #facc15;
+  }
+
+  .project-preview.is-on {
+    opacity: 1;
+  }
+
+  @media (hover: hover) and (min-width: 768px) {
+    .project-preview {
+      display: block;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .project-title,
+    .project-arrow {
+      transition: none;
+    }
+  }
+</style>

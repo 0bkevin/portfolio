@@ -1,0 +1,138 @@
+---
+import SectionHeading from "@components/layout/SectionHeading.astro";
+import ExperienceItem from "@components/home/ExperienceItem.astro";
+import { EXPERIENCE } from "@data/experience";
+
+const MOBILE_VISIBLE = 3;
+const hiddenCount = EXPERIENCE.length - MOBILE_VISIBLE;
+---
+
+<section class="home-col py-10 sm:py-14 md:py-20" id="experience" aria-labelledby="experience-title">
+  <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+    <div class="flex-1">
+      <SectionHeading num="01" label="Experience" />
+      <h2 id="experience-title" class="section-title">Where I've worked</h2>
+    </div>
+    <a
+      href="/experience"
+      class="font-mono text-[13px] lowercase text-accent-500 transition-colors hover:text-accent-600 dark:text-accent-400 dark:hover:text-accent-300"
+    >
+      full experience →
+    </a>
+  </div>
+
+  <ol class="mt-6 font-mono md:mt-10">
+    {
+      EXPERIENCE.slice(0, MOBILE_VISIBLE).map((item, index) => (
+        <ExperienceItem {...item} index={index} />
+      ))
+    }
+  </ol>
+
+  <div id="experience-more" class="experience-more">
+    <ol class="experience-more-list font-mono" start={MOBILE_VISIBLE + 1}>
+      {
+        EXPERIENCE.slice(MOBILE_VISIBLE).map((item, index) => (
+          <ExperienceItem {...item} index={index} />
+        ))
+      }
+    </ol>
+  </div>
+
+  {
+    hiddenCount > 0 && (
+      <button
+        type="button"
+        class="experience-toggle mt-2 inline-flex items-center gap-1.5 font-mono text-[13px] lowercase text-accent-500 transition-colors hover:text-accent-600 dark:text-accent-400 dark:hover:text-accent-300 sm:hidden"
+        aria-controls="experience-more"
+        aria-expanded="false"
+        data-more={`show ${hiddenCount} more`}
+        data-less="show less"
+      >
+        <span>show {hiddenCount} more</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-3.5 w-3.5" aria-hidden="true">
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </button>
+    )
+  }
+</section>
+
+<script>
+  // On phones only the most recent roles show until the visitor expands the list.
+  document.addEventListener("click", (event) => {
+    const button = (event.target as HTMLElement).closest<HTMLButtonElement>(".experience-toggle");
+    const more = document.getElementById("experience-more");
+    if (!button || !more) return;
+    const expanded = button.getAttribute("aria-expanded") !== "true";
+    button.setAttribute("aria-expanded", String(expanded));
+    more.toggleAttribute("data-open", expanded);
+    button.querySelector("span")!.textContent = (expanded ? button.dataset.less : button.dataset.more) ?? "";
+  });
+</script>
+
+<style>
+  @media (max-width: 639px) {
+    /* Height animates via grid rows, so it eases to the content's real size. */
+    .experience-more {
+      display: grid;
+      grid-template-rows: 0fr;
+      visibility: hidden;
+      transition:
+        grid-template-rows 420ms cubic-bezier(0.4, 0, 0.2, 1) 120ms,
+        visibility 0s linear 540ms;
+    }
+
+    .experience-more[data-open] {
+      grid-template-rows: 1fr;
+      visibility: visible;
+      transition: grid-template-rows 560ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .experience-more-list {
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .experience-more-list > :global(li) {
+      opacity: 0;
+      filter: blur(4px);
+      transform: translateY(-10px);
+      transition:
+        opacity 220ms ease,
+        transform 260ms ease,
+        filter 220ms ease;
+      transition-delay: calc((1 - var(--i)) * 50ms);
+    }
+
+    .experience-more[data-open] .experience-more-list > :global(li) {
+      opacity: 1;
+      filter: blur(0);
+      transform: none;
+      transition:
+        opacity 500ms ease,
+        transform 600ms cubic-bezier(0.16, 1, 0.3, 1),
+        filter 500ms ease;
+      transition-delay: calc(140ms + var(--i) * 90ms);
+    }
+
+    .experience-toggle svg {
+      transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .experience-toggle[aria-expanded="true"] svg {
+      transform: rotate(180deg);
+    }
+  }
+
+  @media (max-width: 639px) and (prefers-reduced-motion: reduce) {
+    .experience-more,
+    .experience-more[data-open],
+    .experience-more-list > :global(li),
+    .experience-more[data-open] .experience-more-list > :global(li),
+    .experience-toggle svg {
+      transition: none;
+      filter: none;
+    }
+  }
+</style>

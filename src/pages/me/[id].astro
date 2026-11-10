@@ -1,13 +1,7 @@
 ---
 import BlogLayout from "@layouts/Blog.astro";
 import { type CollectionEntry, getCollection, render } from "astro:content";
-import {
-  createArticleSchema,
-  createBreadcrumbSchema,
-  createPersonSchema,
-  createProfilePageSchema,
-  seoConfig,
-} from "@lib/seo";
+import { createBreadcrumbSchema, createPersonSchema, createProfilePageSchema } from "@lib/seo";
 
 export const prerender = true;
 
@@ -30,58 +24,28 @@ const { Content, headings } = await render(entry);
 
 const pathname = `/me/${entry.id}`;
 const pageUrl = new URL(pathname, Astro.site).toString();
-const imageUrl = entry.data.image?.url || seoConfig.defaultOgImage;
 const updatedDate = entry.data.updateDate ?? entry.data.pubDate;
-const noindex = entry.id === "who-is-kevin-bravo";
 const seoTitle =
-  entry.id === "ama"
-    ? "Kevin Bravo | Product, Backend & Full-Stack Engineer"
-    : entry.data.seoTitle;
+  entry.id === "ama" ? "Ask Me Anything | Kevin Bravo, Product & AI Engineer" : entry.data.seoTitle;
 const seoDescription =
   entry.id === "ama"
-    ? "Product engineer building backend systems, AI agent tooling, infrastructure, and full-stack products from messy ideas to production-ready software."
+    ? "Kevin Bravo answers the questions recruiters ask: his experience as a product and AI engineer, the problems he likes, the AI tools he uses, and what he looks for next."
     : entry.data.seoDescription;
-
-const articleSchema = createArticleSchema({
-  headline: entry.data.title,
-  description: entry.data.description,
-  url: pageUrl,
-  image: imageUrl,
-  datePublished: entry.data.pubDate,
-  dateModified: updatedDate,
-  authorName: seoConfig.author.name,
-  authorUrl: seoConfig.author.url,
-  inLanguage: "en",
-});
 
 const breadcrumbSchema = createBreadcrumbSchema([
   { name: "Home", item: "/" },
-  { name: "Profile", item: "/me/ama" },
   { name: entry.data.title, item: pathname },
 ]);
 
-const personSchema = createPersonSchema({
-  url: pageUrl,
-  mainEntityOfPage: pageUrl,
+const profilePageSchema = createProfilePageSchema({
+  name: seoTitle || entry.data.title,
   description: seoDescription || entry.data.description,
-  image: new URL(imageUrl, Astro.site).toString(),
+  url: pageUrl,
+  dateCreated: entry.data.pubDate,
+  dateModified: updatedDate,
 });
 
-const profilePageSchema =
-  entry.id === "ama"
-    ? createProfilePageSchema({
-        name: seoTitle || entry.data.title,
-        description: seoDescription || entry.data.description,
-        url: pageUrl,
-      })
-    : undefined;
-
-const structuredData = [
-  articleSchema,
-  breadcrumbSchema,
-  personSchema,
-  ...(profilePageSchema ? [profilePageSchema] : []),
-];
+const structuredData = [profilePageSchema, createPersonSchema(), breadcrumbSchema];
 ---
 
 <BlogLayout
@@ -90,14 +54,13 @@ const structuredData = [
   backHref="/"
   backLabel="Home"
   showAuthor={true}
-  sectionLabel="Profile"
+  sectionLabel={entry.id === "ama" ? "me · ask me anything" : "me · about"}
   seoTitle={seoTitle}
   seoDescription={seoDescription}
   type="profile"
   canonical={pathname}
   structuredData={structuredData}
-  noindex={noindex}
-  hideSectionLabel={true}
+  hideSectionLabel={false}
 >
   <Content />
 </BlogLayout>

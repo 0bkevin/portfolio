@@ -1,56 +1,70 @@
-export const sendEmailMessage = async (data: {
+// Sends a contact form message to Kevin's inbox through the Resend API.
+
+export interface ContactMessage {
   name: string;
   email: string;
   subject: string;
   message: string;
-}, cfEnv: any = {}) => {
-  const RESEND_API_KEY = cfEnv.RESEND_API_KEY || import.meta.env.RESEND_API_KEY;
-  // Fallback to the same email or a designated one if MY_EMAIL_ADDRESS is not set
-  const MY_EMAIL_ADDRESS = cfEnv.MY_EMAIL_ADDRESS || import.meta.env.MY_EMAIL_ADDRESS || "delivered@resend.dev"; 
+}
 
-  if (!RESEND_API_KEY) {
-    console.error("RESEND_API_KEY is not set in environment variables.");
+export interface EmailSettings {
+  RESEND_API_KEY?: string | undefined;
+  MY_EMAIL_ADDRESS?: string | undefined;
+}
+
+/** Sender on the domain verified in Resend. */
+const FROM_ADDRESS = "kevin@email.rodolfomedinadelrio.com";
+/** Resend's test inbox, only used if no destination address is configured. */
+const FALLBACK_TO = "delivered@resend.dev";
+
+const HTML_ESCAPES: Record<string, string> = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
+
+/** Visitor input goes into an HTML email, so it is escaped before being inserted. */
+const escapeHtml = (text: string) => text.replace(/[&<>"']/g, (char) => HTML_ESCAPES[char] ?? char);
+
+interface ResendResponse {
+  id?: string;
+}
+
+export const sendEmailMessage = async (data: ContactMessage, settings: EmailSettings): Promise<boolean> => {
+  const apiKey = settings.RESEND_API_KEY;
+  if (!apiKey) {
+    console.error("RESEND_API_KEY is not set.");
     return false;
   }
 
-  const htmlContent = `
+  const name = escapeHtml(data.name);
+  const email = escapeHtml(data.email);
+  const subject = escapeHtml(data.subject);
+  const message = escapeHtml(data.message).replace(/\n/g, "<br/>");
+
+  const html = `
     <h2>New Contact Form Message</h2>
-    <p><strong>Name:</strong> ${data.name}</p>
-    <p><strong>Email:</strong> ${data.email}</p>
-    <p><strong>Subject:</strong> ${data.subject}</p>
+    <p><strong>Name:</strong> ${name}</p>
+    <p><strong>Email:</strong> ${email}</p>
+    <p><strong>Subject:</strong> ${subject}</p>
     <br/>
     <p><strong>Message:</strong></p>
-    <p>${data.message.replace(/\n/g, '<br/>')}</p>
+    <p>${message}</p>
   `;
 
   try {
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${RESEND_API_KEY}`,
-      },
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${apiKey}` },
       body: JSON.stringify({
-        // For the free tier without a verified domain, you must send from onboarding@resend.dev
-        // and send to the email address registered with your Resend account.
-        from: "kevin@email.rodolfomedinadelrio.com",
-        to: MY_EMAIL_ADDRESS,
+        from: FROM_ADDRESS,
+        to: settings.MY_EMAIL_ADDRESS || FALLBACK_TO,
         reply_to: data.email,
         subject: `Contact Form: ${data.subject}`,
-        html: htmlContent,
+        html,
       }),
     });
-
-    const result = await response.json();
-
-    if (response.ok && result.id) {
-      console.log("Email sent successfully with Resend ID:", result.id);
-      return true;
-    } else {
-      console.error("Resend API Error:", result);
-      return false;
-    }
-  } catch (error: any) {
+    const result = (await response.json()) as ResendResponse;
+    if (response.ok && result.id) return true;
+    console.error("Resend API error:", result);
+    return false;
+  } catch (error: unknown) {
     console.error("Error sending email via Resend:", error);
     return false;
   }

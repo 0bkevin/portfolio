@@ -1,0 +1,31 @@
+---
+interface Props {
+  role: string;
+  company: string;
+  url?: string;
+  period: string;
+  summary: string;
+  index: number;
+}
+
+const { role, company, url, period, summary, index } = Astro.props;
+---
+
+<li class="flex flex-col gap-2 py-5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6" style={`--i: ${index}`}>
+  <div class="min-w-0">
+    <p class="text-[15px] text-surface-900 dark:text-surface-100">{role}</p>
+    <p class="mt-1 text-[12.5px] text-surface-500">
+      {
+        url ? (
+          <a href={url} target="_blank" rel="noopener noreferrer" class="text-link">
+            {company}
+          </a>
+        ) : (
+          company
+        )
+      }
+    </p>
+    <p class="mt-3 max-w-2xl font-sans text-sm leading-relaxed text-surface-600 dark:text-surface-400">{summary}</p>
+  </div>
+  <span class="order-first shrink-0 text-[12.5px] text-surface-500 sm:order-none">{period}</span>
+</li>

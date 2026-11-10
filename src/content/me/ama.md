@@ -1,6 +1,7 @@
 ---
 title: "Ask Me Anything: Kevin Bravo 🤺"
 pubDate: '2026-05-18T12:00:00Z'
+updateDate: '2026-11-10T12:00:00Z'
 seoTitle: "Kevin Bravo | Product, Backend & Full-Stack Engineer"
 description: Discover Kevin Bravo's professional and personal background in this AMA-style self-interview. Learn about his software engineering experience, leadership work, volunteer projects, career goals, and technical skills in less than 5 minutes.
 seoDescription: Product engineer building backend systems, AI agent tooling, infrastructure, and full-stack products from messy ideas to production-ready software.
@@ -15,13 +16,15 @@ Getting to know a candidate is hard, and more when there is little time, too muc
 
 Product engineer with 5 years of experience building full-stack products, internal platforms, and AI agent systems across startups, government projects, and non-profits. Strong focus on high-ownership work: taking an ambiguous product or operations problem and turning it into architecture, data models, and software teams rely on every day.
 
-Sole engineer on a platform for the U.S. Department of State’s Venezuela Affairs Unit, and builder of production systems for Free2Z and AVAA (including SEP, a multi-tenant platform serving around 400 monthly active users across all three states where ProExcelencia operates). Outside of work, I’ve spent years volunteering in education, tech and community initiatives, organizing hackathons and tech events, mentoring students, and helping build programs focused on entrepreneurship, leadership, and technology access.
+Led engineering on a platform for the U.S. Department of State’s Venezuela Affairs Unit, and builder of production systems for Free2Z and AVAA (including SEP, a multi-tenant platform serving around 400 monthly active users across all three states where ProExcelencia operates). Outside of work, I’ve spent years volunteering in education, tech and community initiatives, organizing hackathons and tech events, mentoring students, and helping build programs focused on entrepreneurship, leadership, and technology access.
 
 ## 🤷‍♀️ Overall
 
 ### What's your tech experience like?
 
 I’m a **product engineer** with 5 years of experience building full-stack products, internal platforms, AI agent systems, and data systems. I’ve worked in startups, government projects, and non-profits, leading technical architecture, full-stack development, and product design.
+
+**Lately, most of my time goes into AI tooling and agentic systems.** I build MCP servers that let agents work inside real products, LangGraph pipelines that turn messy sources into structured data, and my own tools to work with agents from anywhere. What I care about most is making them actually useful and safe to run, with clear permissions and guardrails.
 
 Most of my experience has been building systems from the ground up, where I defined the architecture, modeled the data, and connected services. I work across the full stack and like being close to product decisions, and I’m especially drawn to internal platforms, AI agents and tooling, cloud and backend architecture, and systems that other people can rely on.
 
@@ -81,13 +84,13 @@ I also like being close to the product and understanding why something is being 
 
 ### [Billingua Talent](/projects/billingua-talent)
 
-Billingua Talent is a multi-tenant professional networking and operations platform commissioned by the U.S. Department of State’s Venezuela Affairs Unit. It connects highly skilled bilingual Venezuelans to companies hiring locally, with role-based access for candidates, companies, advisors, and administrators. As the sole engineer, I owned requirements, architecture, data modeling, product design, full-stack implementation, testing, and launch readiness. The application was completed and validated through initial stakeholder testing, but did not launch after the program lost funding during the 2025 changes to U.S. international cooperation policy.
+Billingua Talent is a multi-tenant professional networking and operations platform commissioned by the U.S. Department of State’s Venezuela Affairs Unit. It connects highly skilled bilingual Venezuelans to companies hiring locally, with role-based access for candidates, companies, advisors, and administrators. I led the engineering, owning requirements, architecture, data modeling, product design, full-stack implementation, testing, and launch readiness, and brought in two engineers to help build the core features. The application was completed and validated through initial stakeholder testing, but did not launch after the program lost funding during the 2025 changes to U.S. international cooperation policy.
 
 ### [SEP - Participant Evaluation System](/projects/sep)
 
 The platform I built for AVAA to manage ProExcelencia with live data instead of scattered spreadsheets. Built with Next.js, PostgreSQL, Prisma, and Auth.js and deployed on Azure, it is a multi-tenant system serving around 400 monthly active users across all three states where the program operates. It became the source of truth for scholar records, activities, volunteer hours, attendance, and reports. I started on this program as an intern cleaning its historical data, then proposed and built the platform on top of it.
 
-### [Free2Z platform migration](/me/who-is-kevin-bravo)
+### [Free2Z platform migration](/experience#free2z)
 
 As Senior Product Engineer, I led the end-to-end migration of a live startup product from React to SvelteKit while maintaining feature parity in production. I also improved responsive product flows and multilingual article creation, built against Python and Django APIs, hardened Zcash authentication, and worked across livestreaming, PostgreSQL, production infrastructure, and MCP development.
 
@@ -140,6 +143,6 @@ It's a bit of mix & match:
 
 - **Email:** [0bravokevin@gmail.com](mailto:0bravokevin@gmail.com)
 - **LinkedIn:** [0bkevin](https://www.linkedin.com/in/0bkevin/)
-- **Twitter:** [@0bkevin](https://twitter.com/0bkevin)
+- **Twitter:** [@0bkevin](https://x.com/0bkevin)
 - **Telegram:** [@Obkevin](https://t.me/Obkevin)
 - **Phone:** Let's email first 😉

@@ -1,0 +1,44 @@
+---
+import Layout from "@layouts/Layout.astro";
+import PageHeader from "@components/layout/PageHeader.astro";
+import ContactPanel from "@components/contact/ContactPanel.astro";
+import { createBreadcrumbSchema, createWebsiteSchema, personRef, seoConfig } from "@lib/seo";
+
+const pageTitle = "Contact | Kevin Bravo, Product and AI Engineer";
+const pageDescription =
+  "Get in touch with Kevin Bravo about product, AI, or full-stack engineering work. Send a message, email, or reach out on Discord or X.";
+const pagePath = "/contact";
+
+const structuredData = [
+  createWebsiteSchema(),
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "@id": `${seoConfig.siteUrl}/contact#page`,
+    name: pageTitle,
+    description: pageDescription,
+    url: new URL(pagePath, Astro.site).toString(),
+    about: personRef(),
+  },
+  createBreadcrumbSchema([
+    { name: "Home", item: "/" },
+    { name: "Contact", item: pagePath },
+  ]),
+];
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical={pagePath}
+  structuredData={structuredData}
+  tags={["contact", "hire", "product engineer", "AI engineer", "full-stack"]}
+>
+  <div class="home-col min-h-screen pb-20 pt-6">
+    <PageHeader label="contact" title="Let's build something">
+      Tell me about the product, the problem, or the role. I read every message and usually reply within a day.
+    </PageHeader>
+
+    <ContactPanel showIntro={false} />
+  </div>
+</Layout>

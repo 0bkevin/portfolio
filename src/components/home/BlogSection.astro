@@ -1,0 +1,41 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import SectionHeading from "@components/layout/SectionHeading.astro";
+
+const blogs = (await getCollection("blogs")) as CollectionEntry<"blogs">[];
+
+const sortedBlogs = blogs.sort(
+  (a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+);
+---
+
+<section class="home-col py-10 sm:py-14 md:py-20" id="blog" aria-labelledby="blog-title">
+  <SectionHeading num="06" label="Writing" />
+  <h2 id="blog-title" class="section-title">Notes and write‑ups</h2>
+
+  <ul class="mt-6 font-mono text-[15px] md:mt-10">
+    {
+      sortedBlogs.map((blog) => (
+        <li>
+          <a href={`/0b/${blog.id}`} class="row-link">
+            <span class="text-surface-900 dark:text-surface-100">{blog.data.title.toLowerCase()}</span>
+            <span class="flex shrink-0 items-center gap-2 text-[12px] text-surface-500">
+              <time datetime={blog.data.pubDate.toISOString()}>{blog.data.pubDate.getFullYear()}</time>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="row-arrow" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </span>
+          </a>
+        </li>
+      ))
+    }
+    <li>
+      <a href="/0b" class="row-link">
+        <span>all writing</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="row-arrow" aria-hidden="true">
+          <path d="M5 12h14M13 6l6 6-6 6" />
+        </svg>
+      </a>
+    </li>
+  </ul>
+</section>

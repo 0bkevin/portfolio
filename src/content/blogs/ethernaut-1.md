@@ -452,9 +452,9 @@ We made 3 transaction:
 2. Making a simple transaction to the contract so we can invoke the receive function
 3. Calling the withdraw method
 
-**And now our first contract is hacked**, congratulations! :sunglasses: :tada:
+**And now our first contract is hacked**, congratulations! 😎 🎉
 
-We do everything right, **so let’s submit the instance!**, programmatically of course :smirk:
+We do everything right, **so let’s submit the instance!**, programmatically of course 😏
 
 ## Submitting the instance
 
@@ -533,7 +533,7 @@ brownie run scripts/submi_contract.py —network rinkeby
 
 You can grab the complete solution in this [github repo.](https://github.com/mustafinho/ethernaut_solutions/blob/main/ethernaut_1_fallback/scripts/hacking.py)
 
-If you have any comment or suggestions please leave it in the comments section, also if you see any problem with the code feel free to make a PR.
+If you have any comments or suggestions, send me a message on [X](https://x.com/0bkevin) or open a PR if you see any problem with the code.
 
 You can follow me on my twitter [@0bkevin](https://twitter.com/KevBto?t=OLX4oFBNcar_L-2QGx5B8Q&s=09) and DM me, I’m always happy to talk and know more people in this amazing community.
 

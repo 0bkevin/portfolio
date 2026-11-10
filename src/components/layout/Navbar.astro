@@ -1,0 +1,147 @@
+---
+import ThemeToggle from "@components/layout/ThemeToggle.astro";
+import { NAV_ITEMS, activeNavHref } from "@data/navigation";
+
+interface Props {
+  /** Fixed navbars float over the page and hide while scrolling down; articles use a static one. */
+  fixed?: boolean;
+}
+
+const { fixed = true } = Astro.props;
+const active = activeNavHref(Astro.url.pathname);
+---
+
+<!-- Lives outside the navbar: a transformed parent would trap a fixed backdrop. -->
+<button
+  type="button"
+  tabindex="-1"
+  aria-label="Close menu"
+  data-nav-backdrop
+  data-menu-close
+  class="invisible fixed inset-0 z-40 cursor-default bg-black/25 opacity-0 backdrop-blur-[2px] transition-[opacity,visibility] duration-200 data-[open]:visible data-[open]:opacity-100 dark:bg-black/55 md:hidden"
+></button>
+
+<div
+  data-navbar
+  data-fixed={fixed ? "true" : "false"}
+  class:list={[
+    "group/navbar pointer-events-none z-50 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]",
+    fixed
+      ? "fixed inset-x-0 top-0 px-4 data-[scrolled]:translate-y-4 data-[hidden]:-translate-y-[150%] sm:px-6"
+      : "relative",
+  ]}
+>
+  <nav
+    aria-label="Main navigation"
+    class="pointer-events-auto relative mx-auto flex h-14 w-full max-w-5xl items-center justify-between px-6 font-mono transition-all duration-300 group-data-[menu-open]/navbar:rounded-2xl group-data-[scrolled]/navbar:rounded-2xl group-data-[menu-open]/navbar:bg-[#fafafa]/80 group-data-[scrolled]/navbar:bg-[#fafafa]/80 group-data-[menu-open]/navbar:shadow-[0_8px_30px_rgb(0,0,0,0.06)] group-data-[scrolled]/navbar:shadow-[0_8px_30px_rgb(0,0,0,0.06)] group-data-[menu-open]/navbar:backdrop-blur-lg group-data-[scrolled]/navbar:backdrop-blur-lg dark:group-data-[menu-open]/navbar:bg-[#0a0a0a]/80 dark:group-data-[scrolled]/navbar:bg-[#0a0a0a]/80 dark:group-data-[menu-open]/navbar:shadow-[0_8px_30px_rgb(0,0,0,0.2)] dark:group-data-[scrolled]/navbar:shadow-[0_8px_30px_rgb(0,0,0,0.2)]"
+  >
+    <a href="/" class="group inline-flex items-baseline gap-1.5 whitespace-nowrap px-1 py-1 text-[13px]">
+      kevin bravo <span class="hidden opacity-60 min-[400px]:inline">aka</span>
+      <span class="aka-tag text-[12px]">0bkevin</span>
+    </a>
+
+    <ul class="hidden items-center gap-0.5 md:flex">
+      {
+        NAV_ITEMS.map(({ label, href }) => (
+          <li>
+            <a
+              href={href}
+              aria-current={href === active ? "page" : undefined}
+              class:list={[
+                "rounded-md px-3 py-1.5 text-[13px] lowercase transition-opacity duration-200 motion-reduce:transition-none",
+                href === active
+                  ? "font-semibold text-accent-500 dark:text-accent-400"
+                  : "font-medium opacity-60 hover:opacity-100",
+              ]}
+            >
+              {label}
+            </a>
+          </li>
+        ))
+      }
+      <li class="ml-1"><ThemeToggle /></li>
+    </ul>
+
+    <div class="flex items-center gap-1 md:hidden">
+      <ThemeToggle />
+      <button
+        type="button"
+        data-menu-toggle
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        class="relative flex h-8 w-8 items-center justify-center rounded-md transition-colors hover:bg-black/5 dark:hover:bg-white/[0.06]"
+      >
+        <span class="relative block h-[14px] w-4" aria-hidden="true">
+          <span
+            class="absolute left-0 top-1/2 block h-[1.5px] w-4 -translate-y-[5px] rounded-full bg-current transition-transform duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] group-data-[menu-open]/navbar:translate-y-0 group-data-[menu-open]/navbar:rotate-45"
+          ></span>
+          <span
+            class="absolute left-0 top-1/2 block h-[1.5px] w-4 rounded-full bg-current transition-opacity duration-150 group-data-[menu-open]/navbar:opacity-0"
+          ></span>
+          <span
+            class="absolute left-0 top-1/2 block h-[1.5px] w-4 translate-y-[5px] rounded-full bg-current transition-transform duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] group-data-[menu-open]/navbar:translate-y-0 group-data-[menu-open]/navbar:-rotate-45"
+          ></span>
+        </span>
+      </button>
+    </div>
+  </nav>
+
+  <div
+    id="mobile-menu"
+    class="invisible pointer-events-auto absolute inset-x-0 top-[calc(100%+0.5rem)] mx-auto max-w-5xl -translate-y-2 px-4 font-mono opacity-0 transition-[opacity,transform,visibility] duration-200 ease-out group-data-[menu-open]/navbar:visible group-data-[menu-open]/navbar:translate-y-0 group-data-[menu-open]/navbar:opacity-100 sm:px-6 md:hidden"
+  >
+    <ul
+      class="flex flex-col rounded-xl bg-[#fafafa]/90 p-1.5 shadow-[0_12px_36px_-12px_rgb(0,0,0,0.12)] backdrop-blur-xl dark:bg-[#0a0a0a]/90 dark:shadow-[0_12px_36px_-12px_rgb(0,0,0,0.45)]"
+    >
+      {
+        NAV_ITEMS.map(({ label, href }) => (
+          <li>
+            <a
+              href={href}
+              data-menu-close
+              aria-current={href === active ? "page" : undefined}
+              class:list={[
+                "block rounded-md px-4 py-2.5 text-[14px] lowercase transition-opacity duration-200",
+                href === active
+                  ? "font-semibold text-accent-500 dark:text-accent-400"
+                  : "font-medium opacity-60 hover:opacity-100",
+              ]}
+            >
+              {label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>
+
+<script>
+  import { initNavbar } from "@scripts/navbar";
+
+  initNavbar();
+</script>
+
+<style>
+  .aka-tag {
+    padding: 0 0.35em;
+    background: color-mix(in oklab, currentColor 8%, transparent);
+    box-shadow: 2px 2px 0 #ca8a04;
+    transition: box-shadow 200ms ease;
+  }
+
+  :global(.dark) .aka-tag {
+    box-shadow: 2px 2px 0 #facc15;
+  }
+
+  @media (hover: hover) {
+    a:hover .aka-tag {
+      box-shadow: 3px 3px 0 #ca8a04;
+    }
+
+    :global(.dark) a:hover .aka-tag {
+      box-shadow: 3px 3px 0 #facc15;
+    }
+  }
+</style>

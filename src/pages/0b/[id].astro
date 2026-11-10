@@ -28,7 +28,8 @@ const pagePath = `/0b/${blog.id}`;
 const articleSchema = createArticleSchema({
   headline: blog.data.title,
   description: blog.data.description,
-  url: pagePath,
+  // Point at the canonical copy when the post was first published elsewhere.
+  url: blog.data.canonicalURL ?? pagePath,
   ...(blog.data.image?.url ? { image: blog.data.image.url } : {}),
   datePublished: blog.data.pubDate,
   dateModified: blog.data.updatedDate ?? blog.data.pubDate,
@@ -50,7 +51,7 @@ const structuredData = [articleSchema, breadcrumbSchema];
   tableOfContents={headings}
   backHref="/0b"
   backLabel="Blog"
-  sectionLabel="Blog"
+  sectionLabel="0b · writing"
   type="article"
   structuredData={structuredData}
 >

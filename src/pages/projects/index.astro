@@ -1,11 +1,13 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import ProjectCard from "@components/projects/section/ProjectCard.svelte";
+import SectionHeading from "@components/layout/SectionHeading.astro";
+import PageHeader from "@components/layout/PageHeader.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import {
   createBreadcrumbSchema,
   createCollectionPageSchema,
   createWebsiteSchema,
+  personRef,
   seoConfig,
 } from "@lib/seo";
 
@@ -28,13 +30,7 @@ const webpageSchema = createCollectionPageSchema({
   name: pageTitle,
   description: pageDescription,
   url: new URL(pagePath, Astro.site).toString(),
-  about: {
-    "@type": "Person",
-    "@id": `${seoConfig.siteUrl}/#person`,
-    name: seoConfig.author.name,
-    url: seoConfig.author.url,
-    jobTitle: seoConfig.author.jobTitle,
-  },
+  about: personRef(),
 });
 
 const itemListSchema = {
@@ -69,36 +65,29 @@ const structuredData = [
   title={pageTitle}
   description={pageDescription}
   canonical={pagePath}
-  image={featuredProject?.data.image.url ?? seoConfig.defaultOgImage}
-  imageAlt={featuredProject?.data.image.alt ?? "Kevin Bravo software engineering portfolio"}
+  image={featuredProject?.data.ogImage?.url ?? seoConfig.defaultOgImage}
+  imageAlt={featuredProject?.data.ogImage?.alt ?? seoConfig.defaultOgImageAlt}
+  {...(featuredProject?.data.ogImage ? { imageWidth: 1200, imageHeight: 630 } : {})}
   structuredData={structuredData}
   tags={["software engineering", "projects", "case studies", "portfolio", "backend", "infrastructure", "AI engineering", "full-stack"]}
 >
-  <div class="section-container min-h-screen pt-4 pb-16">
-    <header class="mb-16">
-      <a href="/" class="inline-flex text-xs font-medium text-surface-400 dark:text-surface-500 hover:text-surface-900 dark:hover:text-surface-200 transition-colors mb-8">
-        &larr; Home
-      </a>
-      <h1 class="text-4xl font-bold tracking-tighter text-surface-900 dark:text-surface-100 mb-3">Projects</h1>
-      <p class="text-surface-500 dark:text-surface-400 max-w-xl">
-        Backend, infrastructure, AI engineering, and full-stack case studies from production-grade applications and internal systems, with technical context on architecture, data flows, and product decisions.
-      </p>
-    </header>
+  <div class="home-col min-h-screen pb-20 pt-6">
+    <PageHeader label="projects · case studies" title="Things I've built at work">
+      Case studies from production platforms and internal systems, with the context behind the architecture, the data, and
+      the product decisions.
+    </PageHeader>
 
-    <section class="mb-16" aria-labelledby="featured-projects-heading">
-      <div class="flex items-center justify-between mb-8 pb-4 border-b border-surface-200 dark:border-surface-800">
-        <h2 id="featured-projects-heading" class="text-xs font-medium uppercase tracking-widest text-surface-400 dark:text-surface-500">
-          Featured
-        </h2>
-      </div>
+    {
+      featuredProject && (
+        <section class="mb-16 md:mb-24" aria-labelledby="featured-heading">
+          <SectionHeading num="01" label="Featured" />
+          <h2 id="featured-heading" class="sr-only">Featured case study</h2>
 
-      {featuredProject && (
-        <a
-          href={`/projects/${featuredProject.id}`}
-          class="group block w-full outline-none"
-        >
-          <article class="flex flex-col gap-8 md:flex-row md:items-center">
-            <div class="relative w-full md:w-[60%] aspect-[16/10] md:aspect-video overflow-hidden rounded-xl bg-surface-100 dark:bg-surface-800 ring-1 ring-surface-200/50 dark:ring-surface-700/50">
+          <a
+            href={featuredProject.data.studyCaseUrl ?? `/projects/${featuredProject.id}`}
+            class="group mt-6 grid gap-6 md:mt-8 md:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] md:items-center md:gap-10"
+          >
+            <div class="case-shot relative aspect-[16/10] overflow-hidden rounded-xl border border-surface-200 bg-surface-100 dark:border-surface-800 dark:bg-surface-900">
               <img
                 src={featuredProject.data.image.url}
                 alt={featuredProject.data.image.alt}
@@ -107,55 +96,113 @@ const structuredData = [
                 decoding="async"
                 fetchpriority="high"
               />
-              <div class="absolute inset-0 bg-surface-900/0 transition-colors duration-500 group-hover:bg-surface-900/5 dark:group-hover:bg-surface-900/20"></div>
-              <div class="absolute left-6 top-6">
-                <span class="inline-flex items-center justify-center rounded-full bg-white/95 px-4 py-1.5 text-[11px] font-bold uppercase tracking-widest text-surface-900 shadow-sm backdrop-blur-md dark:bg-surface-950/90 dark:text-surface-100">
-                  Featured
-                </span>
-              </div>
             </div>
 
-            <div class="flex flex-col flex-1 gap-4 md:pl-8">
-              <div class="flex items-center gap-3 text-xs tracking-wide text-surface-500 dark:text-surface-400">
-                <span class="font-medium text-surface-900 dark:text-surface-200">{featuredProject.data.pubYear.getFullYear()}</span>
-                <span class="h-1 w-1 rounded-full bg-surface-300 dark:bg-surface-700"></span>
-                <div class="flex gap-2">
-                  {featuredProject.data.tags.slice(0, 3).map((tag) => (
-                    <span class="capitalize">{tag}</span>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <h3 class="flex items-center gap-3 text-3xl md:text-3xl lg:text-4xl font-bold tracking-tight text-surface-900 transition-colors duration-300 group-hover:text-accent-600 dark:text-surface-100 dark:group-hover:text-accent-400">
-                  {featuredProject.data.title}
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="translate-y-2 -translate-x-4 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-                </h3>
-                <p class="mt-4 text-base leading-relaxed text-surface-600 dark:text-surface-400 max-w-md">
-                  {featuredProject.data.description}
-                </p>
-              </div>
-
-              <div class="mt-2 inline-flex items-center gap-2 text-sm font-medium text-accent-500 transition-colors group-hover:text-accent-600 dark:text-accent-400">
-                Read case study
-                <svg class="transition-transform duration-300 group-hover:translate-x-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6" /></svg>
-              </div>
+            <div class="min-w-0">
+              <p class="font-mono text-[12px] lowercase text-surface-500">
+                <span class="text-accent-500 dark:text-accent-400">01</span>
+                <span class="mx-1.5 text-surface-300 dark:text-surface-700">·</span>
+                {featuredProject.data.pubYear.getFullYear()}
+              </p>
+              <h3 class="case-title mt-3 text-3xl font-bold tracking-tight text-surface-900 dark:text-surface-100 lg:text-4xl">
+                {featuredProject.data.title}
+              </h3>
+              <p class="mt-4 text-[15px] leading-relaxed text-surface-600 dark:text-surface-400 md:text-base">
+                {featuredProject.data.description}
+              </p>
+              <ul class="mt-5 flex flex-wrap gap-x-4 gap-y-1 font-mono text-[12px] lowercase text-surface-500">
+                {featuredProject.data.tags.slice(0, 4).map((tag) => (
+                  <li>{tag}</li>
+                ))}
+              </ul>
+              <span class="mt-6 inline-flex items-center gap-1.5 font-mono text-[13px] lowercase text-accent-500 dark:text-accent-400">
+                read case study
+                <span class="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
+              </span>
             </div>
-          </article>
-        </a>
-      )}
-    </section>
+          </a>
+        </section>
+      )
+    }
 
-    <section class="mb-16" aria-labelledby="all-projects-heading">
-      <div class="flex items-center justify-between mb-8 pb-4 border-b border-surface-200 dark:border-surface-800">
-        <h2 id="all-projects-heading" class="text-xs font-medium uppercase tracking-widest text-surface-400 dark:text-surface-500">
-          All Projects
-        </h2>
-        <span class="text-xs text-surface-400 dark:text-surface-500">{secondaryProjects.length} remaining</span>
-      </div>
-      <div class="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-        {secondaryProjects.map((project) => <ProjectCard project={project} />)}
-      </div>
-    </section>
+    {
+      secondaryProjects.length > 0 && (
+        <section aria-labelledby="more-heading">
+          <SectionHeading num="02" label="More case studies" />
+          <h2 id="more-heading" class="sr-only">More case studies</h2>
+
+          <ul class="mt-6 grid gap-x-6 gap-y-12 sm:grid-cols-2 md:mt-8 lg:grid-cols-3">
+            {secondaryProjects.map((project, index) => (
+              <li>
+                <a href={project.data.studyCaseUrl ?? `/projects/${project.id}`} class="group flex flex-col gap-4">
+                  <div class="case-shot relative aspect-video overflow-hidden rounded-lg border border-surface-200 bg-surface-100 dark:border-surface-800 dark:bg-surface-900">
+                    <img
+                      src={project.data.image.url}
+                      alt={project.data.image.alt}
+                      class="h-full w-full object-cover transition-transform duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-[1.03]"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="min-w-0">
+                    <p class="font-mono text-[12px] lowercase text-surface-500">
+                      <span class="text-surface-500 transition-colors group-hover:text-accent-500 dark:text-surface-500 dark:group-hover:text-accent-400">
+                        {String(index + 2).padStart(2, "0")}
+                      </span>
+                      <span class="mx-1.5 text-surface-300 dark:text-surface-700">·</span>
+                      {project.data.pubYear.getFullYear()}
+                    </p>
+                    <h3 class="mt-2 text-lg font-semibold tracking-tight text-surface-900 transition-colors group-hover:text-accent-500 dark:text-surface-100 dark:group-hover:text-accent-400">
+                      {project.data.title}
+                      <span class="inline-block -translate-x-1 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100" aria-hidden="true">→</span>
+                    </h3>
+                    <p class="mt-1.5 line-clamp-3 text-sm leading-relaxed text-surface-600 dark:text-surface-400">
+                      {project.data.description}
+                    </p>
+                    <ul class="mt-3 flex flex-wrap gap-x-3 gap-y-1 font-mono text-[11px] lowercase text-surface-500">
+                      {project.data.tags.slice(0, 3).map((tag) => (
+                        <li>{tag}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
   </div>
 </Layout>
+
+<style>
+  .case-shot {
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .case-title {
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  @media (hover: hover) {
+    .group:hover .case-shot {
+      transform: translate(-3px, -3px);
+      box-shadow: 6px 6px 0 #ca8a04;
+    }
+
+    :global(.dark) .group:hover .case-shot {
+      box-shadow: 6px 6px 0 #facc15;
+    }
+
+    .group:hover .case-title {
+      transform: translateX(0.5rem);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .case-shot,
+    .case-title {
+      transition: none;
+    }
+  }
+</style>

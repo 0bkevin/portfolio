@@ -1,0 +1,35 @@
+---
+import SectionHeading from "@components/layout/SectionHeading.astro";
+---
+
+<section
+  id="about"
+  class="home-col grid gap-6 py-10 sm:py-14 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-16 md:py-20"
+  aria-labelledby="about-title"
+>
+  <div class="md:sticky md:top-24 md:self-start">
+    <SectionHeading num="02" label="About" />
+    <h2 id="about-title" class="section-title">A bit about me</h2>
+  </div>
+
+  <div class="flex flex-col gap-6 text-base leading-[1.8] text-surface-600 dark:text-surface-400 md:text-[17px]">
+    <p>
+      I'm <span class="font-medium text-surface-900 dark:text-surface-100">Kevin</span>, a product and AI engineer. I
+      take ownership of problems nobody has scoped yet, lead the work from the first conversation to production, and
+      stay accountable for it after launch. Lately that means putting AI agents into real products and running them
+      securely, with clear permissions, guardrails, and evals, so they help people without putting their data and
+      systems at risk.
+    </p>
+    <p>
+      I've shipped for startups that move fast, nonprofits that make every dollar count, and public institutions where
+      every decision goes through a process. Each one works differently, and I've learned to read the room, earn trust
+      quickly, and deliver in all of them.
+    </p>
+    <p>
+      Outside of work, I've spent more than 8 years volunteering with organizations across education, the environment,
+      and tech, leading teams, organizing events, and starting projects from scratch. That's where I learned to lead
+      people and bring them together around a shared goal. I'm also doing a Master of Public Administration at
+      <a href="https://www.iesa.edu.ve" target="_blank" rel="noopener noreferrer" class="text-link">IESA</a>.
+    </p>
+  </div>
+</section>

@@ -1,9 +1,12 @@
 ---
-import Navbar from "../components/header/Navbar.svelte";
-import Footer from "../components/footer/Footer.astro";
+import Navbar from "@components/layout/Navbar.astro";
+import Footer from "@components/layout/Footer.astro";
+import SeoHead from "@components/layout/SeoHead.astro";
 import { ClientRouter } from "astro:transitions";
+import "@fontsource-variable/inter";
+import "@fontsource-variable/geist-mono";
 import "@styles/global.css";
-import { resolveSeo, seoConfig, stringifySchema, type SchemaValue } from "@lib/seo";
+import { resolveSeo, type SchemaValue } from "@lib/seo";
 
 interface Props {
   title?: string | undefined;
@@ -72,160 +75,49 @@ const seo = resolveSeo({
   tags,
 });
 
-const schemaItems = Array.isArray(structuredData)
-  ? structuredData.filter(Boolean)
-  : structuredData
-    ? [structuredData]
-    : [];
+const schemaItems: SchemaValue[] = Array.isArray(structuredData) ? structuredData : structuredData ? [structuredData] : [];
 ---
 
 <!doctype html>
 <html lang={lang}>
   <head>
     <ClientRouter />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={seo.description} />
-    <meta name="robots" content={seo.robots} />
-    <meta name="author" content={seoConfig.author.name} />
-    <meta name="creator" content={seoConfig.author.name} />
-    <meta name="publisher" content={seoConfig.author.name} />
-    <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <meta name="application-name" content={seoConfig.siteName} />
-    <meta name="apple-mobile-web-app-title" content={seoConfig.siteName} />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="theme-color" content="#fafafa" />
-    <meta name="generator" content={Astro.generator} />
-
-    <link rel="canonical" href={seo.canonical} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
-    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png" />
-    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/manifest.json" />
-    <meta name="msapplication-TileColor" content="#fafafa" />
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
-
-    <meta property="og:site_name" content={seoConfig.siteName} />
-    <meta property="og:locale" content={seoConfig.defaultLocale} />
-    <meta property="og:title" content={seo.openGraph.title} />
-    <meta property="og:description" content={seo.openGraph.description} />
-    <meta property="og:type" content={seo.openGraph.type} />
-    <meta property="og:url" content={seo.openGraph.url} />
-    <meta property="og:image" content={seo.openGraph.image} />
-    <meta property="og:image:secure_url" content={seo.openGraph.image} />
-    <meta property="og:image:alt" content={seo.openGraph.imageAlt} />
-    {
-      seo.openGraph.imageWidth ? (
-        <meta property="og:image:width" content={String(seo.openGraph.imageWidth)} />
-      ) : null
-    }
-    {
-      seo.openGraph.imageHeight ? (
-        <meta property="og:image:height" content={String(seo.openGraph.imageHeight)} />
-      ) : null
-    }
-    {
-      seo.openGraph.imageType ? (
-        <meta property="og:image:type" content={seo.openGraph.imageType} />
-      ) : null
-    }
-
-    <meta name="twitter:card" content={seo.twitter.card} />
-    <meta name="twitter:title" content={seo.twitter.title} />
-    <meta name="twitter:description" content={seo.twitter.description} />
-    <meta name="twitter:url" content={seo.canonical} />
-    <meta name="twitter:image" content={seo.twitter.image} />
-    <meta name="twitter:image:alt" content={seo.twitter.imageAlt} />
-    <meta name="twitter:creator" content={seo.twitter.creator} />
-    <meta name="twitter:site" content={seo.twitter.site} />
-
-    {
-      seo.openGraph.publishedTime ? (
-        <meta property="article:published_time" content={seo.openGraph.publishedTime} />
-      ) : null
-    }
-    {
-      seo.openGraph.modifiedTime ? (
-        <meta property="article:modified_time" content={seo.openGraph.modifiedTime} />
-      ) : null
-    }
-    {
-      seo.openGraph.section ? (
-        <meta property="article:section" content={seo.openGraph.section} />
-      ) : null
-    }
-    {seo.openGraph.tags.map((tag) => <meta property="article:tag" content={tag} />)}
-
-    <link
-      rel="alternate"
-      type="application/rss+xml"
-      title="0b Blog"
-      href={new URL("rss.xml", Astro.site)}
-    />
-
-    <link rel="me" href="https://github.com/0bkevin" />
-    <link rel="me" href="https://www.linkedin.com/in/0bkevin/" />
-    <link rel="me" href="https://twitter.com/0bkevin" />
-
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
-    />
-
+    <SeoHead seo={seo} structuredData={schemaItems} />
 
     <script is:inline>
-      const theme = (() => {
-        if (typeof localStorage !== "undefined" && localStorage.getItem("darkMode")) {
-          return localStorage.getItem("darkMode");
-        }
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          return "true";
-        }
-        return "false";
+      // Runs before first paint, and again around every client-side navigation,
+      // so the page never flashes the wrong theme.
+      (() => {
+        const isDark = () => {
+          try {
+            const saved = localStorage.getItem("darkMode");
+            if (saved) return saved === "true";
+          } catch {}
+          return window.matchMedia("(prefers-color-scheme: dark)").matches;
+        };
+        const apply = (doc) => doc.documentElement.classList.toggle("dark", isDark());
+
+        apply(document);
+        if (window.__themeListeners) return;
+        window.__themeListeners = true;
+        document.addEventListener("astro:before-swap", (event) => apply(event.newDocument));
+        document.addEventListener("astro:after-swap", () => apply(document));
       })();
-
-      if (theme === "true") {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
     </script>
-
-    {schemaItems.length > 0 && (
-      <script
-        is:inline
-        type="application/ld+json"
-        set:html={stringifySchema(schemaItems.length === 1 ? schemaItems[0]! : schemaItems)}
-      />
-    )}
-
-    <title>{seo.title}</title>
   </head>
   <body class="font-sans">
     {fixedNavbar ? <div aria-hidden="true" class="h-14"></div> : null}
     <header>
-      <Navbar client:only="svelte" shouldFixed={fixedNavbar} />
+      <Navbar fixed={fixedNavbar} />
     </header>
     <main>
       <slot />
     </main>
     <Footer />
+
+    <script>
+      import "@scripts/scroll-direction";
+      import "@scripts/image-zoom";
+    </script>
   </body>
 </html>

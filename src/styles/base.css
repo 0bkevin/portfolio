@@ -1,0 +1,66 @@
+/* Page-wide defaults: colors, theme variables, selection, focus, headings, motion. */
+@layer base {
+  :root {
+    --surface-500: 115 115 115;
+  }
+
+  .dark {
+    --surface-500: 133 133 133;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #fafafa;
+    color: #171717;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* No grey flash box around tapped links and buttons on phones. */
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .dark {
+    background-color: #0a0a0a;
+    color: #e5e5e5;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Even out heading lines so a single word never ends up alone on the last line. */
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background-color: #fde047;
+    color: #161616;
+  }
+
+  .dark ::selection {
+    background-color: #facc15;
+    color: #0a0a0a;
+  }
+
+  :focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #fafafa inset !important;
+    box-shadow: 0 0 0 1000px #fafafa inset !important;
+    -webkit-text-fill-color: #171717 !important;
+    caret-color: #171717 !important;
+  }
+
+  .dark input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #1a1a1a inset !important;
+    box-shadow: 0 0 0 1000px #1a1a1a inset !important;
+    -webkit-text-fill-color: #e5e5e5 !important;
+    caret-color: #e5e5e5 !important;
+  }
+}

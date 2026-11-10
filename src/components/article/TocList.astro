@@ -1,0 +1,34 @@
+---
+import type { TocEntry } from "./toc";
+
+interface Props {
+  entries: readonly TocEntry[];
+}
+
+const { entries } = Astro.props;
+
+// Nesting is shown with indentation and a small marker, never by fading the text,
+// so every level stays readable. The active entry is marked by the script.
+const indent: Record<TocEntry["level"], string> = { 2: "", 3: "ml-3", 4: "ml-6" };
+---
+
+<ul class="w-full space-y-1">
+  {
+    entries.map(({ id, text, level }) => (
+      <li class:list={["flex min-w-0 items-center gap-1.5", indent[level]]}>
+        {level > 2 && <span class="h-1 w-1 shrink-0 rounded-full bg-surface-300 dark:bg-surface-700" aria-hidden="true" />}
+        <a
+          href={`#${id}`}
+          title={text}
+          data-toc-link={id}
+          class:list={[
+            "block min-w-0 truncate py-0.5 text-surface-600 transition-colors hover:text-surface-900 aria-[current=true]:text-accent-500 dark:text-surface-400 dark:hover:text-surface-100 dark:aria-[current=true]:text-accent-400",
+            level === 2 ? "text-[13px]" : "text-[12px]",
+          ]}
+        >
+          {text}
+        </a>
+      </li>
+    ))
+  }
+</ul>
