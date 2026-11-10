@@ -1,122 +1,39 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import SectionHeading from "@components/SectionHeading.astro";
 
 export const prerender = true;
 
 const pageTitle = "Page not found | Kevin Bravo";
-const pageDescription = "This page doesn't exist or has moved. Head back home or pick one of the main sections of the site.";
-
-const DESTINATIONS = [
-  { label: "home", hint: "start over", href: "/" },
-  { label: "projects", hint: "case studies", href: "/projects" },
-  { label: "experience", hint: "where i've worked", href: "/experience" },
-  { label: "writing", hint: "notes and write-ups", href: "/0b" },
-  { label: "contact", hint: "say hi", href: "/contact" },
-];
+const pageDescription = "This page doesn't exist or has moved.";
 ---
 
 <Layout title={pageTitle} description={pageDescription} noindex>
-  <section class="home-col flex min-h-[calc(100svh-3.5rem)] flex-col justify-center pb-20 pt-10 sm:pb-28 sm:pt-16">
+  <section class="home-col flex min-h-[calc(100svh-3.5rem)] flex-col justify-center pb-24 pt-10">
     <p class="page-label fade-in-up" style="--d: 0ms">
-      <span class="section-num" aria-hidden="true">//</span> error · not found
+      <span class="section-num" aria-hidden="true">//</span> 404 · not found
     </p>
 
-    <h1 class="fade-in-up" style="--d: 60ms">
-      <span
-        class="block font-mono text-[5.5rem] font-bold leading-none tracking-tighter text-accent-500 dark:text-accent-400 sm:text-[9rem] md:text-[11rem]"
-        aria-hidden="true">404</span
-      >
-      <span class="mt-4 block text-3xl font-bold tracking-tight text-surface-900 dark:text-surface-100 sm:mt-6 md:text-4xl">
-        This page doesn't exist.
-      </span>
+    <h1
+      class="fade-in-up text-4xl font-bold tracking-tight text-surface-900 dark:text-surface-100 md:text-5xl"
+      style="--d: 60ms"
+    >
+      This page doesn't exist.
     </h1>
 
     <p
       class="fade-in-up mt-5 max-w-xl text-base leading-relaxed text-surface-600 dark:text-surface-400 md:text-lg"
       style="--d: 120ms"
     >
-      The link may be broken, or the page may have moved. Nothing's on fire, it's just not here.
+      The link may be broken, or the page may have moved.
     </p>
 
-    <div
-      class="fade-in-up mt-8 flex max-w-full items-center gap-2 overflow-hidden rounded-lg border border-surface-200 bg-surface-100/60 px-4 py-3 font-mono text-[13px] dark:border-surface-800 dark:bg-surface-850/60 sm:w-fit"
+    <a
+      href="/"
+      class="fade-in-up group mt-10 inline-flex w-fit items-center gap-1.5 font-mono text-[13px] lowercase text-accent-500 dark:text-accent-400"
       style="--d: 180ms"
     >
-      <span class="shrink-0 text-surface-400 dark:text-surface-500" aria-hidden="true">$</span>
-      <span class="shrink-0 text-surface-500">GET</span>
-      <span class="min-w-0 truncate text-surface-900 dark:text-surface-100" data-missing-path>/</span>
-      <span class="shrink-0 text-surface-300 dark:text-surface-700" aria-hidden="true">→</span>
-      <span class="shrink-0 text-accent-500 dark:text-accent-400">404</span>
-      <span class="cursor ml-0.5 inline-block h-4 w-[7px] shrink-0 bg-surface-400 dark:bg-surface-500" aria-hidden="true"></span>
-    </div>
-
-    <div class="fade-in-up mt-8 flex flex-wrap items-center gap-2 sm:gap-4" style="--d: 240ms">
-      <a
-        href="/"
-        class="inline-flex items-center gap-2 rounded-lg bg-surface-900 px-4 py-3 font-mono text-[13px] lowercase text-white transition-colors hover:bg-surface-800 dark:bg-surface-100 dark:text-surface-900 dark:hover:bg-surface-200 sm:px-6"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
-        Back home
-      </a>
-      <a
-        href="/contact"
-        class="inline-flex items-center gap-2 rounded-lg border border-surface-200 px-4 py-3 font-mono text-[13px] lowercase text-surface-600 transition-colors hover:border-surface-300 hover:text-surface-900 dark:border-surface-800 dark:text-surface-400 dark:hover:border-surface-700 dark:hover:text-surface-200 sm:px-6"
-      >
-        Report a broken link
-      </a>
-    </div>
-
-    <nav class="fade-in-up mt-14 sm:mt-20" style="--d: 320ms" aria-labelledby="nf-nav-title">
-      <SectionHeading label="try one of these" />
-      <h2 id="nf-nav-title" class="sr-only">Main sections of the site</h2>
-      <ul class="mt-2 font-mono text-[15px]">
-        {
-          DESTINATIONS.map(({ label, hint, href }) => (
-            <li>
-              <a href={href} class="row-link">
-                <span class="text-surface-900 dark:text-surface-100">{label}</span>
-                <span class="flex shrink-0 items-center gap-2 text-[12px] text-surface-500">
-                  {hint}
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="row-arrow" aria-hidden="true">
-                    <path d="M5 12h14M13 6l6 6-6 6" />
-                  </svg>
-                </span>
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </nav>
+      <span class="transition-transform group-hover:-translate-x-0.5" aria-hidden="true">←</span>
+      back home
+    </a>
   </section>
 </Layout>
-
-<script>
-  // The page is prerendered, so fill in the path that was actually requested.
-  const fillPath = () => {
-    const el = document.querySelector("[data-missing-path]");
-    if (!el) return;
-    const { pathname } = window.location;
-    try {
-      el.textContent = decodeURI(pathname);
-    } catch {
-      el.textContent = pathname;
-    }
-  };
-  fillPath();
-  document.addEventListener("astro:page-load", fillPath);
-</script>
-
-<style>
-  @keyframes blink {
-    50% { opacity: 0; }
-  }
-
-  .cursor {
-    animation: blink 1.1s steps(1) infinite;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .cursor { animation: none; }
-  }
-</style>
