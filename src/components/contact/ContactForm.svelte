@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from "svelte";
   import { Turnstile } from "svelte-turnstile";
   import ContactInput from "./ContactInput.svelte";
   import ContactTextArea from "./ContactTextArea.svelte";
@@ -21,6 +22,29 @@
     message: "",
   };
   let hasSubmitted = false;
+
+  // Turnstile pulls ~30 KB of third-party script, so it loads only once the form is close to
+  // the viewport (or someone focuses a field), not during the homepage's first load.
+  let form: HTMLFormElement;
+  let loadTurnstile = false;
+
+  onMount(() => {
+    if (!("IntersectionObserver" in window)) {
+      loadTurnstile = true;
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          loadTurnstile = true;
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "300px 0px" },
+    );
+    observer.observe(form);
+    return () => observer.disconnect();
+  });
 
   const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || (import.meta.env.DEV ? "1x00000000000000000000AA" : "");
 
@@ -113,7 +137,9 @@
 </script>
 
 <form
+  bind:this={form}
   on:submit={handleSubmit}
+  on:focusin={() => (loadTurnstile = true)}
   class="flex flex-col gap-6 w-full"
   name="contactForm"
   novalidate
@@ -161,17 +187,19 @@
   <!-- "invisible" is a widget mode set in the Cloudflare dashboard, not a valid size.
        interaction-only keeps the widget hidden unless Cloudflare needs the visitor to act. -->
   <div class={showTurnstileChallenge ? "min-h-[65px]" : ""}>
-    <Turnstile
-      siteKey={TURNSTILE_SITE_KEY}
-      size="flexible"
-      appearance={showTurnstileChallenge ? "always" : "interaction-only"}
-      on:callback={handleTurnstile}
-      on:error={handleTurnstileError}
-      on:expired={handleTurnstileExpired}
-      on:timeout={handleTurnstileExpired}
-      on:unsupported={() => showManualVerification("Verification is not supported in this browser. Please try another browser or email me directly.")}
-      bind:reset={resetTurnstile}
-    />
+    {#if loadTurnstile}
+      <Turnstile
+        siteKey={TURNSTILE_SITE_KEY}
+        size="flexible"
+        appearance={showTurnstileChallenge ? "always" : "interaction-only"}
+        on:callback={handleTurnstile}
+        on:error={handleTurnstileError}
+        on:expired={handleTurnstileExpired}
+        on:timeout={handleTurnstileExpired}
+        on:unsupported={() => showManualVerification("Verification is not supported in this browser. Please try another browser or email me directly.")}
+        bind:reset={resetTurnstile}
+      />
+    {/if}
   </div>
   {#if turnstileError}
     <span class="text-sm text-red-500">{turnstileError}</span>
