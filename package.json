@@ -19,11 +19,9 @@
     "@fontsource-variable/geist-mono": "^5.3.0",
     "astro": "^5.0.1",
     "markdown-it": "^14.1.0",
-    "playwright": "^1.62.1",
     "sanitize-html": "^2.14.0",
     "svelte": "^5.2.2",
     "svelte-turnstile": "^0.11.0",
-    "swiper": "^11.1.15",
     "tailwindcss": "^3.4.15",
     "typescript": "^5.6.3"
   },
