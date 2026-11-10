@@ -55,7 +55,7 @@ const ICON_CLASS = "h-4 w-4 text-surface-500 transition-colors group-hover:text-
                   type="button"
                   class="contact-copy group inline-flex w-fit items-center gap-3.5 text-left"
                   data-copy={channel.value}
-                  aria-label={`Copy ${channel.label} username ${channel.value}`}
+                  aria-label={`${channel.label} ${channel.value}, copy username`}
                 >
                   {content}
                   <span class="contact-copy-status font-mono text-[12px] lowercase text-accent-500 dark:text-accent-400" aria-live="polite">
