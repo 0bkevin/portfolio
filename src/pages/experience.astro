@@ -21,6 +21,8 @@ const structuredData = [
 ];
 
 const capitalize = (text: string) => text.charAt(0).toUpperCase() + text.slice(1);
+// Linkable anchor per role, e.g. /experience#free2z.
+const anchorFor = (company: string) => company.replace(/[^a-z0-9]+/gi, "-").replace(/^-|-$/g, "").toLowerCase();
 ---
 
 <Layout
@@ -42,7 +44,7 @@ const capitalize = (text: string) => text.charAt(0).toUpperCase() + text.slice(1
       <ol class="flex flex-col gap-16 md:gap-20">
         {
           EXPERIENCE.map((job, index) => (
-            <li class="grid gap-4 md:grid-cols-[11rem_1fr] md:gap-10">
+            <li id={anchorFor(job.company)} class="scroll-mt-24 grid gap-4 md:grid-cols-[11rem_1fr] md:gap-10">
               <div class="font-mono text-[12.5px] lowercase text-surface-500 md:sticky md:top-24 md:self-start">
                 <p class="text-accent-500 dark:text-accent-400">{String(index + 1).padStart(2, "0")}</p>
                 <p class="mt-2 text-surface-700 dark:text-surface-300">{job.period}</p>

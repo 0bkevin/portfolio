@@ -90,7 +90,7 @@ Billingua Talent is a multi-tenant professional networking and operations platfo
 
 The platform I built for AVAA to manage ProExcelencia with live data instead of scattered spreadsheets. Built with Next.js, PostgreSQL, Prisma, and Auth.js and deployed on Azure, it is a multi-tenant system serving around 400 monthly active users across all three states where the program operates. It became the source of truth for scholar records, activities, volunteer hours, attendance, and reports. I started on this program as an intern cleaning its historical data, then proposed and built the platform on top of it.
 
-### [Free2Z platform migration](/me/who-is-kevin-bravo)
+### [Free2Z platform migration](/experience#free2z)
 
 As Senior Product Engineer, I led the end-to-end migration of a live startup product from React to SvelteKit while maintaining feature parity in production. I also improved responsive product flows and multilingual article creation, built against Python and Django APIs, hardened Zcash authentication, and worked across livestreaming, PostgreSQL, production infrastructure, and MCP development.
 
