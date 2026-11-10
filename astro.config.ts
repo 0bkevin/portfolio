@@ -6,6 +6,7 @@ import svelte from '@astrojs/svelte';
 import sitemap from '@astrojs/sitemap';
 import cloudflare from '@astrojs/cloudflare';
 import { readdirSync, readFileSync } from 'node:fs';
+import rehypeImageAttributes from './src/lib/rehype-image-attributes';
 
 // Posts whose canonical copy lives elsewhere (e.g. Hashnode) stay out of the sitemap,
 // which should only list URLs this site claims as canonical.
@@ -25,6 +26,9 @@ export default defineConfig({
       filter: (page) => !externallyCanonicalPosts.some((path) => page.endsWith(path)),
     }),
   ],
+  markdown: {
+    rehypePlugins: [rehypeImageAttributes],
+  },
   output: 'server',
   trailingSlash: 'never',
   // Prerendered pages are emitted as `page.html`, so Cloudflare Pages serves them at the

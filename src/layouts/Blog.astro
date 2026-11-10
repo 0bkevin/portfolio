@@ -71,6 +71,12 @@ const image =
       ? entry.data.image.url
       : undefined;
 
+// The cover shown on the page; the social image above can differ (an article's ogImage).
+// Article covers carry their intrinsic size (see content.config.ts); profile pages' don't.
+const cover: { url: string; alt: string; width?: number; height?: number } | undefined =
+  "image" in entry.data ? entry.data.image : undefined;
+const coverSize = cover?.width && cover.height ? { width: cover.width, height: cover.height } : {};
+
 const imageAlt =
   "ogImage" in entry.data && entry.data.ogImage?.alt
     ? entry.data.ogImage.alt
@@ -137,11 +143,12 @@ const tocItems = tocEntries(tableOfContents);
         }
       </nav>
       {
-        image ? (
+        cover ? (
           <div class="fade-in-up w-full overflow-hidden rounded-lg border border-surface-200 dark:border-surface-800">
             <img
-              src={image}
-              alt={"image" in entry.data ? entry.data.image?.alt || entry.data.title : entry.data.title}
+              src={cover.url}
+              alt={cover.alt || entry.data.title}
+              {...coverSize}
               class="block h-auto w-full"
               loading="eager"
               decoding="async"
