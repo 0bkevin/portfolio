@@ -15,6 +15,9 @@ export default defineConfig({
   ],
   output: 'server',
   trailingSlash: 'never',
+  // Prerendered pages are emitted as `page.html`, so Cloudflare Pages serves them at the
+  // canonical no-slash URL instead of redirecting `/page` to `/page/`.
+  build: { format: 'file' },
   adapter: cloudflare(),
   site: 'https://kevinbravo.com',
 });
