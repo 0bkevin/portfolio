@@ -1,28 +1,45 @@
-# KevinBravo.com
+# Kevin Bravo
 
-Kevin Bravo is a software engineer focused on backend engineering, infrastructure, AI engineering, and full-stack product work.
+> Kevin Bravo (0bkevin) is a product and AI engineer based in Caracas, Venezuela, with 5+ years building full-stack products, AI agents, and the tooling around them for startups, nonprofits, and government-commissioned programs. He owns products end to end, from the first conversation with users to production and the support after launch.
 
-This file is an agent navigation aid. It summarizes important public URLs on the site, but crawler permissions are defined by robots.txt.
+This file is a navigation aid for AI agents. Crawler permissions are defined in robots.txt.
 
-## Canonical Site
+## Key facts
 
-- https://kevinbravo.com/
+- Name: Kevin Bravo, also known online as 0bkevin.
+- Title: Product & AI Engineer (product engineering, AI engineering, full-stack, backend).
+- Location: Caracas, Venezuela.
+- Most recent role: Senior Product Engineer at Free2Z (March 2025 to October 2026). Led the live creator platform's migration from React to SvelteKit and built an MCP server that lets AI agents publish and manage content through scoped, expiring access.
+- Earlier: Product Engineer for the U.S. Department of State's Venezuela Affairs Unit (via AVAA), leading Billingua Talent; Full Stack Engineer at AVAA, where he built SEP (about 400 monthly users across three chapters) with a LangChain RAG assistant, and SEA for EducationUSA advisors.
+- Current focus: AI tooling and agentic systems, including MCP servers, LangGraph pipelines, and tools for working with AI agents.
+- Education: Master of Public Administration at IESA (in progress).
+- Contact: 0bravokevin@gmail.com or https://kevinbravo.com/contact
 
-## High-Value Pages
+## Profiles
 
-- https://kevinbravo.com/ - Homepage and portfolio overview for Kevin Bravo.
-- https://kevinbravo.com/me/ama - Primary profile page with background, strengths, role fit, and technical interests.
-- https://kevinbravo.com/projects - Project and case-study index.
-- https://kevinbravo.com/projects/billingua-talent - Full-stack platform case study for bilingual professional talent.
-- https://kevinbravo.com/projects/sea - Full-stack advisory operations platform case study.
-- https://kevinbravo.com/projects/sep - Education operations platform case study.
-- https://kevinbravo.com/projects/avaa-power-bi-dashboard - Data analytics dashboard case study.
-- https://kevinbravo.com/0b - Technical writing index.
-- https://kevinbravo.com/rss.xml - RSS feed for technical writing.
-- https://kevinbravo.com/projects.json - Machine-readable project index.
+- Website (entity home): https://kevinbravo.com/
+- X: https://x.com/0bkevin
+- LinkedIn: https://www.linkedin.com/in/0bkevin/
+- GitHub: https://github.com/0bkevin
 
-## Notes For Agents
+## Pages
 
-- The site is optimized for hiring and technical evaluation contexts.
-- Some older technical articles are mirrored locally but keep Hashnode as their canonical source.
-- Primary topics are backend systems, infrastructure, AI engineering, full-stack engineering, data systems, and blockchain/security where relevant.
+- [Home](https://kevinbravo.com/): Overview, experience, projects, talks, and writing.
+- [Experience](https://kevinbravo.com/experience): Full work history with what was built, for whom, and why it mattered.
+- [Who is Kevin Bravo?](https://kevinbravo.com/me/who-is-kevin-bravo): Short third-person biography.
+- [Ask Me Anything](https://kevinbravo.com/me/ama): Recruiter-oriented Q&A on experience, strengths, role fit, AI tools, and what he looks for next.
+- [Case studies](https://kevinbravo.com/projects): Index of work case studies.
+- [Billingua Talent](https://kevinbravo.com/projects/billingua-talent): Bilingual talent platform for the U.S. Department of State's Venezuela Affairs Unit.
+- [SEP](https://kevinbravo.com/projects/sep): Participant evaluation platform for AVAA's ProExcelencia scholarship program.
+- [SEA](https://kevinbravo.com/projects/sea): Advisee evaluation platform for EducationUSA advisors.
+- [AVAA alumni dashboard](https://kevinbravo.com/projects/avaa-power-bi-dashboard): Power BI dashboard built from cleaned historical records.
+- [Contact](https://kevinbravo.com/contact): Contact form and direct contact details.
+- [Writing](https://kevinbravo.com/0b): Technical writing index. Older posts keep Hashnode as their canonical source.
+
+## Projects (external)
+
+- viamu (https://viamu.app): Free catalog of scholarships, internships, and fellowships, kept current by an AI pipeline.
+- Registro CiberVE (https://registrociberve.com): Bilingual public registry of cybersecurity incidents tied to Venezuela.
+- Arena Criolla (https://arenacriolla.com): Open source multiplayer fighting game starring iconic characters from Venezuelan culture.
+- Brio (https://github.com/0bkevin/brio): Phone app for talking to a Hermes AI agent from anywhere.
+- Cinve (https://github.com/0bkevin/cinve): MCP server for Venezuelan cinema listings, showtimes, prices, and seat availability.
