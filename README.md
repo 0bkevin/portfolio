@@ -74,7 +74,7 @@ I mostly work with SvelteKit, TypeScript, Python, Go, PostgreSQL, MCP, LangGraph
 - [Ask Me Anything](https://kevinbravo.com/me/ama) · Experience, strengths, role fit, AI tools, and what I'm looking for next
 - [Experience](https://kevinbravo.com/experience) · Full work history
 - [Case studies](https://kevinbravo.com/projects) · [Billingua Talent](https://kevinbravo.com/projects/billingua-talent), [SEP](https://kevinbravo.com/projects/sep), [SEA](https://kevinbravo.com/projects/sea), [AVAA Alumni Dashboard](https://kevinbravo.com/projects/avaa-power-bi-dashboard)
-- [Writing](https://kevinbravo.com/0b) · Smart contract security write-ups (Ethernaut, Damn Vulnerable DeFi) and a Brownie guide · [RSS](https://kevinbravo.com/rss.xml)
+- [Writing](https://kevinbravo.com/0b) · [RSS](https://kevinbravo.com/rss.xml)
 - [Contact](https://kevinbravo.com/contact)
 
 I gave a talk called [Crea y recauda fondos con Free2z](https://www.youtube.com/watch?v=0JlqBCB3LRM) (Spanish), for Zcash en Español.
