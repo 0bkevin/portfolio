@@ -14,16 +14,16 @@
 
 ## So, who is Kevin Bravo?
 
-I build products from zero to production: the messy first conversation with users, the data model, the backend, the infra, and the support after launch. Give me an unclear problem and full agency, and I'm having a good day.
+I build products from zero to production. That means the messy first conversation with users, the data model, the backend, the infra, and the support after launch. Give me an unclear problem and full agency, and I'm having a good day.
 
-These days I'm deep into **AI tooling and agentic systems**: MCP servers that let agents work inside real products, LangGraph pipelines that turn messy sources into clean data, and little tools to reach my own agents from anywhere. I care a lot about them being actually useful *and* safe to run.
+These days I'm deep into **AI tooling and agentic systems**. I build MCP servers that let agents work inside real products, LangGraph pipelines that turn messy sources into clean data, and little tools to reach my own agents from anywhere. I care a lot about them being actually useful *and* safe to run.
 
-Fun twist: before software, I studied **Occupational Therapy** (graduated cum laude from UCV). It still shapes how I think about people and the systems they use.
+Fun twist, before software I studied **Occupational Therapy** (graduated cum laude from UCV). It still shapes how I think about people and the systems they use.
 
 ## What I've been up to
 
 - 🛠️ **Free2Z** · Senior Product Engineer (2025–2026). Moved a live creator platform from React to SvelteKit without dropping a feature, and built an MCP server so AI agents can publish for creators with scoped, expiring access.
-- 🏛️ **Billingua Talent** · Built it for the U.S. Department of State's Venezuela Affairs Unit (via AVAA): a bilingual platform connecting Venezuelan professionals with employers. [Case study →](https://kevinbravo.com/projects/billingua-talent)
+- 🏛️ **Billingua Talent** · Built it for the U.S. Department of State's Venezuela Affairs Unit (via AVAA), a bilingual platform connecting Venezuelan professionals with employers. [Case study →](https://kevinbravo.com/projects/billingua-talent)
 - 🎓 **AVAA** · Built [SEP](https://kevinbravo.com/projects/sep) (~400 monthly users across three states) and [SEA](https://kevinbravo.com/projects/sea) for EducationUSA advisors.
 - 📚 Doing a **Master of Public Administration at IESA**, because tech and institutions should talk more.
 
@@ -48,7 +48,7 @@ Full story at [kevinbravo.com/experience](https://kevinbravo.com/experience).
 
 Vice President of **JA Venezuela Alumni**, organizer of the Caracas hub for the **Dev3pack Global Hackathon**, and code mentor for **Technovation Girls Venezuela**. I also write a bit at [kevinbravo.com/0b](https://kevinbravo.com/0b) and give the occasional talk.
 
-**Toolbox:** SvelteKit · TypeScript · Python · Go · PostgreSQL · MCP · LangGraph · Kubernetes, with Claude, Codex, Cursor, and friends helping me move faster without outsourcing the thinking.
+I mostly work with SvelteKit, TypeScript, Python, Go, PostgreSQL, MCP, LangGraph, and Kubernetes, with Claude, Codex, Cursor, and friends helping me move faster without outsourcing the thinking.
 
 ## Say hi
 
@@ -58,17 +58,17 @@ Vice President of **JA Venezuela Alumni**, organizer of the Caracas hub for the 
 
 ## Find me around the web
 
-**The official spots** (if it's not on this list, it's probably not me):
+**The official spots.** If it's not on this list, it's probably not me.
 
-- 🌐 Website: [kevinbravo.com](https://kevinbravo.com)
-- 🐙 GitHub: [github.com/0bkevin](https://github.com/0bkevin)
-- 💼 LinkedIn: [linkedin.com/in/0bkevin](https://www.linkedin.com/in/0bkevin/)
-- 🐦 X / Twitter: [x.com/0bkevin](https://x.com/0bkevin)
-- ✈️ Telegram: [t.me/Obkevin](https://t.me/Obkevin) (with a letter O, since Telegram doesn't allow a leading 0)
-- 🎮 Discord: `0bkevin`
-- 📄 CV: [One-page resume](https://drive.google.com/file/d/17i14DI4StC3FRe67TaIAGxRkV_3h7RoP/view?usp=sharing)
+- 🌐 Website · [kevinbravo.com](https://kevinbravo.com)
+- 🐙 GitHub · [github.com/0bkevin](https://github.com/0bkevin)
+- 💼 LinkedIn · [linkedin.com/in/0bkevin](https://www.linkedin.com/in/0bkevin/)
+- 🐦 X / Twitter · [x.com/0bkevin](https://x.com/0bkevin)
+- ✈️ Telegram · [t.me/Obkevin](https://t.me/Obkevin) (with a letter O, since Telegram doesn't allow a leading 0)
+- 🎮 Discord · `0bkevin`
+- 📄 CV · [One-page resume](https://drive.google.com/file/d/17i14DI4StC3FRe67TaIAGxRkV_3h7RoP/view?usp=sharing)
 
-**Pages on my site worth a click:**
+**Pages on my site worth a click**
 
 - [Who is Kevin Bravo?](https://kevinbravo.com/me/who-is-kevin-bravo) · The short bio
 - [Ask Me Anything](https://kevinbravo.com/me/ama) · Experience, strengths, role fit, AI tools, and what I'm looking for next
@@ -77,6 +77,6 @@ Vice President of **JA Venezuela Alumni**, organizer of the Caracas hub for the 
 - [Writing](https://kevinbravo.com/0b) · Smart contract security write-ups (Ethernaut, Damn Vulnerable DeFi) and a Brownie guide · [RSS](https://kevinbravo.com/rss.xml)
 - [Contact](https://kevinbravo.com/contact)
 
-**Talks:** [Crea y recauda fondos con Free2z](https://www.youtube.com/watch?v=0JlqBCB3LRM) (Spanish), for Zcash en Español.
+I gave a talk called [Crea y recauda fondos con Free2z](https://www.youtube.com/watch?v=0JlqBCB3LRM) (Spanish), for Zcash en Español.
 
-**For AI agents 🤖:** Start at [kevinbravo.com/llms.txt](https://kevinbravo.com/llms.txt) for a clean summary of who I am and every page on the site.
+**For AI agents 🤖**, start at [kevinbravo.com/llms.txt](https://kevinbravo.com/llms.txt) for a clean summary of who I am and every page on the site.
