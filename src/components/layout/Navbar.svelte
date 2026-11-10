@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
   import { fade, fly } from "svelte/transition";
   import { cubicOut } from "svelte/easing";
-  import NAV_ITEMS from "@data/navigation";
+  import { NAV_ITEMS } from "@data/navigation";
   import ThemeToggle from "@components/layout/ThemeToggle.svelte";
 
   export let shouldFixed = true;
@@ -16,8 +16,8 @@
   // A nav item lights up only on its own page (and the pages under it), never for
   // homepage sections, so the highlight always means "you are here".
   const pageFor = (path) => {
-    const match = NAV_ITEMS.find((item) => !item.link.includes("#") && (path === item.link || path.startsWith(`${item.link}/`)));
-    return match ? match.link : "";
+    const match = NAV_ITEMS.find((item) => !item.href.includes("#") && (path === item.href || path.startsWith(`${item.href}/`)));
+    return match ? match.href : "";
   };
 
   onMount(() => {
@@ -97,14 +97,14 @@
     <!-- Desktop menu -->
     <div class="hidden md:block">
       <ul class="flex items-center gap-0.5 m-0 p-0 list-none">
-        {#each NAV_ITEMS as item (item.id)}
+        {#each NAV_ITEMS as item (item.href)}
           <li>
             <a
-              href={item.link}
-              aria-current={activeNav === item.link ? 'page' : undefined}
-              class="text-[13px] lowercase text-inherit no-underline px-3 py-1.5 rounded-md transition-all duration-200 ease-in motion-reduce:transition-none {activeNav === item.link ? 'opacity-100 font-semibold text-accent-500 dark:text-accent-400' : 'font-medium opacity-60 hover:opacity-100'}"
+              href={item.href}
+              aria-current={activeNav === item.href ? 'page' : undefined}
+              class="text-[13px] lowercase text-inherit no-underline px-3 py-1.5 rounded-md transition-all duration-200 ease-in motion-reduce:transition-none {activeNav === item.href ? 'opacity-100 font-semibold text-accent-500 dark:text-accent-400' : 'font-medium opacity-60 hover:opacity-100'}"
             >
-              {item.name}
+              {item.label}
             </a>
           </li>
         {/each}
@@ -149,18 +149,18 @@
         class="origin-top bg-[#fafafa]/90 dark:bg-[#0a0a0a]/90 backdrop-blur-xl rounded-xl shadow-[0_12px_36px_-12px_rgb(0,0,0,0.12)] dark:shadow-[0_12px_36px_-12px_rgb(0,0,0,0.45)]"
       >
         <ul class="flex flex-col m-0 p-1.5 list-none">
-          {#each NAV_ITEMS as item (item.id)}
+          {#each NAV_ITEMS as item (item.href)}
             <li>
               <a
-                href={item.link}
+                href={item.href}
                 on:click={closeMobileMenu}
-                aria-current={activeNav === item.link ? 'page' : undefined}
+                aria-current={activeNav === item.href ? 'page' : undefined}
                 class="block px-4 py-2.5 rounded-md text-[14px] lowercase no-underline transition-colors duration-200 ease-out
-                  {activeNav === item.link
+                  {activeNav === item.href
                     ? 'text-accent-500 dark:text-accent-400 font-semibold'
                     : 'text-inherit font-medium opacity-60 hover:opacity-100'}"
               >
-                {item.name}
+                {item.label}
               </a>
             </li>
           {/each}

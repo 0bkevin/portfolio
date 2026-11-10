@@ -4,12 +4,12 @@
   export let name: string;
   export let label: string;
   export let placeholder: string;
-  export let type: string;
+  export let type: HTMLInputAttributes["type"];
   export let value: string = "";
   export let error = "";
   export let autocomplete: HTMLInputAttributes["autocomplete"] = "off";
   export let inputmode: HTMLInputAttributes["inputmode"] = undefined;
-  export let autocapitalize: string = "sentences";
+  export let autocapitalize: HTMLInputAttributes["autocapitalize"] = "sentences";
   export let spellcheck = true;
 
   const handleInput = (event: Event) => {

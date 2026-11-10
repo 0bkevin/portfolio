@@ -1,4 +1,5 @@
 <script>
+  import Icon from "@components/ui/Icon.svelte";
   // The inline script in Layout already applied the saved or system theme.
   let darkMode = document.documentElement.classList.contains("dark");
 
@@ -19,9 +20,9 @@
   aria-label="Toggle dark mode"
 >
   {#if darkMode}
-    <i class="bx bx-sun text-sm"></i>
+    <Icon name="sun" class="h-3.5 w-3.5" />
   {:else}
-    <i class="bx bx-moon text-sm"></i>
+    <Icon name="moon" class="h-3.5 w-3.5" />
   {/if}
 </button>
 

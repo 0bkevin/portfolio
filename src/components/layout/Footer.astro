@@ -1,5 +1,8 @@
 ---
-import { footerLinks, socialIcons } from "@data/footer";
+import Icon from "@components/ui/Icon.astro";
+import { NAV_ITEMS } from "@data/navigation";
+import { PROFILE_LINKS } from "@data/profile";
+
 const currentYear = new Date().getFullYear();
 ---
 
@@ -12,12 +15,12 @@ const currentYear = new Date().getFullYear();
         </a>
         <nav class="flex flex-wrap justify-center gap-x-5 gap-y-2" aria-label="Footer navigation">
           {
-            footerLinks.map(({ name, link }) => (
+            NAV_ITEMS.map(({ label, href }) => (
               <a
-                href={link}
+                href={href}
                 class="text-xs lowercase text-surface-500 hover:text-surface-900 dark:hover:text-surface-200 transition-colors"
               >
-                {name}
+                {label}
               </a>
             ))
           }
@@ -27,23 +30,15 @@ const currentYear = new Date().getFullYear();
       <div class="flex items-center gap-6">
         <div class="flex gap-4">
           {
-            socialIcons.map(({ icon, link, label }) => (
+            PROFILE_LINKS.map(({ icon, href, label }) => (
               <a
                 target="_blank"
-                href={link}
+                href={href}
                 rel="noopener noreferrer"
                 aria-label={label}
-                class={`text-surface-500 hover:text-surface-900 dark:hover:text-surface-200 transition-colors text-lg ${icon === "x" ? "inline-flex items-center" : icon}`}
+                class="text-surface-500 transition-colors hover:text-surface-900 dark:hover:text-surface-200"
               >
-                {icon === "x" && (
-                  <svg
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                    class="h-[0.85em] w-[0.85em] fill-current"
-                  >
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817-5.965 6.817H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z" />
-                  </svg>
-                )}
+                <Icon name={icon} class="h-4 w-4" />
               </a>
             ))
           }

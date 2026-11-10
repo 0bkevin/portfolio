@@ -3,8 +3,8 @@
   import ContactInput from "./ContactInput.svelte";
   import ContactTextArea from "./ContactTextArea.svelte";
   import ContactButton from "./ContactButton.svelte";
-  import { evaluateInputs, sanitizeInput } from "./validation";
-  let status = "toSend";
+  import { evaluateInputs, sanitizeInput, type SendStatus } from "./validation";
+  let status: SendStatus = "toSend";
 
   let name = "";
   let email = "";

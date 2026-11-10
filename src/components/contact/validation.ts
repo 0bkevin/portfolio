@@ -1,3 +1,6 @@
+/** Where the contact form is in its send cycle. */
+export type SendStatus = "toSend" | "sending" | "sent" | "error";
+
 const _isValidEmail = (email: string) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);

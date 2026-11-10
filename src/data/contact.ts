@@ -1,38 +1,29 @@
-export const contactData = [
-  {
-    title: "Email",
-    content: "0bravokevin@gmail.com",
-    link: "mailto:0bravokevin@gmail.com",
-    icon: "-mail-send",
-    index: 1,
-  },
-  {
-    title: "Telegram",
-    content: "@Obkevin",
-    icon: "l-telegram",
-    link: "https://t.me/Obkevin",
-    index: 2,
-  },
-  {
-    title: "Discord",
-    content: "0bkevin",
-    icon: "l-discord",
-    // Discord has no profile URL for a username, so this one copies the handle instead.
-    copy: true,
-    index: 3,
-  },
-  {
-    title: "X",
-    content: "@0bkevin",
-    icon: "l-twitter",
-    link: "https://x.com/0bkevin",
-    index: 4,
-  },
-  {
-    title: "LinkedIn",
-    content: "Kevin Bravo",
-    icon: "l-linkedin",
-    link: "https://www.linkedin.com/in/0bkevin/",
-    index: 5,
-  },
+import type { IconName } from "@lib/icons";
+
+export const CONTACT_EMAIL = "0bravokevin@gmail.com";
+
+interface BaseChannel {
+  label: string;
+  value: string;
+  icon: IconName;
+}
+
+/** A channel with a profile URL. */
+export interface LinkChannel extends BaseChannel {
+  href: string;
+}
+
+/** A channel without a profile URL (Discord usernames), whose handle is copied instead. */
+export interface CopyChannel extends BaseChannel {
+  copy: true;
+}
+
+export type ContactChannel = LinkChannel | CopyChannel;
+
+export const CONTACT_CHANNELS: readonly ContactChannel[] = [
+  // Telegram usernames cannot start with a digit, hence "Obkevin" with a letter O.
+  { label: "Telegram", value: "@Obkevin", icon: "telegram", href: "https://t.me/Obkevin" },
+  { label: "Discord", value: "0bkevin", icon: "discord", copy: true },
+  { label: "X", value: "@0bkevin", icon: "x", href: "https://x.com/0bkevin" },
+  { label: "LinkedIn", value: "Kevin Bravo", icon: "linkedin", href: "https://www.linkedin.com/in/0bkevin/" },
 ];
