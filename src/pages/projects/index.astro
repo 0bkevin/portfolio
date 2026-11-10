@@ -65,8 +65,9 @@ const structuredData = [
   title={pageTitle}
   description={pageDescription}
   canonical={pagePath}
-  image={featuredProject?.data.image.url ?? seoConfig.defaultOgImage}
-  imageAlt={featuredProject?.data.image.alt ?? "Kevin Bravo software engineering portfolio"}
+  image={featuredProject?.data.ogImage?.url ?? seoConfig.defaultOgImage}
+  imageAlt={featuredProject?.data.ogImage?.alt ?? seoConfig.defaultOgImageAlt}
+  {...(featuredProject?.data.ogImage ? { imageWidth: 1200, imageHeight: 630 } : {})}
   structuredData={structuredData}
   tags={["software engineering", "projects", "case studies", "portfolio", "backend", "infrastructure", "AI engineering", "full-stack"]}
 >

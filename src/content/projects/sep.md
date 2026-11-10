@@ -3,6 +3,7 @@ title: "SEP: Participant Evaluation System"
 pubYear: '2024-01-01T12:00:00Z'
 description: A platform for ProExcelencia operations, replacing scattered Excel files with real-time scholar, activity, volunteer-hour, and performance tracking.
 image: { url: '/assets/projects/sep/cover.avif', alt: 'Generated portfolio cover for the SEP participant evaluation system platform' }
+ogImage: { url: '/assets/projects/sep/og.jpg', alt: 'Generated portfolio cover for the SEP participant evaluation system platform' }
 tags: [platform, education, full-stack, multi-tenant, operations]
 technologies: [Next.js, PostgreSQL, Prisma, Auth.js, Azure, data modeling]
 language: en

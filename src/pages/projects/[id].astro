@@ -28,11 +28,15 @@ const technologies = project.data.technologies ?? project.data.tags;
 const seoTitle = project.data.seoTitle ?? `${project.data.title} Case Study | Kevin Bravo`;
 const seoDescription = project.data.seoDescription ?? project.data.description;
 
+// Social cards need JPG/PNG (X and LinkedIn do not render AVIF), so prefer the dedicated share image.
+const shareImage = project.data.ogImage ?? project.data.image;
+const shareSize = project.data.ogImage ? { imageWidth: 1200, imageHeight: 630 } : {};
+
 const projectSchema = createProjectSchema({
   name: project.data.title,
   description: project.data.description,
   url: pathname,
-  image: project.data.image.url,
+  image: shareImage.url,
   datePublished: project.data.pubYear,
   programmingLanguage: technologies,
   keywords: project.data.tags,
@@ -52,8 +56,9 @@ const structuredData = [projectSchema, breadcrumbSchema];
 <Layout
   title={seoTitle}
   description={seoDescription}
-  image={project.data.image.url}
-  imageAlt={project.data.image.alt}
+  image={shareImage.url}
+  imageAlt={shareImage.alt}
+  {...shareSize}
   canonical={pathname}
   type="website"
   structuredData={structuredData}

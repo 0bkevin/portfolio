@@ -3,6 +3,7 @@ title: "Billingua Talent"
 pubYear: '2025-01-01T12:00:00Z'
 description: A multi-tenant bilingual talent platform I led for AVAA and the U.S. Department of State's Venezuela Affairs Unit, connecting high-skilled bilingual Venezuelans with companies hiring locally so the country retains talent that would otherwise emigrate.
 image: { url: '/assets/projects/billingua/cover.avif', alt: 'Billingua Talent homepage for English for Careers' }
+ogImage: { url: '/assets/projects/billingua/og.jpg', alt: 'Billingua Talent homepage for English for Careers' }
 tags: [full-stack platform, talent network, multi-tenant, dashboards]
 technologies: [multi-tenant platform, role-based access, backend systems, dashboards, data modeling]
 language: en

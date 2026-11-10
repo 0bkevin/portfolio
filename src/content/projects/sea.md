@@ -3,6 +3,7 @@ title: "SEA: Advisee Evaluation System"
 pubYear: '2024-01-01T12:00:00Z'
 description: An internal platform for EducationUSA advisory operations, centralizing student histories, outreach activities, institutional alliances, and funnel visibility.
 image: { url: '/assets/projects/sea/cover.avif', alt: 'Minimal abstract cover for the SEA EducationUSA advisory operations platform' }
+ogImage: { url: '/assets/projects/sea/og.jpg', alt: 'Minimal abstract cover for the SEA EducationUSA advisory operations platform' }
 tags: [platform, education, full-stack, operations]
 technologies: [Next.js, PostgreSQL, Prisma, Auth.js, Azure, data modeling]
 language: en

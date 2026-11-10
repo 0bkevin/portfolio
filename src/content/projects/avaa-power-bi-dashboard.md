@@ -3,6 +3,7 @@ title: "AVAA Alumni Analytics Dashboard"
 pubYear: '2023-08-01T12:00:00Z'
 description: AVAA's first alumni dashboard, built in Power BI from years of scattered spreadsheets I cleaned with Python.
 image: { url: '/assets/projects/avaa-dashboard/cover.avif', alt: 'Portfolio cover for the AVAA alumni analytics Power BI dashboard case study' }
+ogImage: { url: '/assets/projects/avaa-dashboard/og.jpg', alt: 'Portfolio cover for the AVAA alumni analytics Power BI dashboard case study' }
 tags: [power bi, python, data analytics, dashboards]
 technologies: [Power BI, Python, data analytics, dashboard design]
 language: en
