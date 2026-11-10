@@ -16,7 +16,7 @@
 
 I build products from zero to production. That means the messy first conversation with users, the data model, the backend, the infra, and the support after launch. Give me an unclear problem and full agency, and I'm having a good day.
 
-These days I'm deep into **AI tooling and agentic systems**. I build MCP servers that let agents work inside real products, LangGraph pipelines that turn messy sources into clean data, and little tools to reach my own agents from anywhere. I care a lot about them being actually useful *and* safe to run.
+These days I'm deep into **AI tooling and agentic systems**. I build MCP servers that let agents work inside real products, LangGraph pipelines that turn messy sources into clean data, and little tools to reach my own agents from anywhere. I also build **RAG** systems, from chunking and embeddings to retrieval and evals, so agents answer from real data instead of guessing. I care a lot about them being actually useful *and* safe to run.
 
 Fun twist, before software I studied **Occupational Therapy** (graduated cum laude from UCV). It still shapes how I think about people and the systems they use.
 
@@ -48,7 +48,7 @@ Full story at [kevinbravo.com/experience](https://kevinbravo.com/experience).
 
 Vice President of **JA Venezuela Alumni**, organizer of the Caracas hub for the **Dev3pack Global Hackathon**, and code mentor for **Technovation Girls Venezuela**. I also write a bit at [kevinbravo.com/0b](https://kevinbravo.com/0b) and give the occasional talk.
 
-I mostly work with SvelteKit, TypeScript, Python, Go, PostgreSQL, MCP, LangGraph, and Kubernetes, with Claude, Codex, Cursor, and friends helping me move faster without outsourcing the thinking.
+I mostly work with SvelteKit, TypeScript, Python, Go, PostgreSQL, MCP, LangGraph, RAG, vector search, and Kubernetes, with Claude, Codex, Cursor, and friends helping me move faster without outsourcing the thinking.
 
 ## Say hi
 
