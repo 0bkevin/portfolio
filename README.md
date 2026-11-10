@@ -56,7 +56,7 @@ vice president of **JA Venezuela Alumni**, organized the Caracas hub for the **D
 
 ## about this repo
 
-this is the source of [kevinbravo.com](https://kevinbravo.com). kevin Bravo's portfolio: experience, case studies, writing, and contact. Built with Astro (server output on Cloudflare Pages), Tailwind CSS, and TypeScript, with one Svelte island for the contact form.
+this is the source of [kevinbravo.com](https://kevinbravo.com): experience, case studies, writing, and contact. Built with Astro (server output on Cloudflare Pages), Tailwind CSS, and TypeScript, with one Svelte island for the contact form.
 
 ### Commands
 
