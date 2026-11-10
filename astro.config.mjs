@@ -11,9 +11,7 @@ export default defineConfig({
   integrations: [
     tailwind(),
     svelte(),
-    sitemap({
-      filter: (page) => !page.endsWith('/me/who-is-kevin-bravo'),
-    }),
+    sitemap(),
   ],
   output: 'server',
   trailingSlash: 'never',

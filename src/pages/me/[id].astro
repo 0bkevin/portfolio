@@ -32,7 +32,6 @@ const pathname = `/me/${entry.id}`;
 const pageUrl = new URL(pathname, Astro.site).toString();
 const imageUrl = entry.data.image?.url || seoConfig.defaultOgImage;
 const updatedDate = entry.data.updateDate ?? entry.data.pubDate;
-const noindex = entry.id === "who-is-kevin-bravo";
 const seoTitle =
   entry.id === "ama"
     ? "Kevin Bravo | Product, Backend & Full-Stack Engineer"
@@ -96,7 +95,6 @@ const structuredData = [
   type="profile"
   canonical={pathname}
   structuredData={structuredData}
-  noindex={noindex}
   hideSectionLabel={false}
 >
   <Content />
