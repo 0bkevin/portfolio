@@ -11,6 +11,8 @@ Kevin Bravo is a software engineer who likes difficult technical projects, backe
 
 He works best when he has full agency to turn an unclear technical problem into a well-structured, maintainable system.
 
+Right now, most of his work is around **AI tooling and agentic systems**: MCP servers that let AI agents work inside real products, LangGraph pipelines that turn messy sources into structured data, and tools to reach his own agents from anywhere. He cares about making them genuinely useful and safe to run, with clear permissions and guardrails.
+
 - In 2026, he became **Vice President of JA Venezuela Alumni**, supporting institutional growth, partnerships, internal operations, and initiatives for young leaders and entrepreneurs.
 - In 2026, he organized the **Caracas hub for the Dev3pack Global Hackathon**, coordinating the local experience for students interested in Web3 and AI.
 - In 2026, he worked as a **Code Mentor for Technovation Girls Venezuela**, helping a team of students build a mobile app with MIT App Inventor.

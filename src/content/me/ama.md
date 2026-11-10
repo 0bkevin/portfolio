@@ -23,6 +23,8 @@ Led engineering on a platform for the U.S. Department of State’s Venezuela Aff
 
 I’m a **product engineer** with 5 years of experience building full-stack products, internal platforms, AI agent systems, and data systems. I’ve worked in startups, government projects, and non-profits, leading technical architecture, full-stack development, and product design.
 
+**Lately, most of my time goes into AI tooling and agentic systems.** I build MCP servers that let agents work inside real products, LangGraph pipelines that turn messy sources into structured data, and my own tools to work with agents from anywhere. What I care about most is making them actually useful and safe to run, with clear permissions and guardrails.
+
 Most of my experience has been building systems from the ground up, where I defined the architecture, modeled the data, and connected services. I work across the full stack and like being close to product decisions, and I’m especially drawn to internal platforms, AI agents and tooling, cloud and backend architecture, and systems that other people can rely on.
 
 I like working on systems that matter and solving hard technical problems that force you to understand what is really happening. I like taking full ownership of the outcome and being trusted with difficult, ambiguous challenges. I do my best work when the systems, architecture, and foundations still need to be designed, built, and maintained.
