@@ -25,10 +25,8 @@ const active = activeNavHref(Astro.url.pathname);
   data-navbar
   data-fixed={fixed ? "true" : "false"}
   class:list={[
-    "group/navbar pointer-events-none z-50 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]",
-    fixed
-      ? "fixed inset-x-0 top-0 px-4 data-[scrolled]:translate-y-4 data-[hidden]:-translate-y-[150%] sm:px-6"
-      : "relative",
+    "group/navbar pointer-events-none z-50",
+    fixed ? "navbar-fixed fixed inset-x-0 top-0 px-4 sm:px-6" : "relative",
   ]}
 >
   <nav
@@ -124,6 +122,35 @@ const active = activeNavHref(Astro.url.pathname);
 </script>
 
 <style>
+  /* Slide motion lives here rather than in utilities so "scrolled" and "hidden" never fight over transform. */
+  .navbar-fixed {
+    transform: translate3d(0, 0, 0);
+    transition:
+      transform 480ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 220ms ease-out;
+    will-change: transform;
+  }
+
+  .navbar-fixed[data-scrolled] {
+    transform: translate3d(0, 1rem, 0);
+  }
+
+  /* Clears its own height, the 1rem float offset, and the drop shadow, so nothing peeks in. */
+  .navbar-fixed[data-hidden] {
+    transform: translate3d(0, calc(-100% - 3rem), 0);
+    opacity: 0;
+    transition:
+      transform 420ms cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 260ms ease-in 120ms;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .navbar-fixed,
+    .navbar-fixed[data-hidden] {
+      transition: opacity 150ms linear;
+    }
+  }
+
   .aka-tag {
     padding: 0 0.35em;
     background: color-mix(in oklab, currentColor 8%, transparent);
