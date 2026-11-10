@@ -5,39 +5,21 @@
     id: "",
   };
   export let active = false;
+
+  // Nesting is shown with indentation and a small marker, never by fading the text,
+  // so every level stays readable.
+  const indent = { 2: "", 3: "ml-3", 4: "ml-6" };
 </script>
 
-{#if item.level === 2}
-  <li class="truncate">
+{#if item.level >= 2 && item.level <= 4}
+  <li class={`flex min-w-0 items-center gap-1.5 ${indent[item.level]}`}>
+    {#if item.level > 2}
+      <span class="h-1 w-1 shrink-0 rounded-full bg-surface-300 dark:bg-surface-700" aria-hidden="true"></span>
+    {/if}
     <a
       href={`#${item.id}`}
       title={item.text}
-      aria-label={item.text}
-      class={`block truncate py-0.5 text-[13px] transition-colors transition-opacity hover:opacity-90 ${active ? "text-accent-500 dark:text-accent-400 opacity-100" : "text-surface-600 dark:text-surface-400 opacity-75 hover:text-surface-900 dark:hover:text-surface-200"}`}
-    >
-      {item.text}
-    </a>
-  </li>
-{:else if item.level === 3}
-  <li class="ml-3 flex min-w-0 items-center gap-1">
-    <span class="w-1 h-1 rounded-full bg-surface-300 dark:bg-surface-700 shrink-0"></span>
-    <a
-      href={`#${item.id}`}
-      title={item.text}
-      aria-label={item.text}
-      class={`block min-w-0 truncate py-0.5 text-[11px] transition-colors transition-opacity hover:opacity-90 ${active ? "text-accent-500 dark:text-accent-400 opacity-100" : "text-surface-500 opacity-70 hover:text-surface-900 dark:hover:text-surface-200"}`}
-    >
-      {item.text}
-    </a>
-  </li>
-{:else if item.level === 4}
-  <li class="ml-6 flex min-w-0 items-center gap-1">
-    <span class="w-0.5 h-0.5 rounded-full bg-surface-300 dark:bg-surface-700 shrink-0"></span>
-    <a
-      href={`#${item.id}`}
-      title={item.text}
-      aria-label={item.text}
-      class={`block min-w-0 truncate py-0.5 text-[11px] transition-colors transition-opacity hover:opacity-90 ${active ? "text-accent-500 dark:text-accent-400 opacity-100" : "text-surface-500 opacity-65 hover:text-surface-900 dark:hover:text-surface-200"}`}
+      class={`block min-w-0 truncate py-0.5 transition-colors ${item.level === 2 ? "text-[13px]" : "text-[12px]"} ${active ? "text-accent-500 dark:text-accent-400" : "text-surface-600 hover:text-surface-900 dark:text-surface-400 dark:hover:text-surface-100"}`}
     >
       {item.text}
     </a>
