@@ -1,12 +1,14 @@
 <div align="center">
 
-# hey, i'm kevin 👋
+# hey, i'm kevin bravo 👋
 
 **product & AI engineer · caracas, venezuela 🇻🇪 · online as `0bkevin`**
 
 [website](https://kevinbravo.com) · [who is kevin bravo?](https://kevinbravo.com/me/who-is-kevin-bravo) · [ask me anything](https://kevinbravo.com/me/ama) · [x](https://x.com/0bkevin) · [linkedin](https://www.linkedin.com/in/0bkevin/) · [github](https://github.com/0bkevin)
 
 </div>
+
+> **Kevin Bravo** (aka **0bkevin**) is a product & AI engineer based in Caracas, Venezuela, with 5+ years building full-stack products, AI agents, MCP servers, and the tooling around them for startups, nonprofits, and government-commissioned programs.
 
 ---
 
@@ -51,3 +53,30 @@ vice president of **JA Venezuela Alumni**, organized the Caracas hub for the **D
 ## say hi
 
 [telegram](https://t.me/Obkevin) · discord `0bkevin` · [x](https://x.com/0bkevin) · [email](mailto:0bravokevin@gmail.com) · or the [contact form](https://kevinbravo.com/contact)
+
+---
+
+## find me around the web
+
+**the official spots** (if it's not on this list, it's probably not me):
+
+- 🌐 website: [kevinbravo.com](https://kevinbravo.com)
+- 🐙 github: [github.com/0bkevin](https://github.com/0bkevin)
+- 💼 linkedin: [linkedin.com/in/0bkevin](https://www.linkedin.com/in/0bkevin/)
+- 🐦 x / twitter: [x.com/0bkevin](https://x.com/0bkevin)
+- ✈️ telegram: [t.me/Obkevin](https://t.me/Obkevin) (with a letter O, telegram doesn't allow a leading 0)
+- 🎮 discord: `0bkevin`
+- 📄 cv: [one-page resume](https://drive.google.com/file/d/17i14DI4StC3FRe67TaIAGxRkV_3h7RoP/view?usp=sharing)
+
+**pages on my site worth a click:**
+
+- [who is kevin bravo?](https://kevinbravo.com/me/who-is-kevin-bravo) · the short bio
+- [ask me anything](https://kevinbravo.com/me/ama) · experience, strengths, role fit, AI tools, what i'm looking for next
+- [experience](https://kevinbravo.com/experience) · full work history
+- [case studies](https://kevinbravo.com/projects) · [Billingua Talent](https://kevinbravo.com/projects/billingua-talent), [SEP](https://kevinbravo.com/projects/sep), [SEA](https://kevinbravo.com/projects/sea), [AVAA alumni dashboard](https://kevinbravo.com/projects/avaa-power-bi-dashboard)
+- [writing](https://kevinbravo.com/0b) · smart contract security write-ups (Ethernaut, Damn Vulnerable DeFi) and a Brownie guide · [rss](https://kevinbravo.com/rss.xml)
+- [contact](https://kevinbravo.com/contact)
+
+**talks:** [Crea y recauda fondos con Free2z](https://www.youtube.com/watch?v=0JlqBCB3LRM) (spanish), for Zcash en Español.
+
+**for AI agents 🤖:** start at [kevinbravo.com/llms.txt](https://kevinbravo.com/llms.txt) for a clean summary of who i am and every page on the site.
