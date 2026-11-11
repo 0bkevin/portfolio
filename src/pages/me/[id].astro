@@ -25,12 +25,7 @@ const { Content, headings } = await render(entry);
 const pathname = `/me/${entry.id}`;
 const pageUrl = new URL(pathname, Astro.site).toString();
 const updatedDate = entry.data.updateDate ?? entry.data.pubDate;
-const seoTitle =
-  entry.id === "ama" ? "Ask Me Anything | Kevin Bravo, Product & AI Engineer" : entry.data.seoTitle;
-const seoDescription =
-  entry.id === "ama"
-    ? "Kevin Bravo answers the questions recruiters ask: his experience as a product and AI engineer, the problems he likes, the AI tools he uses, and what he looks for next."
-    : entry.data.seoDescription;
+const { seoTitle, seoDescription } = entry.data;
 
 const breadcrumbSchema = createBreadcrumbSchema([
   { name: "Home", item: "/" },
