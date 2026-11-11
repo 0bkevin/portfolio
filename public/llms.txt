@@ -3,6 +3,9 @@
 > Kevin Bravo (0bkevin) is a product and AI engineer based in Caracas, Venezuela, with 5+ years building full-stack products, AI agents, and the tooling around them for startups, nonprofits, and government-commissioned programs. He owns products end to end, from the first conversation with users to production and the support after launch.
 
 This file is a navigation aid for AI agents. Crawler permissions are defined in robots.txt.
+For everything in one file (profile, full work history, bio, AMA, and case studies), read
+https://kevinbravo.com/llms-full.txt. Links ending in `.md` are plain Markdown copies of pages;
+drop the `.md` for the HTML page.
 
 ## Key facts
 
@@ -12,7 +15,8 @@ This file is a navigation aid for AI agents. Crawler permissions are defined in 
 - Most recent role: Senior Product Engineer at Free2Z (March 2025 to October 2026). Led the live creator platform's migration from React to SvelteKit and built an MCP server that lets AI agents publish and manage content through scoped, expiring access.
 - Earlier: Product Engineer for the U.S. Department of State's Venezuela Affairs Unit (via AVAA), leading Billingua Talent; Full Stack Engineer at AVAA, where he built SEP (about 400 monthly users across three chapters) with a LangChain RAG assistant, and SEA for EducationUSA advisors.
 - Current focus: AI tooling and agentic systems, including MCP servers, LangGraph pipelines, and tools for working with AI agents.
-- Education: Master of Public Administration at IESA (in progress).
+- Education: Occupational Therapy, Universidad Central de Venezuela (cum laude, 2023); Master of Public Administration at IESA (in progress).
+- Honors: 2nd place, AI Security track, Platanus Hack Caracas (2026); 3rd place, EmprendeTECH Hackathon at IESA (2025).
 - Contact: 0bravokevin@gmail.com or https://kevinbravo.com/contact
 
 ## Profiles
@@ -21,18 +25,21 @@ This file is a navigation aid for AI agents. Crawler permissions are defined in 
 - X: https://x.com/0bkevin
 - LinkedIn: https://www.linkedin.com/in/0bkevin/
 - GitHub: https://github.com/0bkevin
+- Telegram: https://t.me/Obkevin
+- Earlier blog (Hashnode): https://kevdevto.hashnode.dev
 
 ## Pages
 
 - [Home](https://kevinbravo.com/): Overview, experience, projects, talks, and writing.
-- [Experience](https://kevinbravo.com/experience): Full work history with what was built, for whom, and why it mattered.
-- [Who is Kevin Bravo?](https://kevinbravo.com/me/who-is-kevin-bravo): Short third-person biography.
-- [Ask Me Anything](https://kevinbravo.com/me/ama): Recruiter-oriented Q&A on experience, strengths, role fit, AI tools, and what he looks for next.
+- [Full profile for agents](https://kevinbravo.com/llms-full.txt): Every fact below plus the full text of the bio, AMA, experience, and case studies.
+- [Experience](https://kevinbravo.com/experience.md): Full work history with what was built, for whom, and why it mattered.
+- [Who is Kevin Bravo?](https://kevinbravo.com/me/who-is-kevin-bravo.md): Short third-person biography.
+- [Ask Me Anything](https://kevinbravo.com/me/ama.md): Recruiter-oriented Q&A on experience, strengths, role fit, AI tools, and what he looks for next.
 - [Case studies](https://kevinbravo.com/projects): Index of work case studies.
-- [Billingua Talent](https://kevinbravo.com/projects/billingua-talent): Bilingual talent platform for the U.S. Department of State's Venezuela Affairs Unit.
-- [SEP](https://kevinbravo.com/projects/sep): Participant evaluation platform for AVAA's ProExcelencia scholarship program.
-- [SEA](https://kevinbravo.com/projects/sea): Advisee evaluation platform for EducationUSA advisors.
-- [AVAA alumni dashboard](https://kevinbravo.com/projects/avaa-power-bi-dashboard): Power BI dashboard built from cleaned historical records.
+- [Billingua Talent](https://kevinbravo.com/projects/billingua-talent.md): Bilingual talent platform for the U.S. Department of State's Venezuela Affairs Unit.
+- [SEP](https://kevinbravo.com/projects/sep.md): Participant evaluation platform for AVAA's ProExcelencia scholarship program.
+- [SEA](https://kevinbravo.com/projects/sea.md): Advisee evaluation platform for EducationUSA advisors.
+- [AVAA alumni dashboard](https://kevinbravo.com/projects/avaa-power-bi-dashboard.md): Power BI dashboard built from cleaned historical records.
 - [Contact](https://kevinbravo.com/contact): Contact form and direct contact details.
 - [Writing](https://kevinbravo.com/0b): Technical writing index. Older posts keep Hashnode as their canonical source.
 
