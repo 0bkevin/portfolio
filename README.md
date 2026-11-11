@@ -44,22 +44,21 @@ Full story at [kevinbravo.com/experience](https://kevinbravo.com/experience).
 - 🥈 2nd place, AI Security track at **Platanus Hack Caracas** (2026) with Gotchu
 - 🥉 3rd place at IESA's first **EmprendeTECH Hackathon** (2025) with Planify
 
-## Outside the editor
+## Leading outside the editor
 
-Vice President of **JA Venezuela Alumni**, organizer of the Caracas hub for the **Dev3pack Global Hackathon**, and code mentor for **Technovation Girls Venezuela**. I also write a bit at [kevinbravo.com/0b](https://kevinbravo.com/0b) and give the occasional talk.
+I've spent **8+ years volunteering and leading in nonprofits** across education, the environment, and tech. It's where I learned to lead people, not just code, and to rally a team around a shared goal with no budget and no formal authority.
+
+- 🤝 **JA Venezuela Alumni** · Vice President (2026–present). I set yearly priorities with the board and coordinate committees and project leads, after helping launch the national alumni network as a volunteer.
+- 🎓 **AVAA** · Education Committee member (2024–present). I help shape how the ProExcelencia scholarship program evolves for around 300 scholars, as a former scholar myself (2019–2023).
+- 🌱 **AVAA, Una Mano Amiga por el Ambiente** · Project Lead (2020–2021). I moved an environmental education project online during the pandemic, building 28 alliances and reaching 1,300+ participants.
+- 🚀 **Dev3pack Global Hackathon** · Caracas Hub Organizer (2026). I ran the local hub of a global AI and Web3 hackathon, from venue and sponsors to mentoring teams through their final submissions.
+- 👩‍💻 **Technovation Girls Venezuela** · Code Mentor (2026). I mentored four students taking a mobile app for a community problem from idea to working prototype.
+- 💡 **Finnancity** · Web Developer & Technical Consultant (2025–present). I build pages and forms and advise on tools for education and finance initiatives.
+
+I also write a bit at [kevinbravo.com/0b](https://kevinbravo.com/0b) and give the occasional [talk](https://www.youtube.com/watch?v=0JlqBCB3LRM).
+
+## Stack
 
 I mostly work with SvelteKit, TypeScript, Python, Go, PostgreSQL, MCP, LangGraph, RAG, vector search, and Kubernetes, with Claude, Codex, Cursor, and friends helping me move faster without outsourcing the thinking.
-
-## Find me
-
-| Profiles | On my site |
-| --- | --- |
-| 🌐 [kevinbravo.com](https://kevinbravo.com) | [Who is Kevin Bravo?](https://kevinbravo.com/me/who-is-kevin-bravo) |
-| 🐙 [GitHub](https://github.com/0bkevin) | [Ask Me Anything](https://kevinbravo.com/me/ama) |
-| 💼 [LinkedIn](https://www.linkedin.com/in/0bkevin/) | [Experience](https://kevinbravo.com/experience) |
-| 🐦 [X](https://x.com/0bkevin) | [Case studies](https://kevinbravo.com/projects) |
-| ✈️ [Telegram](https://t.me/Obkevin) | [Writing](https://kevinbravo.com/0b) |
-| 🎮 Discord `0bkevin` | [Talk on YouTube](https://www.youtube.com/watch?v=0JlqBCB3LRM) |
-| 📄 [CV](https://drive.google.com/file/d/17i14DI4StC3FRe67TaIAGxRkV_3h7RoP/view?usp=sharing) | [Contact](https://kevinbravo.com/contact) |
 
 <sub>🤖 For AI agents, see [llms.txt](https://kevinbravo.com/llms.txt).</sub>
