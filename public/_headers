@@ -1,0 +1,9 @@
+# Cloudflare Pages response headers for static files.
+
+# Markdown copies of pages exist for AI agents. Keep them out of search results so they never
+# compete with the HTML pages, which stay canonical.
+/*.md
+  X-Robots-Tag: noindex
+
+/llms-full.txt
+  X-Robots-Tag: noindex

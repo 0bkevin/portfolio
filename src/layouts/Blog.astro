@@ -108,6 +108,10 @@ const showCanonicalSource =
   typeof resolvedCanonical === "string" && /^https?:\/\//i.test(resolvedCanonical);
 
 const tocItems = tocEntries(tableOfContents);
+
+// Every page on this layout (/me and /0b) has a Markdown copy next to it. Prerendered pages see
+// their output file name here (/me/ama.html), so strip the extension.
+const markdownPath = `${Astro.url.pathname.replace(/(\.html)?\/?$/, "")}.md`;
 ---
 
 <Layout
@@ -125,6 +129,7 @@ const tocItems = tocEntries(tableOfContents);
   section={sectionLabel}
   tags={"tags" in entry.data ? entry.data.tags : []}
   lang={"language" in entry.data ? entry.data.language : "en"}
+  markdownPath={markdownPath}
 >
   <div class="w-full flex justify-center px-5 sm:px-6 md:px-8 xl:px-0">
     <article class="min-w-0 pb-20 pt-6 space-y-6 w-full max-w-[800px] mx-auto xl:mx-0">
