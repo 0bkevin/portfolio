@@ -5,7 +5,8 @@ import { existsSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 import sharp from "sharp";
 
-export const VARIANT_WIDTHS = [800, 1600];
+// Keep in sync with VARIANT_WIDTHS in src/lib/responsive-image.ts, which builds the srcset.
+const VARIANT_WIDTHS = [800, 1600];
 const ROOT = "public/assets";
 
 function* avifFiles(dir) {

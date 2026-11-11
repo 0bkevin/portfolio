@@ -3,6 +3,7 @@
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 
+// Keep in sync with scripts/image-variants.mjs, which writes the copies.
 const VARIANT_WIDTHS = [800, 1600];
 
 /** srcset listing the image's existing smaller copies plus the original, or undefined if it has none. */
