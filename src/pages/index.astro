@@ -9,7 +9,7 @@ import ProjectsSection from "@components/home/ProjectsSection.astro";
 import BlogSection from "@components/home/BlogSection.astro";
 import AchievementsSection from "@components/home/AchievementsSection.astro";
 import TalksSection from "@components/home/TalksSection.astro";
-import { createPersonSchema, createProfilePageSchema, createWebsiteSchema, seoConfig } from "@lib/seo";
+import { createProfilePageSchema, createWebsiteSchema, seoConfig } from "@lib/seo";
 
 // Static HTML served from the edge cache; nothing here depends on the request.
 export const prerender = true;
@@ -19,7 +19,8 @@ const description =
   "Kevin Bravo is a product and AI engineer in Caracas, Venezuela. Case studies, projects, talks, and writing on full-stack products, AI agents, MCP, and backend systems.";
 const image = seoConfig.defaultOgImage;
 
-// The homepage is Kevin's entity home: a ProfilePage whose main entity is the one Person definition.
+// The homepage is Kevin's entity home: a ProfilePage whose main entity is the full Person definition.
+// The WebSite node here is what Google reads for the site name.
 const profilePageSchema = createProfilePageSchema({
   name: title,
   description,
@@ -29,10 +30,7 @@ const profilePageSchema = createProfilePageSchema({
   dateModified: "2026-11-10",
 });
 
-const websiteSchema = createWebsiteSchema();
-const personSchema = createPersonSchema();
-
-const structuredData = [websiteSchema, personSchema, profilePageSchema];
+const structuredData = [createWebsiteSchema(), profilePageSchema];
 ---
 
 <Layout

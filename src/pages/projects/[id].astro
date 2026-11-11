@@ -40,10 +40,8 @@ const projectSchema = createProjectSchema({
   url: pathname,
   image: shareImage.url,
   datePublished: project.data.pubYear,
-  programmingLanguage: technologies,
-  keywords: project.data.tags,
-  ...(project.data.repoUrl ? { codeRepository: project.data.repoUrl } : {}),
-  ...(project.data.demoUrl ? { demoUrl: project.data.demoUrl } : {}),
+  keywords: [...project.data.tags, ...technologies],
+  inLanguage: project.data.language,
 });
 
 const breadcrumbSchema = createBreadcrumbSchema([

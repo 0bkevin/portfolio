@@ -4,7 +4,7 @@ import PageHeader from "@components/layout/PageHeader.astro";
 import SectionHeading from "@components/layout/SectionHeading.astro";
 import { EXPERIENCE, VOLUNTEERING } from "@data/experience";
 import { CV_URL } from "@data/profile";
-import { createBreadcrumbSchema, createWebsiteSchema } from "@lib/seo";
+import { createBreadcrumbSchema, createProfilePageSchema } from "@lib/seo";
 
 // Static HTML served from the edge cache; nothing here depends on the request.
 export const prerender = true;
@@ -14,8 +14,16 @@ const pageDescription =
   "Kevin Bravo's work history as a product, AI, and full-stack engineer: Free2Z, the U.S. Department of State through AVAA, freelance clients, and AVAA, plus leadership and volunteer work.";
 const pagePath = "/experience";
 
+// A resume page, so it is a ProfilePage about Kevin like the homepage and the /me pages.
 const structuredData = [
-  createWebsiteSchema(),
+  createProfilePageSchema({
+    name: pageTitle,
+    description: pageDescription,
+    url: pagePath,
+    // Update dateModified when the work history changes.
+    dateCreated: "2026-11-10",
+    dateModified: "2026-11-10",
+  }),
   createBreadcrumbSchema([
     { name: "Home", item: "/" },
     { name: "Experience", item: pagePath },
