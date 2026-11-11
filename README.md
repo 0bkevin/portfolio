@@ -46,20 +46,12 @@ Full story at [kevinbravo.com/experience](https://kevinbravo.com/experience).
 
 ## Outside the editor
 
-Vice President of **JA Venezuela Alumni**, organizer of the Caracas hub for the **Dev3pack Global Hackathon**, and code mentor for **Technovation Girls Venezuela**. I also write a bit at [kevinbravo.com/0b](https://kevinbravo.com/0b) and give the occasional talk.
+I've been volunteering for the past 8+ years, mostly in education, environmental, and tech projects. Along the way I've led teams, started projects from scratch, and seen them through to the end. These days I'm Vice President of **JA Venezuela Alumni**, part of the Education Committee at **AVAA**, and one of the founders and leads of **Dev3pack Venezuela**, where we're bringing more women into tech.
+
+The rest of my time goes to running 🏃. I've worked my way up to 21K races. Now I'm training for my first full marathon, and somewhere down the road there's an Ironman with my name on it. I also write a bit at [kevinbravo.com/0b](https://kevinbravo.com/0b).
+
+## Stack
 
 I mostly work with SvelteKit, TypeScript, Python, Go, PostgreSQL, MCP, LangGraph, RAG, vector search, and Kubernetes, with Claude, Codex, Cursor, and friends helping me move faster without outsourcing the thinking.
-
-## Find me
-
-| Profiles | On my site |
-| --- | --- |
-| 🌐 [kevinbravo.com](https://kevinbravo.com) | [Who is Kevin Bravo?](https://kevinbravo.com/me/who-is-kevin-bravo) |
-| 🐙 [GitHub](https://github.com/0bkevin) | [Ask Me Anything](https://kevinbravo.com/me/ama) |
-| 💼 [LinkedIn](https://www.linkedin.com/in/0bkevin/) | [Experience](https://kevinbravo.com/experience) |
-| 🐦 [X](https://x.com/0bkevin) | [Case studies](https://kevinbravo.com/projects) |
-| ✈️ [Telegram](https://t.me/Obkevin) | [Writing](https://kevinbravo.com/0b) |
-| 🎮 Discord `0bkevin` | [Talk on YouTube](https://www.youtube.com/watch?v=0JlqBCB3LRM) |
-| 📄 [CV](https://drive.google.com/file/d/17i14DI4StC3FRe67TaIAGxRkV_3h7RoP/view?usp=sharing) | [Contact](https://kevinbravo.com/contact) |
 
 <sub>🤖 For AI agents, see [llms.txt](https://kevinbravo.com/llms.txt).</sub>
