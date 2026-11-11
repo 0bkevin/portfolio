@@ -27,7 +27,7 @@
         color: #e5e5e5;
         font-family: "Inter Variable", sans-serif;
         -webkit-font-smoothing: antialiased;
-        padding: 72px 88px 64px;
+        padding: 64px 88px;
         display: flex;
         flex-direction: column;
       }
@@ -39,12 +39,14 @@
         display: flex;
         justify-content: space-between;
         align-items: baseline;
-        font-size: 22px;
+        font-size: 20px;
       }
-      .wordmark { color: #e5e5e5; }
+      /* Edge rows are meta: quieter than anything in the hero. */
+      .wordmark { color: #a3a3a3; }
       .wordmark .aka { opacity: 0.6; margin: 0 0.3em; }
       .aka-tag {
-        font-size: 20px;
+        font-size: 18px;
+        color: #e5e5e5;
         padding: 0 0.35em;
         background: rgba(229, 229, 229, 0.08);
         box-shadow: 3px 3px 0 #facc15;
@@ -61,28 +63,29 @@
         color: #facc15;
         margin-left: -5px;
       }
-      .role { margin-top: 24px; font-size: 26px; }
+      /* The role sits tight under the name (identity); the summary gets a wider gap (pitch). */
+      .role { margin-top: 20px; font-size: 26px; font-weight: 500; }
+      .role .primary { color: #fafafa; }
+      .role .secondary { color: #737373; font-weight: 400; }
       .summary {
-        margin-top: 28px;
-        max-width: 880px;
-        font-size: 28px;
-        font-weight: 300;
-        line-height: 1.45;
-        color: #d4d4d4;
+        margin-top: 44px;
+        max-width: 800px;
+        font-size: 25px;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #a3a3a3;
       }
-      .role .primary { color: #e5e5e5; }
-      .role .secondary { color: #858585; }
 
       /* Bottom row: a section-heading rule with what Kevin works on. */
       .bottom {
         display: flex;
         align-items: center;
         gap: 24px;
-        font-size: 20px;
+        font-size: 18px;
         color: #858585;
       }
       .bottom .num { color: #facc15; }
-      .bottom .rule { flex: 1; height: 1px; background: #262626; }
+      .bottom .rule { flex: 1; height: 1px; background: #333333; }
     </style>
   </head>
   <body>
