@@ -4,6 +4,9 @@ import PageHeader from "@components/layout/PageHeader.astro";
 import ContactPanel from "@components/contact/ContactPanel.astro";
 import { createBreadcrumbSchema, createWebsiteSchema, personRef, seoConfig } from "@lib/seo";
 
+// Static HTML served from the edge cache; nothing here depends on the request.
+export const prerender = true;
+
 const pageTitle = "Contact | Kevin Bravo, Product and AI Engineer";
 const pageDescription =
   "Get in touch with Kevin Bravo about product, AI, or full-stack engineering work. Send a message, email, or reach out on Discord or X.";

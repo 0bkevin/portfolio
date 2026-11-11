@@ -52,7 +52,7 @@ But, why do I want to borrow money to return it immediately? Well, the most comm
 
 Let's say `Token A` is in `DEX A` at 10 ETH but that same `Token A` is in `DEX B` at 11 ETH, you can buy `Token A` in `DEX A` at 10 ETH and then sell it in `DEX B` for 11ETH, and bum!!! PROFIT.
 
-![Stonks meme](https://cdn.hashnode.com/res/hashnode/image/upload/v1652045914789/s8UzkFvE_.jpg)
+![Stonks meme](/assets/blog/damn-vulnerable-defi-1/s8UzkFvE_.avif)
 
 Of course, **you have to take into account the fees, gas and interest of both dexes** to be able to successfully execute the flash loan.
 

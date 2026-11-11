@@ -28,7 +28,8 @@ document.addEventListener("click", (event) => {
   const dialog = getDialog();
   const image = dialog.querySelector("img");
   if (!image) return;
-  image.src = source.currentSrc || source.src;
+  // The full-size file, not the smaller srcset copy the page may be showing.
+  image.src = source.src;
   image.alt = source.alt;
   dialog.showModal();
 });

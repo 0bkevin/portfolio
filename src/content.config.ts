@@ -1,9 +1,20 @@
 import { z, defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { intrinsicSize } from './lib/rehype-image-attributes';
+import { srcsetFor } from './lib/responsive-image';
 
 const imageSchema = z.object({
   url: z.string(),
   alt: z.string()
+});
+
+// Covers carry their intrinsic size, so pages reserve their space before they load, and a srcset
+// when smaller copies sit next to the file (see scripts/image-variants.mjs).
+const coverImageSchema = imageSchema.transform(async (image) => {
+  const { width, height }: { width?: number; height?: number } = image.url.startsWith('/')
+    ? await intrinsicSize(image.url)
+    : {};
+  return { ...image, width, height, srcset: srcsetFor(image.url, width) };
 });
 
 const seoFields = {
@@ -21,7 +32,7 @@ const blogCollection = defineCollection({
     title: z.string(),
     pubDate: z.coerce.date(),
     description: z.string(),
-    image: imageSchema.optional(),
+    image: coverImageSchema.optional(),
     tags: z.array(z.string()),
     language: z.enum(['en', 'es']),
     footnote: z.string().optional(),
@@ -40,7 +51,7 @@ const projectCollection = defineCollection({
     title: z.string(),
     pubYear: z.coerce.date(),
     description: z.string(),
-    image: imageSchema,
+    image: coverImageSchema,
     tags: z.array(z.string()),
     technologies: z.array(z.string()).optional(),
     clientName: z.string().optional(),

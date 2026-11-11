@@ -7,6 +7,8 @@ import "@fontsource-variable/inter";
 import "@fontsource-variable/geist-mono";
 import "@styles/global.css";
 import { resolveSeo, type SchemaValue } from "@lib/seo";
+import interLatin from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url";
+import geistMonoLatin from "@fontsource-variable/geist-mono/files/geist-mono-latin-wght-normal.woff2?url";
 
 interface Props {
   title?: string | undefined;
@@ -83,6 +85,10 @@ const schemaItems: SchemaValue[] = Array.isArray(structuredData) ? structuredDat
   <head>
     <ClientRouter />
     <SeoHead seo={seo} structuredData={schemaItems} />
+    <!-- Text renders right away in a fallback font (font-display: swap), so the web fonts start
+         early but queue behind the page's own content instead of competing with it. -->
+    <link rel="preload" href={interLatin} as="font" type="font/woff2" crossorigin fetchpriority="low" />
+    <link rel="preload" href={geistMonoLatin} as="font" type="font/woff2" crossorigin fetchpriority="low" />
 
     <script is:inline>
       // Runs before first paint, and again around every client-side navigation,
@@ -106,6 +112,9 @@ const schemaItems: SchemaValue[] = Array.isArray(structuredData) ? structuredDat
     </script>
   </head>
   <body class="font-sans">
+    <!-- The address is already public (structured data, llms.txt), and Cloudflare's email
+         obfuscation would inject a render-blocking decoder script into every page. -->
+    <Fragment set:html="<!--email_off-->" />
     {fixedNavbar ? <div aria-hidden="true" class="h-14"></div> : null}
     <header>
       <Navbar fixed={fixedNavbar} />
@@ -114,6 +123,7 @@ const schemaItems: SchemaValue[] = Array.isArray(structuredData) ? structuredDat
       <slot />
     </main>
     <Footer />
+    <Fragment set:html="<!--/email_off-->" />
 
     <script>
       import "@scripts/scroll-direction";

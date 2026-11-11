@@ -1,7 +1,8 @@
 ---
 title: "Ethernaut solution 1: Fallback"
 pubDate: '2023-10-01T12:00:00Z'
-image: {url: 'https://cdn.hashnode.com/res/hashnode/image/upload/v1643942850085/KnrFn5Wza.png', alt: 'Ethernaut Fallback challenge cover image'}
+image: {url: '/assets/blog/ethernaut-1/KnrFn5Wza.avif', alt: 'Ethernaut Fallback challenge cover image'}
+ogImage: {url: 'https://cdn.hashnode.com/res/hashnode/image/upload/v1643942850085/KnrFn5Wza.png', alt: 'Ethernaut Fallback challenge cover image'}
 description: Learn how to solve the Ethernaut challenge "Fallback" by exploiting the contract's vulnerabilities. This step-by-step guide uses Brownie to take ownership of the contract and withdraw its balance. Perfect for blockchain developers and security enthusiasts.
 tags: [brownie, blockchain, smart contracts, python]
 language: en
@@ -229,7 +230,7 @@ From the [solidity documentation.](https://docs.soliditylang.org/en/v0.8.11/cont
 
 But wait, what is `calldata`. When we make an ethereum transaction to call an specific contract function there’s a field called `data` **in where is specified the signature of function to be executed with his necessary parameters.**
 
-![The data sending to this transaction (using metamask). In these case is a function call which receive a parameter (an address)](https://cdn.hashnode.com/res/hashnode/image/upload/v1643934156837/2vvmX_wYQ.png)
+![The data sending to this transaction (using metamask). In these case is a function call which receive a parameter (an address)](/assets/blog/ethernaut-1/2vvmX_wYQ.avif)
 
 *The data sending to this transaction (using metamask). In these case is a function call which receive a parameter (an address)*
 
@@ -309,7 +310,7 @@ Then, let’s grab the contract address of that instance.
 
 *You can just put "instance" in the browser console and it’s going to appear.*
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643935240752/9b0DzxuJy.png)
+![image.png](/assets/blog/ethernaut-1/9b0DzxuJy.avif)
 
 Now, let’s write some code!.
 
@@ -444,7 +445,7 @@ $ brownie run scripts/hacking.py –network rinkeby
 
 *We should have an log like this:*
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643936588002/n0LqRBLSB.png)
+![image.png](/assets/blog/ethernaut-1/n0LqRBLSB.avif)
 
 We made 3 transaction:
 
@@ -460,7 +461,7 @@ We do everything right, **so let’s submit the instance!**, programmatically of
 
 If you see all the output of the browser console there is a contract called `Ethernaut`, which is the main contract that allows us to create new instances and submit those ones.
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643936993877/2GG6wv_yL.png)
+![image.png](/assets/blog/ethernaut-1/2GG6wv_yL.avif)
 
 You can call `help()` to see all the different things you can do.
 
@@ -468,7 +469,7 @@ Now, if put in the browser console `ethernaut` we can see all the diferents obje
 
 > This is just a truffle contract object that the open zeppelin give us to interact with, the same for all the different instance that the CTF have.
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643937102324/a6tZThxsO.png)
+![image.png](/assets/blog/ethernaut-1/a6tZThxsO.avif)
 
 We can see in the methods object, that there is a method called `submitLevelInstance()`, **that’s the method we wanna call**
 
@@ -484,15 +485,15 @@ We just have to pass as a parameters:
 
 We can obtain the ABI of the contract in the browser console in the same `ethernaut` object.
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643937327278/Y2OEgdvj5.png)
+![image.png](/assets/blog/ethernaut-1/Y2OEgdvj5.avif)
 
 We can store that object in a variable. When we paste the object in our code we are going to obtain something like this:
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643937381301/OgKPBCR4d.png)
+![image.png](/assets/blog/ethernaut-1/OgKPBCR4d.avif)
 
 Since we are using python and not JS **we have to change those true and false keywords to match with the python syntax. **You just have to put those as capital (True, False)
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643937434970/uglnxjXyE.png)
+![image.png](/assets/blog/ethernaut-1/uglnxjXyE.avif)
 
 And that’s it, **we have the Ethernaut contract object to interact with.**
 
@@ -525,11 +526,11 @@ brownie run scripts/submi_contract.py —network rinkeby
 
 *And you just have a log like this:*
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643937553315/UhLXf5y17.png)
+![image.png](/assets/blog/ethernaut-1/UhLXf5y17.avif)
 
 **And yeah, it’s done!**
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1643937613761/HGbiP2kOq.png)
+![image.png](/assets/blog/ethernaut-1/HGbiP2kOq.avif)
 
 You can grab the complete solution in this [github repo.](https://github.com/mustafinho/ethernaut_solutions/blob/main/ethernaut_1_fallback/scripts/hacking.py)
 

@@ -8,7 +8,8 @@
     "build": "npm run check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "check": "astro check && svelte-check --tsconfig ./tsconfig.json"
+    "check": "astro check && svelte-check --tsconfig ./tsconfig.json",
+    "images": "node scripts/image-variants.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -32,6 +33,7 @@
     "@types/markdown-it": "^14.2.0",
     "@types/node": "^20.19.27",
     "@types/sanitize-html": "^2.16.2",
+    "sharp": "^0.33.5",
     "svelte-check": "^4.7.8"
   }
 }

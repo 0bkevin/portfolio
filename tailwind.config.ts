@@ -1,4 +1,3 @@
-import typography from '@tailwindcss/typography';
 import type { Config } from 'tailwindcss';
 
 export default {
@@ -10,25 +9,6 @@ export default {
 			fontFamily: {
 				sans: ['"Inter Variable"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
 				mono: ['"Geist Mono Variable"', 'ui-monospace', '"SF Mono"', 'Menlo', 'Consolas', 'monospace'],
-			},
-			animation: {
-				'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-				'fade-in': 'fadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-				'blob-spin': 'blobSpin 20s linear infinite',
-			},
-			keyframes: {
-				fadeInUp: {
-					'0%': { opacity: '0', transform: 'translateY(20px)' },
-					'100%': { opacity: '1', transform: 'translateY(0)' },
-				},
-				fadeIn: {
-					'0%': { opacity: '0' },
-					'100%': { opacity: '1' },
-				},
-				blobSpin: {
-					from: { transform: 'rotate(0deg)' },
-					to: { transform: 'rotate(360deg)' },
-				}
 			},
 			colors: {
 				surface: {
@@ -64,8 +44,7 @@ export default {
 			},
 		},
 	},
-	plugins: [
-		typography,
-	],
+	// The typography plugin is only built into src/styles/article.css (tailwind.article.config.ts).
+	plugins: [],
 	darkMode: 'class',
 } satisfies Config;
