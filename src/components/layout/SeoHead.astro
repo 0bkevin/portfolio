@@ -7,9 +7,11 @@ import { seoConfig, stringifySchema, type ResolvedSeo, type SchemaValue } from "
 interface Props {
   seo: ResolvedSeo;
   structuredData: SchemaValue[];
+  /** Path of this page's Markdown copy for AI agents, e.g. "/me/ama.md". */
+  markdownPath?: string | undefined;
 }
 
-const { seo, structuredData } = Astro.props;
+const { seo, structuredData, markdownPath } = Astro.props;
 ---
 
 <meta charset="UTF-8" />
@@ -103,6 +105,12 @@ const { seo, structuredData } = Astro.props;
   title="0b Blog"
   href={new URL("rss.xml", Astro.site)}
 />
+
+{
+  markdownPath ? (
+    <link rel="alternate" type="text/markdown" title="Markdown version" href={new URL(markdownPath, Astro.site)} />
+  ) : null
+}
 
 {PROFILE_LINKS.map(({ href }) => <link rel="me" href={href} />)}
 

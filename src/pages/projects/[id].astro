@@ -40,10 +40,8 @@ const projectSchema = createProjectSchema({
   url: pathname,
   image: shareImage.url,
   datePublished: project.data.pubYear,
-  programmingLanguage: technologies,
-  keywords: project.data.tags,
-  ...(project.data.repoUrl ? { codeRepository: project.data.repoUrl } : {}),
-  ...(project.data.demoUrl ? { demoUrl: project.data.demoUrl } : {}),
+  keywords: [...project.data.tags, ...technologies],
+  inLanguage: project.data.language,
 });
 
 const breadcrumbSchema = createBreadcrumbSchema([
@@ -66,6 +64,7 @@ const structuredData = [projectSchema, breadcrumbSchema];
   structuredData={structuredData}
   section="Projects"
   tags={project.data.tags}
+  markdownPath={`${pathname}.md`}
 >
   <article class="min-h-screen pb-16 pt-6 md:pb-20">
     <div class="home-col">

@@ -1,10 +1,22 @@
 // schema.org structured data: one Person entity referenced everywhere, plus page-type builders.
-import { DEFAULT_OG_IMAGE, SITE_DESCRIPTION, SITE_NAME, SITE_URL, seoConfig } from "./config";
+import {
+  AUTHOR_IMAGE_HEIGHT,
+  AUTHOR_IMAGE_WIDTH,
+  DEFAULT_OG_IMAGE,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_URL,
+  seoConfig,
+} from "./config";
 import { normalizeDate, toAbsoluteUrl } from "./url";
 
 export type SchemaValue = Record<string, unknown>;
 
 export const PERSON_ID = `${SITE_URL}/#person`;
+export const WEBSITE_ID = `${SITE_URL}/#website`;
+
+/** Points at the WebSite node without repeating it. */
+const websiteRef = (): SchemaValue => ({ "@type": "WebSite", "@id": WEBSITE_ID, name: SITE_NAME, url: `${SITE_URL}/` });
 
 /** How every other schema points at Kevin: same @id, name, and url on every page. */
 export const personRef = (): SchemaValue => ({
@@ -14,37 +26,66 @@ export const personRef = (): SchemaValue => ({
   url: seoConfig.author.url,
 });
 
-/** The one full Person definition. Pages must not override its fields. */
-
-export const createPersonSchema = (): SchemaValue => ({
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "@id": PERSON_ID,
-  name: seoConfig.author.name,
-  alternateName: seoConfig.author.alternateName,
-  url: seoConfig.author.url,
-  image: seoConfig.author.image,
-  jobTitle: seoConfig.author.jobTitle,
-  description: seoConfig.author.description,
-  email: seoConfig.author.email,
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Caracas",
-    addressCountry: "VE",
-  },
-  knowsAbout: [...seoConfig.author.knowsAbout],
-  sameAs: [...seoConfig.author.sameAs],
-});
+/**
+ * The one full Person definition, nested as the mainEntity of every profile page. Pages must not
+ * override its fields. Google reads each page on its own, so the whole node is embedded rather
+ * than relying on the @id alone; other schemas point at it with personRef().
+ */
+function embeddedPerson(): SchemaValue {
+  const { author } = seoConfig;
+  return {
+    "@type": "Person",
+    "@id": PERSON_ID,
+    name: author.name,
+    givenName: author.givenName,
+    familyName: author.familyName,
+    alternateName: author.alternateName,
+    url: author.url,
+    image: {
+      "@type": "ImageObject",
+      "@id": `${SITE_URL}/#person-image`,
+      url: author.image,
+      contentUrl: author.image,
+      width: AUTHOR_IMAGE_WIDTH,
+      height: AUTHOR_IMAGE_HEIGHT,
+      caption: author.name,
+    },
+    jobTitle: author.jobTitle,
+    description: author.description,
+    email: author.email,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Caracas",
+      addressCountry: "VE",
+    },
+    homeLocation: {
+      "@type": "Place",
+      name: "Caracas, Venezuela",
+      sameAs: "https://www.wikidata.org/wiki/Q1533",
+    },
+    knowsAbout: [...author.knowsAbout],
+    knowsLanguage: [...author.knowsLanguage],
+    alumniOf: author.alumniOf.map((org) => ({ ...org })),
+    affiliation: author.affiliation.map((org) => ({ ...org })),
+    memberOf: author.memberOf.map((role) => ({ ...role })),
+    award: [...author.award],
+    sameAs: [...author.sameAs],
+  };
+}
 
 export const createWebsiteSchema = (
   overrides: Partial<SchemaValue> = {},
 ): SchemaValue => ({
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "@id": `${SITE_URL}/#website`,
+  "@id": WEBSITE_ID,
+  // Site name in Google results: name plus alternates, in order of preference.
   name: SITE_NAME,
-  url: SITE_URL,
+  alternateName: [seoConfig.author.alternateName, "kevinbravo.com"],
+  url: `${SITE_URL}/`,
   description: SITE_DESCRIPTION,
+  inLanguage: "en",
+  author: personRef(),
   publisher: personRef(),
   ...overrides,
 });
@@ -71,12 +112,7 @@ export const createCollectionPageSchema = ({
   description,
   url: toAbsoluteUrl(url),
   about,
-  isPartOf: {
-    "@type": "WebSite",
-    "@id": `${SITE_URL}/#website`,
-    name: SITE_NAME,
-    url: SITE_URL,
-  },
+  isPartOf: websiteRef(),
 });
 
 export interface ProfilePageSchemaInput {
@@ -102,11 +138,8 @@ export const createProfilePageSchema = ({
   url: toAbsoluteUrl(url),
   dateCreated: normalizeDate(dateCreated),
   dateModified: normalizeDate(dateModified || dateCreated),
-  mainEntity: personRef(),
-  isPartOf: {
-    "@type": "WebSite",
-    "@id": `${SITE_URL}/#website`,
-  },
+  mainEntity: embeddedPerson(),
+  isPartOf: websiteRef(),
 });
 
 export interface ArticleSchemaInput {
@@ -132,6 +165,7 @@ export const createArticleSchema = ({
 }: ArticleSchemaInput): SchemaValue => ({
   "@context": "https://schema.org",
   "@type": "BlogPosting",
+  "@id": `${toAbsoluteUrl(url)}#article`,
   headline,
   description,
   mainEntityOfPage: toAbsoluteUrl(url),
@@ -143,6 +177,7 @@ export const createArticleSchema = ({
   keywords,
   author: personRef(),
   publisher: personRef(),
+  isPartOf: websiteRef(),
 });
 
 export interface ProjectSchemaInput {
@@ -151,40 +186,35 @@ export interface ProjectSchemaInput {
   url: string;
   image?: string | null | undefined;
   datePublished?: Date | string | undefined;
-  programmingLanguage?: string[] | undefined;
   keywords?: string[] | undefined;
-  codeRepository?: string | undefined;
-  demoUrl?: string | undefined;
-  type?: "CreativeWork" | "SoftwareApplication" | undefined;
+  inLanguage?: string | undefined;
 }
 
+/** A case study page. Technologies go in keywords: CreativeWork has no stack property. */
 export const createProjectSchema = ({
   name,
   description,
   url,
   image,
   datePublished,
-  programmingLanguage = [],
   keywords = [],
-  codeRepository,
-  demoUrl,
-  type = "CreativeWork",
+  inLanguage = "en",
 }: ProjectSchemaInput): SchemaValue => ({
   "@context": "https://schema.org",
-  "@type": type,
+  "@type": "CreativeWork",
   "@id": `${toAbsoluteUrl(url)}#creativework`,
   name,
+  headline: name,
   description,
   url: toAbsoluteUrl(url),
+  mainEntityOfPage: toAbsoluteUrl(url),
   image: toAbsoluteUrl(image || DEFAULT_OG_IMAGE),
   creator: personRef(),
   author: personRef(),
-  datePublished: normalizeDate(datePublished),
   dateCreated: normalizeDate(datePublished),
-  keywords,
-  programmingLanguage,
-  codeRepository: toAbsoluteUrl(codeRepository),
-  workExample: demoUrl ? toAbsoluteUrl(demoUrl) : undefined,
+  inLanguage,
+  keywords: [...new Set(keywords)],
+  isPartOf: websiteRef(),
 });
 
 export interface BreadcrumbItem {

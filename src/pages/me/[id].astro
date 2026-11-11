@@ -1,7 +1,7 @@
 ---
 import BlogLayout from "@layouts/Blog.astro";
 import { type CollectionEntry, getCollection, render } from "astro:content";
-import { createBreadcrumbSchema, createPersonSchema, createProfilePageSchema } from "@lib/seo";
+import { createBreadcrumbSchema, createProfilePageSchema } from "@lib/seo";
 
 export const prerender = true;
 
@@ -40,7 +40,7 @@ const profilePageSchema = createProfilePageSchema({
   dateModified: updatedDate,
 });
 
-const structuredData = [profilePageSchema, createPersonSchema(), breadcrumbSchema];
+const structuredData = [profilePageSchema, breadcrumbSchema];
 ---
 
 <BlogLayout
