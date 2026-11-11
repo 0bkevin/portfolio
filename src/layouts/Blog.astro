@@ -1,4 +1,6 @@
 ---
+// Before the layout, so global.css comes later in the cascade and its utilities override .prose.
+import "@styles/article.css";
 import Layout from "./Layout.astro";
 import { formatDateToDisplay, getReadingTime } from "@lib/utils";
 import type { CollectionEntry } from "astro:content";

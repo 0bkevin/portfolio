@@ -1,6 +1,8 @@
 @import "./base.css";
 @import "./components.css";
-@import "./prose.css";
+
+/* Explicit, because article.css uses its own config and Tailwind would otherwise reuse it here. */
+@config "../../tailwind.config.ts";
 
 @tailwind base;
 @tailwind components;

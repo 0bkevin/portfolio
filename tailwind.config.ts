@@ -1,4 +1,3 @@
-import typography from '@tailwindcss/typography';
 import type { Config } from 'tailwindcss';
 
 export default {
@@ -64,8 +63,7 @@ export default {
 			},
 		},
 	},
-	plugins: [
-		typography,
-	],
+	// The typography plugin is only built into src/styles/article.css (tailwind.article.config.ts).
+	plugins: [],
 	darkMode: 'class',
 } satisfies Config;

@@ -1,0 +1,8 @@
+/* Typography for rendered Markdown (articles, case studies, profile pages). Only the pages that
+   render Markdown import it, ahead of global.css so site utilities still override .prose. */
+@import "./prose.css";
+
+@config "../../tailwind.article.config.ts";
+
+@tailwind components;
+@tailwind utilities;
