@@ -1,5 +1,6 @@
 import { z, defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { existsSync } from 'node:fs';
 import { intrinsicSize } from './lib/rehype-image-attributes';
 
 const imageSchema = z.object({
@@ -7,12 +8,15 @@ const imageSchema = z.object({
   alt: z.string()
 });
 
-// Article covers carry their intrinsic size so the page reserves their space before they load.
+// Article covers carry their intrinsic size so the page reserves their space before they load,
+// and a srcset when a smaller "-800w" copy sits next to the file (phones download that one).
 const coverImageSchema = imageSchema.transform(async (image) => {
-  const { width, height }: { width?: number; height?: number } = image.url.startsWith('/')
-    ? await intrinsicSize(image.url)
-    : {};
-  return { ...image, width, height };
+  const local = image.url.startsWith('/');
+  const { width, height }: { width?: number; height?: number } = local ? await intrinsicSize(image.url) : {};
+  const small = image.url.replace(/(\.\w+)$/, '-800w$1');
+  const srcset =
+    local && width && width > 800 && existsSync(`./public${small}`) ? `${small} 800w, ${image.url} ${width}w` : undefined;
+  return { ...image, width, height, srcset };
 });
 
 const seoFields = {
