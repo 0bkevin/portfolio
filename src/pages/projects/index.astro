@@ -93,6 +93,8 @@ const structuredData = [
             <div class="case-shot relative aspect-[16/10] overflow-hidden rounded-xl border border-surface-200 bg-surface-100 dark:border-surface-800 dark:bg-surface-900">
               <img
                 src={featuredProject.data.image.url}
+                srcset={featuredProject.data.image.srcset}
+                sizes="(min-width: 768px) 460px, calc(100vw - 3rem)"
                 alt={featuredProject.data.image.alt}
                 class="h-full w-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-[1.03]"
                 loading="eager"
@@ -141,6 +143,8 @@ const structuredData = [
                   <div class="case-shot relative aspect-video overflow-hidden rounded-lg border border-surface-200 bg-surface-100 dark:border-surface-800 dark:bg-surface-900">
                     <img
                       src={project.data.image.url}
+                      srcset={project.data.image.srcset}
+                      sizes="(min-width: 1024px) 262px, (min-width: 640px) calc(50vw - 2.25rem), calc(100vw - 3rem)"
                       alt={project.data.image.alt}
                       class="h-full w-full object-cover transition-transform duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-[1.03]"
                       loading="lazy"

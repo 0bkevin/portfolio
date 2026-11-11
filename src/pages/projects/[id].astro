@@ -96,6 +96,8 @@ const structuredData = [projectSchema, breadcrumbSchema];
       <div class="fade-in-up mb-14 aspect-video w-full overflow-hidden rounded-lg border border-surface-200 bg-surface-100 dark:border-surface-800 dark:bg-surface-900 md:mb-20" style="--d: 220ms">
         <img
           src={project.data.image.url}
+          srcset={project.data.image.srcset}
+          sizes="(min-width: 896px) 832px, calc(100vw - 3rem)"
           alt={project.data.image.alt}
           class="h-full w-full object-cover"
           loading="eager"

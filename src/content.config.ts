@@ -1,22 +1,20 @@
 import { z, defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
-import { existsSync } from 'node:fs';
 import { intrinsicSize } from './lib/rehype-image-attributes';
+import { srcsetFor } from './lib/responsive-image';
 
 const imageSchema = z.object({
   url: z.string(),
   alt: z.string()
 });
 
-// Article covers carry their intrinsic size so the page reserves their space before they load,
-// and a srcset when a smaller "-800w" copy sits next to the file (phones download that one).
+// Covers carry their intrinsic size, so pages reserve their space before they load, and a srcset
+// when smaller copies sit next to the file (see scripts/image-variants.mjs).
 const coverImageSchema = imageSchema.transform(async (image) => {
-  const local = image.url.startsWith('/');
-  const { width, height }: { width?: number; height?: number } = local ? await intrinsicSize(image.url) : {};
-  const small = image.url.replace(/(\.\w+)$/, '-800w$1');
-  const srcset =
-    local && width && width > 800 && existsSync(`./public${small}`) ? `${small} 800w, ${image.url} ${width}w` : undefined;
-  return { ...image, width, height, srcset };
+  const { width, height }: { width?: number; height?: number } = image.url.startsWith('/')
+    ? await intrinsicSize(image.url)
+    : {};
+  return { ...image, width, height, srcset: srcsetFor(image.url, width) };
 });
 
 const seoFields = {
@@ -53,7 +51,7 @@ const projectCollection = defineCollection({
     title: z.string(),
     pubYear: z.coerce.date(),
     description: z.string(),
-    image: imageSchema,
+    image: coverImageSchema,
     tags: z.array(z.string()),
     technologies: z.array(z.string()).optional(),
     clientName: z.string().optional(),

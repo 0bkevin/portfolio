@@ -1,9 +1,13 @@
 // Gives every image in Markdown content its intrinsic width and height (read from the file in
-// public/ at build time) so the page doesn't shift as images arrive, and loads them lazily
-// because they all sit below the article header.
+// public/ at build time) so the page doesn't shift as images arrive, a srcset when smaller copies
+// exist, and lazy loading because they all sit below the article header.
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 import sharp from "sharp";
+import { srcsetFor } from "./responsive-image";
+
+/** Article and case-study text columns are at most 800px wide, less the side padding on phones. */
+const CONTENT_IMAGE_SIZES = "(min-width: 848px) 800px, calc(100vw - 2.5rem)";
 
 interface HastNode {
   type: string;
@@ -41,6 +45,8 @@ async function addToRawImages(html: string) {
     if (src?.startsWith("/") && !/\s(width|height)=/.test(tag)) {
       const { width, height } = await intrinsicSize(src);
       if (width && height) attributes += ` width="${width}" height="${height}"`;
+      const srcset = srcsetFor(src, width);
+      if (srcset && !/\ssrcset=/.test(tag)) attributes += ` srcset="${srcset}" sizes="${CONTENT_IMAGE_SIZES}"`;
     }
     if (attributes) html = html.replace(tag, tag.replace(/^<img\b/, `<img${attributes}`));
   }
@@ -71,6 +77,11 @@ export default function rehypeImageAttributes() {
         if (width && height) {
           properties.width = width;
           properties.height = height;
+        }
+        const srcset = srcsetFor(src, width);
+        if (srcset && !properties.srcSet) {
+          properties.srcSet = srcset;
+          properties.sizes = CONTENT_IMAGE_SIZES;
         }
       }),
     );
