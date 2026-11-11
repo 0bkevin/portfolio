@@ -399,7 +399,7 @@ Now using kovan.
 
 ![image.png](/assets/blog/brownie101/zk07wc4yy.avif)
 
-The flag `--network` is used when we want to change to which network the contract would be deployed, *this is going to be the development network by default* (which is a ganache cli), you can read more about that [here](https://eth-brownie.readthedocs.io/en/stable/network-management.html#launching-and-connecting)
+The flag `--network` is used when we want to change to which network the contract would be deployed, *this is going to be the development network by default* (which is a ganache cli), you can read more about that in [Brownie's network management docs](https://eth-brownie.readthedocs.io/en/stable/network-management.html#launching-and-connecting)
 
 Okay but, how brownie knows how to change between networks by just typing its name?, well brownie have an object called `network`, **in which there stores a lot of different networks that we can use to deploy and test our contract.** *We will see more about that later in the article.*
 
@@ -609,7 +609,7 @@ Also, you can import an account using its private key:
 
 You will be asked to input the private key, and to choose a password. The account will then be available as .
 
-You can see all the different method for manage account in brownie [here](https://eth-brownie.readthedocs.io/en/stable/account-management.html#local-accounts)
+You can see all the different method for manage account in [Brownie's account management docs](https://eth-brownie.readthedocs.io/en/stable/account-management.html#local-accounts)
 
 **But wait, this is not dangerous? Could everyone see my private key?** Don't worry, browne encrypts your private key, so when you want to use that account brownie will ask you for your password to send transactions.
 
