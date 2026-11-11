@@ -7,6 +7,8 @@ ogImage: { url: '/assets/projects/billingua/og.jpg', alt: 'Billingua Talent home
 tags: [full-stack platform, talent network, multi-tenant, dashboards]
 technologies: [multi-tenant platform, role-based access, backend systems, dashboards, data modeling]
 language: en
+# The description above runs long for search snippets, which cut off around 155 characters.
+seoDescription: "The bilingual talent platform I led for AVAA and the U.S. Department of State's Venezuela Affairs Unit, connecting skilled Venezuelans with local employers."
 ---
 
 ## Overview
