@@ -1,8 +1,11 @@
 ---
 import Layout from "@layouts/Layout.astro";
 
-// Rendered on request (not prerendered) so the trailing-slash middleware still runs first:
-// a prerendered 404 would answer /experience/ before it could redirect to /experience.
+// Prerendered so the build emits a top-level 404.html. Without one, Cloudflare Pages treats the
+// site as a single-page app and answers every unknown URL with the homepage and a 200 status,
+// which search engines index as soft 404s. Trailing-slash URLs still redirect first: Pages sends
+// /experience/ to /experience before any 404 handling, and the middleware covers server routes.
+export const prerender = true;
 
 const pageTitle = "Page not found | Kevin Bravo";
 const pageDescription = "This page doesn't exist or has moved.";
