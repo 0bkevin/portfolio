@@ -44,18 +44,15 @@ Full story at [kevinbravo.com/experience](https://kevinbravo.com/experience).
 - 🥈 2nd place, AI Security track at **Platanus Hack Caracas** (2026) with Gotchu
 - 🥉 3rd place at IESA's first **EmprendeTECH Hackathon** (2025) with Planify
 
-## Leading outside the editor
+## Outside the editor
 
 I've spent **8+ years volunteering and leading in nonprofits** across education, the environment, and tech. It's where I learned to lead people, not just code, and to rally a team around a shared goal with no budget and no formal authority.
 
-- 🤝 **JA Venezuela Alumni** · Vice President (2026–present). I set yearly priorities with the board and coordinate committees and project leads, after helping launch the national alumni network as a volunteer.
-- 🎓 **AVAA** · Education Committee member (2024–present). I help shape how the ProExcelencia scholarship program evolves for around 300 scholars, as a former scholar myself (2019–2023).
-- 🌱 **AVAA, Una Mano Amiga por el Ambiente** · Project Lead (2020–2021). I moved an environmental education project online during the pandemic, building 28 alliances and reaching 1,300+ participants.
-- 🚀 **Dev3pack Global Hackathon** · Caracas Hub Organizer (2026). I ran the local hub of a global AI and Web3 hackathon, from venue and sponsors to mentoring teams through their final submissions.
-- 👩‍💻 **Technovation Girls Venezuela** · Code Mentor (2026). I mentored four students taking a mobile app for a community problem from idea to working prototype.
-- 💡 **Finnancity** · Web Developer & Technical Consultant (2025–present). I build pages and forms and advise on tools for education and finance initiatives.
+Today I'm Vice President of **JA Venezuela Alumni**, I help shape the scholarship program at **AVAA** that once trained me, and I organize hackathons and mentor young builders through programs like **Technovation Girls**.
 
-I also write a bit at [kevinbravo.com/0b](https://kevinbravo.com/0b) and give the occasional [talk](https://www.youtube.com/watch?v=0JlqBCB3LRM).
+When I'm not doing any of that, I'm running. I've done 21K races, I'm training for my first full marathon, and someday I want to finish an Ironman.
+
+I also write a bit at [kevinbravo.com/0b](https://kevinbravo.com/0b).
 
 ## Stack
 
