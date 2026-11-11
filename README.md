@@ -46,9 +46,9 @@ Full story at [kevinbravo.com/experience](https://kevinbravo.com/experience).
 
 ## Outside the editor
 
-I've been volunteering for 8+ years. Today I'm Vice President of **JA Venezuela Alumni**, part of the Education Committee at **AVAA**, and one of the founders and leads of **Dev3pack Venezuela**, where we bring more women into tech. I plan and run projects, evaluate how they go, and lead the people behind them.
+I've been volunteering for the past 8+ years, mostly in education, environmental, and tech projects. Along the way I've led teams, started projects from scratch, and seen them through to the end. These days I'm Vice President of **JA Venezuela Alumni**, part of the Education Committee at **AVAA**, and one of the founders and leads of **Dev3pack Venezuela**, where we're bringing more women into tech.
 
-I also run. I've done 21Ks and I'm training for my first marathon, with an Ironman as the long-term goal. Sometimes I write at [kevinbravo.com/0b](https://kevinbravo.com/0b).
+When I'm not doing any of that, I'm probably out running 🏃. I've run 21Ks, I'm training for my first marathon, and one day I want to cross an Ironman finish line. I also write a bit at [kevinbravo.com/0b](https://kevinbravo.com/0b).
 
 ## Stack
 
