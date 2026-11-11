@@ -5,6 +5,9 @@ import MarkdownIt from "markdown-it";
 import sanitizeHtml from "sanitize-html";
 import { seoConfig } from "@lib/seo";
 
+// Static XML served from the edge cache; the feed only changes when a post does.
+export const prerender = true;
+
 const parser = new MarkdownIt();
 
 /** RSS feed for the 0b writing section, with each post's full content. */
