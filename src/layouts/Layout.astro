@@ -117,7 +117,7 @@ const schemaItems: SchemaValue[] = Array.isArray(structuredData) ? structuredDat
   <body class="font-sans">
     <!-- The address is already public (structured data, llms.txt), and Cloudflare's email
          obfuscation would inject a render-blocking decoder script into every page. -->
-    <Fragment set:html="<!--email_off-->" />
+    <Fragment set:html={"<!--email_off-->"} />
     {fixedNavbar ? <div aria-hidden="true" class="h-14"></div> : null}
     <header>
       <Navbar fixed={fixedNavbar} />
@@ -126,7 +126,7 @@ const schemaItems: SchemaValue[] = Array.isArray(structuredData) ? structuredDat
       <slot />
     </main>
     <Footer />
-    <Fragment set:html="<!--/email_off-->" />
+    <Fragment set:html={"<!--/email_off-->"} />
 
     <script>
       import "@scripts/scroll-direction";
